@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Belajar Eksponen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0f9ff;
+        }
+        .exponent-view {
+            display: inline-flex;
+            align-items: flex-start;
+            line-height: 1;
+        }
+        .exponent-view .base {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .exponent-view .pow {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-top: -0.5rem;
+            color: #ef4444;
+        }
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        .property-card {
+            border-left: 6px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-slate-800 antialiased selection:bg-blue-300 selection:text-blue-900">
+
+    <!-- Header / Hero Section -->
+    <header class="bg-blue-600 text-white py-16 px-4 md:px-8 text-center rounded-b-[3rem] shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg class="absolute top-10 left-10 w-24 h-24 transform -rotate-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/></svg>
+            <svg class="absolute bottom-10 right-10 w-32 h-32 transform rotate-45" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Ozmath</h1>
+            <p class="text-xl md:text-2xl font-semibold mb-6 text-blue-100">Kuasai Eksponen dengan Mudah!</p>
+            <p class="text-lg text-blue-50 max-w-2xl mx-auto">
+                Eksponen atau bilangan berpangkat adalah cara singkat menulis perkalian berulang. Mari kita pelajari konsepnya langkah demi langkah.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 md:px-8 py-12 space-y-16">
+
+        <!-- Tahap 1: Pengenalan -->
+        <section class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-blue-100 relative step-card">
+            <div class="absolute -top-6 left-8 bg-blue-500 text-white text-xl font-bold py-2 px-6 rounded-full shadow-md">
+                Tahap 1
+            </div>
+            <h2 class="text-3xl font-bold text-blue-700 mt-4 mb-6">Apa itu Eksponen?</h2>
+            
+            <div class="space-y-6 text-lg text-slate-700 leading-relaxed">
+                <p>
+                    Bayangkan kamu diminta menulis perkalian angka 2 sebanyak 5 kali: <br>
+                    <span class="bg-blue-50 px-3 py-1 rounded-lg font-mono text-blue-700">2 × 2 × 2 × 2 × 2</span>
+                </p>
+                <p>
+                    Nah, <strong>Eksponen</strong> adalah "singkatan" matematika untuk itu! Kita bisa menulisnya sebagai:
+                </p>
+                <div class="flex justify-center my-8">
+                    <div class="exponent-view p-6 bg-blue-50 rounded-2xl border-2 border-blue-200 shadow-inner">
+                        <span class="base text-blue-600">2</span>
+                        <span class="pow">5</span>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-500 mt-8">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">Mengenal Nama Bagiannya:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-600 text-white font-bold px-3 py-1 rounded-lg">Angka Besar</span>
+                            <span><i data-lucide="arrow-right" class="inline w-4 h-4 text-slate-400"></i> Disebut <strong>Basis</strong></span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-500 text-white font-bold px-3 py-1 rounded-lg">Angka Kecil</span>
+                            <span><i data-lucide="arrow-right" class="inline w-4 h-4 text-slate-400"></i> Disebut <strong>Eksponen/Pangkat</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tahap 2: Visualisasi Interaktif -->
+        <section class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-blue-100 relative step-card">
+            <div class="absolute -top-6 left-8 bg-blue-500 text-white text-xl font-bold py-2 px-6 rounded-full shadow-md">
+                Tahap 2
+            </div>
+            <h2 class="text-3xl font-bold text-blue-700 mt-4 mb-2">Visualisasi Interaktif</h2>
+            <p class="text-slate-600 mb-8">Ubah angka basis dan pangkat untuk melihat prosesnya.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div class="bg-blue-50 p-6 rounded-2xl space-y-6 shadow-inner">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-600 mb-2 uppercase tracking-wide">Basis</label>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="changeBase(-1)" class="w-12 h-12 rounded-full bg-white text-blue-600 shadow flex items-center justify-center text-2xl font-bold">-</button>
+                            <span id="display-base" class="text-3xl font-black text-blue-800 w-12 text-center">3</span>
+                            <button onclick="changeBase(1)" class="w-12 h-12 rounded-full bg-white text-blue-600 shadow flex items-center justify-center text-2xl font-bold">+</button>
+                        </div>
+                    </div>
+                    <div class="border-t border-blue-200"></div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-600 mb-2 uppercase tracking-wide">Pangkat</label>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="changeExp(-1)" class="w-12 h-12 rounded-full bg-white text-red-500 shadow flex items-center justify-center text-2xl font-bold">-</button>
+                            <span id="display-exp" class="text-3xl font-black text-red-600 w-12 text-center">4</span>
+                            <button onclick="changeExp(1)" class="w-12 h-12 rounded-full bg-white text-red-500 shadow flex items-center justify-center text-2xl font-bold">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center justify-center space-y-6">
+                    <div class="exponent-view p-8 bg-white shadow-lg rounded-3xl min-w-[150px] justify-center">
+                        <span id="res-base" class="base text-blue-600">3</span>
+                        <span id="res-exp" class="pow">4</span>
+                    </div>
+                    <div class="w-full bg-blue-50 p-6 rounded-xl border-2 border-blue-100 text-center">
+                        <p id="multiplication-path" class="text-xl font-bold text-slate-700 flex flex-wrap justify-center gap-2"></p>
+                        <div class="mt-4 pt-4 border-t border-blue-200">
+                            <p class="text-sm text-slate-500">Hasil Akhir</p>
+                            <p id="final-result" class="text-3xl font-black text-blue-600">81</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tahap 3: 8 Sifat Eksponen -->
+        <section class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-blue-100 relative step-card">
+            <div class="absolute -top-6 left-8 bg-blue-500 text-white text-xl font-bold py-2 px-6 rounded-full shadow-md">
+                Tahap 3
+            </div>
+            <h2 class="text-3xl font-bold text-blue-700 mt-4 mb-4">8 Sifat Eksponen Dasar</h2>
+            <p class="text-slate-600 mb-10">Berikut adalah "aturan main" dalam dunia eksponen yang harus kamu kuasai.</p>
+
+            <div id="properties-container" class="space-y-6">
+                <!-- Sifat-sifat akan diisi oleh JavaScript untuk efisiensi kode -->
+            </div>
+        </section>
+
+        <!-- Tahap 4: Kuis -->
+        <section class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-blue-100 relative step-card">
+            <div class="absolute -top-6 left-8 bg-blue-500 text-white text-xl font-bold py-2 px-6 rounded-full shadow-md">
+                Tahap 4
+            </div>
+            <h2 class="text-3xl font-bold text-blue-700 mt-4 mb-4">Kuis Eksponen</h2>
+            <p class="text-slate-600 mb-8">Uji pengetahuanmu!</p>
+
+            <div id="quiz-container" class="space-y-6"></div>
+            <div id="quiz-error" class="hidden mt-6 bg-red-50 text-red-600 p-4 rounded-xl border border-red-200 flex items-center gap-3 font-bold">
+                <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                <span>Harap jawab semua pertanyaan!</span>
+            </div>
+            <button id="btn-submit-quiz" onclick="submitQuiz()" class="w-full mt-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2">
+                <span>Kumpulkan Jawaban</span>
+                <i data-lucide="send" class="w-5 h-5"></i>
+            </button>
+            <div id="quiz-result" class="hidden mt-8 p-6 rounded-2xl border-2 transition-all duration-500"></div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-900 text-blue-200 py-10 text-center mt-12">
+        <p class="font-bold text-2xl mb-2 text-white">Ozmath</p>
+        <p class="text-sm opacity-80">Belajar Eksponen Jadi Lebih Menyenangkan & Bertahap.</p>
+        <div class="w-16 h-1 bg-blue-500 mx-auto my-6 rounded-full"></div>
+        <p class="text-xs opacity-50">&copy; 2026 Ozmath Education.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. Interactive Logic
+        let currentBase = 3;
+        let currentExp = 4;
+
+        function updateVisual() {
+            document.getElementById('display-base').textContent = currentBase;
+            document.getElementById('display-exp').textContent = currentExp;
+            document.getElementById('res-base').textContent = currentBase;
+            document.getElementById('res-exp').textContent = currentExp;
+
+            let path = "";
+            let result = 1;
+            for(let i = 0; i < currentExp; i++) {
+                path += `<span class="bg-white border border-blue-200 px-2 py-1 rounded shadow-sm">${currentBase}</span>`;
+                if(i < currentExp - 1) path += "<span>×</span>";
+                result *= currentBase;
+            }
+            if(currentExp === 0) {
+                path = "1 (Setiap angka pangkat 0 adalah 1)";
+                result = 1;
+            }
+            document.getElementById('multiplication-path').innerHTML = path;
+            document.getElementById('final-result').textContent = result.toLocaleString('id-ID');
+        }
+
+        function changeBase(val) { currentBase = Math.max(1, Math.min(10, currentBase + val)); updateVisual(); }
+        function changeExp(val) { currentExp = Math.max(0, Math.min(6, currentExp + val)); updateVisual(); }
+
+        // 2. Properties Logic (The 8 Properties)
+        const properties = [
+            {
+                title: "Perkalian Eksponen",
+                formula: "a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup>",
+                desc: "Jika basis sama, pangkat dijumlahkan.",
+                soal: "Sederhanakan 3<sup>2</sup> × 3<sup>4</sup>",
+                solusi: "3<sup>2+4</sup> = 3<sup>6</sup> = 729"
+            },
+            {
+                title: "Pembagian Eksponen",
+                formula: "a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m-n</sup>",
+                desc: "Jika basis sama, pangkat dikurangkan.",
+                soal: "Sederhanakan 5<sup>5</sup> ÷ 5<sup>3</sup>",
+                solusi: "5<sup>5-3</sup> = 5<sup>2</sup> = 25"
+            },
+            {
+                title: "Perpangkatan Eksponen",
+                formula: "(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup>",
+                desc: "Pangkat yang dipangkatkan, maka pangkat dikali.",
+                soal: "Sederhanakan (2<sup>3</sup>)<sup>2</sup>",
+                solusi: "2<sup>3×2</sup> = 2<sup>6</sup> = 64"
+            },
+            {
+                title: "Perpangkatan dari Perkalian",
+                formula: "(a × b)<sup>n</sup> = a<sup>n</sup> × b<sup>n</sup>",
+                desc: "Semua angka di dalam kurung mendapat pangkat yang sama.",
+                soal: "Hitunglah (2 × 3)<sup>2</sup>",
+                solusi: "2<sup>2</sup> × 3<sup>2</sup> = 4 × 9 = 36"
+            },
+            {
+                title: "Perpangkatan dari Pembagian",
+                formula: "(a / b)<sup>n</sup> = a<sup>n</sup> / b<sup>n</sup>",
+                desc: "Berlaku juga untuk pembagian atau pecahan.",
+                soal: "Hitunglah (4 / 2)<sup>3</sup>",
+                solusi: "4<sup>3</sup> / 2<sup>3</sup> = 64 / 8 = 8"
+            },
+            {
+                title: "Pangkat Nol",
+                formula: "a<sup>0</sup> = 1",
+                desc: "Berapapun angkanya (kecuali 0), jika dipangkatkan 0 hasilnya 1.",
+                soal: "Berapakah hasil 1.000.000<sup>0</sup>?",
+                solusi: "Hasilnya adalah 1."
+            },
+            {
+                title: "Pangkat Negatif",
+                formula: "a<sup>-n</sup> = 1 / a<sup>n</sup>",
+                desc: "Pangkat negatif mengubah angka menjadi pecahan (kebalikannya).",
+                soal: "Ubah 2<sup>-3</sup> menjadi pangkat positif",
+                solusi: "1 / 2<sup>3</sup> = 1 / 8"
+            },
+            {
+                title: "Pangkat Pecahan (Akar)",
+                formula: "a<sup>m/n</sup> = <sup>n</sup>√a<sup>m</sup>",
+                desc: "Pangkat pecahan identik dengan bentuk akar.",
+                soal: "Berapakah nilai 9<sup>1/2</sup>?",
+                solusi: "√9 = 3"
+            }
+        ];
+
+        function renderProperties() {
+            const container = document.getElementById('properties-container');
+            container.innerHTML = properties.map((prop, i) => `
+                <div class="property-card bg-slate-50 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all border border-slate-200">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Sifat #${i+1}</span>
+                            <h3 class="text-xl font-bold text-slate-800">${prop.title}</h3>
+                        </div>
+                        <div class="bg-blue-100 px-4 py-2 rounded-xl font-mono font-bold text-blue-700 border border-blue-200">
+                            ${prop.formula}
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-6 italic">"${prop.desc}"</p>
+                    
+                    <div class="bg-white p-4 rounded-xl border border-slate-200">
+                        <p class="font-bold text-sm text-slate-400 mb-2 uppercase">Contoh Soal:</p>
+                        <p class="text-lg font-bold text-slate-700 mb-4">${prop.soal}</p>
+                        <button onclick="toggleAnswer('prop-ans-${i}')" class="text-blue-600 font-bold flex items-center gap-1 text-sm hover:text-blue-800 transition-colors">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Lihat Penyelesaian
+                        </button>
+                        <div id="prop-ans-${i}" class="hidden mt-4 pt-4 border-t border-dashed border-slate-200 text-blue-700 font-bold bg-blue-50/50 p-3 rounded-lg">
+                            <i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i> ${prop.solusi}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // 3. Quiz Logic
+        const quizData = [
+            { q: "Apa sebutan untuk angka 'n' pada bentuk a<sup>n</sup>?", options: ["Basis", "Eksponen", "Koefisien", "Variabel"], a: 1 },
+            { q: "Berapakah hasil dari 2<sup>4</sup>?", options: ["8", "12", "16", "32"], a: 2 },
+            { q: "Berapakah hasil dari 10<sup>0</sup>?", options: ["0", "1", "10", "100"], a: 1 },
+            { q: "Bentuk sederhana dari 3<sup>2</sup> × 3<sup>1</sup> adalah...", options: ["3<sup>2</sup>", "3<sup>3</sup>", "9<sup>2</sup>", "9<sup>3</sup>"], a: 1 },
+            { q: "Jika (x<sup>2</sup>)<sup>3</sup> disederhanakan, hasilnya...", options: ["x<sup>5</sup>", "x<sup>6</sup>", "x<sup>1</sup>", "x<sup>8</sup>"], a: 1 }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = quizData.map((data, i) => `
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <p class="font-bold text-lg text-slate-800 mb-4">${i+1}. ${data.q}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${data.options.map((opt, oi) => `
+                            <label class="flex items-center space-x-3 p-3 rounded-xl border-2 border-transparent bg-white hover:border-blue-300 cursor-pointer transition-all">
+                                <input type="radio" name="quiz-${i}" value="${oi}" class="w-5 h-5 text-blue-600">
+                                <span class="text-slate-700 font-medium">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+
+        function submitQuiz() {
+            let score = 0;
+            let completed = true;
+            quizData.forEach((_, i) => {
+                const selected = document.querySelector(`input[name="quiz-${i}"]:checked`);
+                if(!selected) completed = false;
+                else if(parseInt(selected.value) === quizData[i].a) score++;
+            });
+            if(!completed) { document.getElementById('quiz-error').classList.remove('hidden'); return; }
+            document.getElementById('quiz-error').classList.add('hidden');
+            document.getElementById('btn-submit-quiz').classList.add('hidden');
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+            let feedback = score === 5 ? "Sempurna! Kamu master eksponen!" : (score >= 3 ? "Bagus! Terus berlatih ya." : "Coba baca lagi sifat-sifatnya.");
+            let colorClass = score === 5 ? "bg-green-50 border-green-200 text-green-800" : (score >= 3 ? "bg-blue-50 border-blue-200 text-blue-800" : "bg-orange-50 border-orange-200 text-orange-800");
+            resultDiv.className = `mt-8 p-8 rounded-3xl border-2 shadow-inner ${colorClass}`;
+            resultDiv.innerHTML = `<h3 class="text-3xl font-black mb-1">Skor: ${score * 20} / 100</h3><p class="text-lg font-bold mb-4">${feedback}</p><button onclick="location.reload()" class="px-6 py-2 bg-white text-slate-800 rounded-xl font-bold shadow-sm">Ulangi Belajar</button>`;
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        updateVisual();
+        renderProperties();
+        renderQuiz();
+    </script>
+</body>
+</html>

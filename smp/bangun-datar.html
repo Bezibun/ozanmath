@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoPintar - Belajar Bangun Datar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-btn.active {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .shape-visual svg {
+            filter: drop-shadow(0 10px 15px rgba(37, 99, 235, 0.2));
+        }
+        .quiz-option.selected {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="pt-16 pb-8 px-6 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="flex justify-center mb-6">
+                <div class="bg-blue-600 p-3 rounded-2xl text-white shadow-lg shadow-blue-200">
+                    <i data-lucide="shapes" class="w-8 h-8"></i>
+                </div>
+            </div>
+            <span class="px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4 inline-block">Modul Matematika Interaktif</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+                Eksplorasi <span class="text-blue-600">Bangun Datar</span>
+            </h1>
+            <p class="text-slate-600 max-w-2xl mx-auto">
+                Pelajari konsep, gunakan kalkulator otomatis, dan uji pemahamanmu dengan kuis interaktif.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:col-span-1">
+            <div class="sticky top-8 space-y-2">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-4">Pilih Materi</h3>
+                <nav id="sidebar-nav" class="space-y-1">
+                    <button onclick="showMateri('persegi', this)" class="nav-btn active w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3">
+                        <i data-lucide="square" class="w-5 h-5"></i> Persegi
+                    </button>
+                    <button onclick="showMateri('persegi-panjang', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="rectangle-horizontal" class="w-5 h-5"></i> Persegi Panjang
+                    </button>
+                    <button onclick="showMateri('segitiga', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="triangle" class="w-5 h-5"></i> Segitiga
+                    </button>
+                    <button onclick="showMateri('lingkaran', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="circle" class="w-5 h-5"></i> Lingkaran
+                    </button>
+                    <button onclick="showMateri('jajar-genjang', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="parallelogram" class="w-5 h-5"></i> Jajar Genjang
+                    </button>
+                    <button onclick="showMateri('trapesium', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="trapezoid" class="w-5 h-5"></i> Trapesium
+                    </button>
+                    <button onclick="showMateri('belah-ketupat', this)" class="nav-btn w-full text-left px-4 py-3 rounded-xl transition flex items-center gap-3 hover:bg-white text-slate-600">
+                        <i data-lucide="diamond" class="w-5 h-5"></i> Belah Ketupat
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Materi Section -->
+        <section class="lg:col-span-3 space-y-8">
+            <!-- Content Card -->
+            <div id="materi-content" class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-100 min-h-[450px]">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+
+            <!-- Interactive Calculator -->
+            <div class="bg-blue-900 rounded-3xl p-8 md:p-10 text-white shadow-xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-blue-500/20 p-2 rounded-lg text-blue-300">
+                        <i data-lucide="calculator" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">Kalkulator Interaktif</h2>
+                        <p class="text-sm text-blue-300">Gunakan angka simulasi untuk memahami rumus</p>
+                    </div>
+                </div>
+                
+                <div id="calculator-ui" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Kalkulator dinamis -->
+                </div>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-indigo-500/10 p-2 rounded-lg text-indigo-600">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-900">Uji Kemampuan (Kuis 3 Soal)</h3>
+                </div>
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Kuis diisi JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 text-center text-slate-400 text-sm">
+        <p>© 2024 GeoPintar • Media Pembelajaran Visual Matematika</p>
+    </footer>
+
+    <script>
+        const dataMateri = {
+            'persegi': {
+                title: 'Persegi',
+                desc: 'Bangun datar yang memiliki empat sisi sama panjang dan empat sudut siku-siku.',
+                svg: `<svg viewBox="0 0 100 100" class="w-32 h-32 text-blue-500"><rect x="10" y="10" width="80" height="80" rx="4" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3"/></svg>`,
+                properties: ['Semua sisi sama panjang', 'Sudutnya 90°', 'Diagonal sama panjang'],
+                formulas: { luas: 'Sisi × Sisi', keliling: '4 × Sisi' },
+                calcFields: [{id: 'sisi', label: 'Panjang Sisi'}],
+                quiz: [
+                    { q: "Jika panjang sisi persegi 5 cm, berapa luasnya?", options: ["20 cm²", "25 cm²", "15 cm²", "10 cm²"], correct: 1 },
+                    { q: "Berapa keliling persegi dengan sisi 10 cm?", options: ["20 cm", "30 cm", "40 cm", "100 cm"], correct: 2 },
+                    { q: "Manakah sifat yang BENAR tentang persegi?", options: ["Sisi tidak sama", "Sudutnya 180°", "Diagonal tidak sama", "Keempat sudutnya 90°"], correct: 3 }
+                ]
+            },
+            'persegi-panjang': {
+                title: 'Persegi Panjang',
+                desc: 'Bangun datar dengan dua pasang sisi sejajar yang sama panjang.',
+                svg: `<svg viewBox="0 0 140 100" class="w-40 h-32 text-blue-500"><rect x="10" y="20" width="120" height="60" rx="4" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3"/></svg>`,
+                properties: ['Sisi berhadapan sama panjang', 'Keempat sudut siku-siku', 'Memiliki 2 simetri lipat'],
+                formulas: { luas: 'Panjang × Lebar', keliling: '2 × (P + L)' },
+                calcFields: [{id: 'panjang', label: 'Panjang'}, {id: 'lebar', label: 'Lebar'}],
+                quiz: [
+                    { q: "Panjang 8 cm, Lebar 3 cm. Berapa luasnya?", options: ["11 cm²", "22 cm²", "24 cm²", "30 cm²"], correct: 2 },
+                    { q: "Berapa keliling jika P=6 cm dan L=4 cm?", options: ["20 cm", "24 cm", "10 cm", "14 cm"], correct: 0 },
+                    { q: "Ada berapa pasang sisi sejajar pada persegi panjang?", options: ["1 pasang", "2 pasang", "3 pasang", "4 pasang"], correct: 1 }
+                ]
+            },
+            'segitiga': {
+                title: 'Segitiga',
+                desc: 'Bangun datar yang terdiri dari tiga sisi dan tiga titik sudut.',
+                svg: `<svg viewBox="0 0 100 100" class="w-32 h-32 text-blue-500"><path d="M50 10 L90 85 L10 85 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>`,
+                properties: ['Jumlah sudut 180°', 'Alas dan tinggi saling tegak lurus'],
+                formulas: { luas: '½ × Alas × Tinggi', keliling: 'Sisi A + Sisi B + Sisi C' },
+                calcFields: [{id: 'alas', label: 'Alas'}, {id: 'tinggi', label: 'Tinggi'}],
+                quiz: [
+                    { q: "Alas 10 cm, Tinggi 6 cm. Berapa luas segitiga?", options: ["60 cm²", "30 cm²", "16 cm²", "20 cm²"], correct: 1 },
+                    { q: "Berapakah jumlah seluruh sudut dalam segitiga?", options: ["90°", "360°", "180°", "270°"], correct: 2 },
+                    { q: "Sisi-sisi segitiga sama sisi adalah 5 cm. Kelilingnya?", options: ["10 cm", "15 cm", "25 cm", "20 cm"], correct: 1 }
+                ]
+            },
+            'lingkaran': {
+                title: 'Lingkaran',
+                desc: 'Kumpulan titik yang membentuk lengkungan tertutup berjarak sama dari pusat.',
+                svg: `<svg viewBox="0 0 100 100" class="w-32 h-32 text-blue-500"><circle cx="50" cy="50" r="40" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3"/></svg>`,
+                properties: ['Tidak punya titik sudut', 'Memiliki simetri putar tak terhingga'],
+                formulas: { luas: 'π × r²', keliling: '2 × π × r' },
+                calcFields: [{id: 'jari', label: 'Jari-jari (r)'}],
+                quiz: [
+                    { q: "Apa nama garis dari titik pusat ke tepi lingkaran?", options: ["Diameter", "Busur", "Jari-jari", "Tali Busur"], correct: 2 },
+                    { q: "Jika jari-jari 7 cm, berapa luasnya? (π=22/7)", options: ["44 cm²", "154 cm²", "49 cm²", "144 cm²"], correct: 1 },
+                    { q: "Berapa banyak titik sudut pada lingkaran?", options: ["0", "1", "4", "Tak terhingga"], correct: 0 }
+                ]
+            },
+            'jajar-genjang': {
+                title: 'Jajar Genjang',
+                desc: 'Segi empat yang memiliki dua pasang sisi sejajar.',
+                svg: `<svg viewBox="0 0 140 100" class="w-40 h-32 text-blue-500"><path d="M40 20 L130 20 L100 80 L10 80 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>`,
+                properties: ['Sudut berhadapan sama besar', 'Diagonal tidak sama panjang'],
+                formulas: { luas: 'Alas × Tinggi', keliling: '2 × (A + B)' },
+                calcFields: [{id: 'alas', label: 'Alas'}, {id: 'tinggi', label: 'Tinggi'}],
+                quiz: [
+                    { q: "Rumus luas jajar genjang adalah...", options: ["A + T", "A × T", "½ × A × T", "2 × (A+T)"], correct: 1 },
+                    { q: "Alas 12 cm, Tinggi 5 cm. Luasnya?", options: ["60 cm²", "30 cm²", "17 cm²", "24 cm²"], correct: 0 },
+                    { q: "Sudut yang berhadapan pada jajar genjang bersifat...", options: ["Siku-siku", "Berbeda", "Sama besar", "Berjumlah 90°"], correct: 2 }
+                ]
+            },
+            'trapesium': {
+                title: 'Trapesium',
+                desc: 'Bangun datar segi empat yang memiliki sepasang sisi sejajar.',
+                svg: `<svg viewBox="0 0 140 100" class="w-40 h-32 text-blue-500"><path d="M40 20 L100 20 L130 80 L10 80 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>`,
+                properties: ['Sepasang sisi sejajar', 'Jumlah sudut berdekatan 180°'],
+                formulas: { luas: '½ × (a+b) × t', keliling: 'Σ Sisi' },
+                calcFields: [{id: 'sisiA', label: 'Sisi Atas (a)'}, {id: 'sisiB', label: 'Sisi Bawah (b)'}, {id: 'tinggi', label: 'Tinggi'}],
+                quiz: [
+                    { q: "Ciri utama trapesium adalah memiliki...", options: ["4 sisi sama panjang", "Sepasang sisi sejajar", "2 sudut tumpul", "Tidak ada sisi sejajar"], correct: 1 },
+                    { q: "Sisi sejajar 5 & 7 cm, tinggi 4 cm. Luas?", options: ["24 cm²", "48 cm²", "12 cm²", "35 cm²"], correct: 0 },
+                    { q: "Jumlah sudut yang berdekatan di antara dua sisi sejajar adalah...", options: ["90°", "180°", "360°", "45°"], correct: 1 }
+                ]
+            },
+            'belah-ketupat': {
+                title: 'Belah Ketupat',
+                desc: 'Segi empat dengan keempat sisi sama panjang dan diagonal tegak lurus.',
+                svg: `<svg viewBox="0 0 100 100" class="w-32 h-32 text-blue-500"><path d="M50 10 L85 50 L50 90 L15 50 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>`,
+                properties: ['Diagonal tegak lurus', 'Sudut berhadapan sama besar'],
+                formulas: { luas: '½ × d1 × d2', keliling: '4 × Sisi' },
+                calcFields: [{id: 'd1', label: 'Diagonal 1'}, {id: 'd2', label: 'Diagonal 2'}],
+                quiz: [
+                    { q: "Diagonal belah ketupat saling berpotongan secara...", options: ["Sejajar", "Tegak lurus", "Membentuk 45°", "Tidak berpotongan"], correct: 1 },
+                    { q: "Diagonal 10 & 12 cm. Berapa luasnya?", options: ["120 cm²", "22 cm²", "60 cm²", "40 cm²"], correct: 2 },
+                    { q: "Berapa banyak sisi yang sama panjang?", options: ["2", "3", "4", "0"], correct: 2 }
+                ]
+            }
+        };
+
+        let currentKey = 'persegi';
+        let userAnswers = [-1, -1, -1];
+
+        function showMateri(key, btnEl) {
+            currentKey = key;
+            userAnswers = [-1, -1, -1]; // Reset jawaban kuis
+            const item = dataMateri[key];
+            
+            if (btnEl) {
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                btnEl.classList.add('active');
+            }
+
+            // --- Update Content Card ---
+            document.getElementById('materi-content').innerHTML = `
+                <div class="animate-in slide-in-from-bottom-2 duration-300">
+                    <div class="flex flex-col md:flex-row md:items-center gap-8 mb-10">
+                        <div class="shape-visual flex-shrink-0 bg-blue-50 p-6 rounded-3xl border border-blue-100 flex items-center justify-center">
+                            ${item.svg}
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-bold text-slate-900 mb-4">${item.title}</h2>
+                            <p class="text-lg text-slate-600 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-blue-600 flex items-center gap-2 text-sm uppercase tracking-wider">
+                                <i data-lucide="info" class="w-4 h-4"></i> Karakteristik
+                            </h4>
+                            <ul class="space-y-3">
+                                ${item.properties.map(p => `
+                                    <li class="flex items-center gap-3 text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                        <div class="w-2 h-2 rounded-full bg-blue-500"></div> ${p}
+                                    </li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50/50 rounded-3xl p-6 border border-blue-100 flex flex-col justify-center">
+                            <h4 class="font-bold text-blue-800 mb-6 text-center">Rumus Utama</h4>
+                            <div class="space-y-6">
+                                <div class="text-center">
+                                    <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Luas (L)</p>
+                                    <p class="text-2xl font-mono font-bold text-blue-900">${item.formulas.luas}</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Keliling (K)</p>
+                                    <p class="text-2xl font-mono font-bold text-blue-900">${item.formulas.keliling}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // --- Update Calculator ---
+            const calcUI = document.getElementById('calculator-ui');
+            calcUI.innerHTML = `
+                <div class="space-y-4">
+                    ${item.calcFields.map(f => `
+                        <div>
+                            <label class="block text-xs font-bold text-blue-300 mb-2 uppercase">${f.label}</label>
+                            <input type="number" id="inp-${f.id}" value="10" oninput="calculate()"
+                                   class="w-full bg-blue-800 border-none rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-400 text-lg font-bold">
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="bg-blue-950 p-6 rounded-2xl border border-blue-800">
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-xs text-blue-400 mb-1">Hasil Luas</p>
+                            <div id="res-luas" class="text-3xl font-bold tracking-tight">--</div>
+                        </div>
+                        <div class="h-px bg-blue-800"></div>
+                        <div>
+                            <p class="text-xs text-blue-400 mb-1">Hasil Keliling</p>
+                            <div id="res-kel" class="text-3xl font-bold tracking-tight">--</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // --- Update Quiz Container ---
+            renderQuiz();
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+            calculate();
+        }
+
+        function renderQuiz() {
+            const item = dataMateri[currentKey];
+            const container = document.getElementById('quiz-container');
+            
+            let html = item.quiz.map((q, qIdx) => `
+                <div class="bg-white p-6 rounded-2xl border border-indigo-100 shadow-sm mb-4">
+                    <p class="text-slate-900 font-semibold mb-4 text-lg">${qIdx + 1}. ${q.q}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${q.options.map((opt, oIdx) => `
+                            <button onclick="selectAnswer(${qIdx}, ${oIdx})" 
+                                    id="q-${qIdx}-o-${oIdx}"
+                                    class="quiz-option text-left p-4 rounded-xl border border-slate-200 hover:border-indigo-300 transition-all font-medium text-slate-600">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            html += `
+                <div class="flex justify-center mt-8">
+                    <button onclick="submitQuiz()" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all flex items-center gap-2">
+                        <i data-lucide="check-circle-2"></i> Kumpulkan & Lihat Hasil
+                    </button>
+                </div>
+                <div id="quiz-result" class="hidden mt-8 animate-in zoom-in-95"></div>
+            `;
+
+            container.innerHTML = html;
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectAnswer(qIdx, oIdx) {
+            // Unselect others in the same question
+            const options = dataMateri[currentKey].quiz[qIdx].options;
+            options.forEach((_, i) => {
+                document.getElementById(`q-${qIdx}-o-${i}`).classList.remove('selected', 'ring-2', 'ring-indigo-500');
+            });
+            // Select this one
+            document.getElementById(`q-${qIdx}-o-${oIdx}`).classList.add('selected', 'ring-2', 'ring-indigo-500');
+            userAnswers[qIdx] = oIdx;
+        }
+
+        function submitQuiz() {
+            const quizData = dataMateri[currentKey].quiz;
+            let score = 0;
+            let unanswered = false;
+
+            userAnswers.forEach((ans, idx) => {
+                if (ans === -1) unanswered = true;
+                if (ans === quizData[idx].correct) score++;
+            });
+
+            if (unanswered) {
+                alert("Mohon jawab semua pertanyaan kuis terlebih dahulu!");
+                return;
+            }
+
+            const totalScore = Math.round((score / 3) * 100);
+            let analysis = "";
+            let colorClass = "";
+
+            if (totalScore === 100) {
+                analysis = "Luar biasa! Kamu sudah menguasai konsep " + currentKey + " dengan sempurna. Lanjutkan ke materi berikutnya!";
+                colorClass = "text-emerald-600 bg-emerald-50 border-emerald-100";
+            } else if (totalScore >= 60) {
+                analysis = "Bagus! Kamu memahami dasarnya, tapi coba perhatikan lagi detail rumusnya agar tidak terkecoh.";
+                colorClass = "text-amber-600 bg-amber-50 border-amber-100";
+            } else {
+                analysis = "Sepertinya kamu perlu membaca ulang sifat dan karakteristik bangun ini. Jangan menyerah, coba gunakan kalkulator untuk simulasi!";
+                colorClass = "text-rose-600 bg-rose-50 border-rose-100";
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = `
+                <div class="p-8 rounded-3xl border-2 ${colorClass} text-center">
+                    <div class="text-sm font-bold uppercase tracking-widest mb-2 opacity-70">Hasil Kuis</div>
+                    <div class="text-6xl font-black mb-4">${totalScore} / 100</div>
+                    <div class="text-lg font-medium max-w-md mx-auto leading-relaxed">
+                        ${analysis}
+                    </div>
+                </div>
+            `;
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calculate() {
+            const key = currentKey;
+            const resL = document.getElementById('res-luas');
+            const resK = document.getElementById('res-kel');
+            const getVal = (id) => parseFloat(document.getElementById(`inp-${id}`)?.value) || 0;
+            let L = 0, K = 0;
+
+            switch(key) {
+                case 'persegi':
+                    const s = getVal('sisi');
+                    L = s * s; K = 4 * s;
+                    break;
+                case 'persegi-panjang':
+                    const p = getVal('panjang'), l = getVal('lebar');
+                    L = p * l; K = 2 * (p + l);
+                    break;
+                case 'segitiga':
+                    const a = getVal('alas'), t = getVal('tinggi');
+                    L = 0.5 * a * t; K = "Tergantung Sisi";
+                    break;
+                case 'lingkaran':
+                    const r = getVal('jari');
+                    L = (Math.PI * r * r).toFixed(2);
+                    K = (2 * Math.PI * r).toFixed(2);
+                    break;
+                case 'jajar-genjang':
+                    const aj = getVal('alas'), tj = getVal('tinggi');
+                    L = aj * tj; K = "2 × (a + b)";
+                    break;
+                case 'trapesium':
+                    const sa = getVal('sisiA'), sb = getVal('sisiB'), tr = getVal('tinggi');
+                    L = 0.5 * (sa + sb) * tr; K = "Total Sisi";
+                    break;
+                case 'belah-ketupat':
+                    const d1 = getVal('d1'), d2 = getVal('d2');
+                    L = 0.5 * d1 * d2; K = "4 × Sisi";
+                    break;
+            }
+            resL.innerText = L;
+            resK.innerText = K;
+        }
+
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            showMateri('persegi', document.querySelector('.nav-btn'));
+        });
+    </script>
+</body>
+</html>

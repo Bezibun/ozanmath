@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozanmath | Materi Lengkap Kesebangunan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --primary-blue: #2563eb;
+            --soft-blue: #3b82f6;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        
+        .header-bg {
+            background-color: var(--primary-blue);
+            padding-top: 6rem;
+            padding-bottom: 12rem;
+            border-bottom-left-radius: 4rem;
+            border-bottom-right-radius: 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: -8rem auto 4rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 2.5rem;
+            padding: 3.5rem 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 3rem;
+        }
+
+        .step-badge {
+            background-color: var(--soft-blue);
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-block;
+            position: absolute;
+            top: -1.3rem;
+            left: 3.5rem;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            z-index: 20;
+        }
+
+        .note-box {
+            background-color: #f8fafc;
+            border-left: 5px solid var(--primary-blue);
+            padding: 1.5rem;
+            border-radius: 0 1.5rem 1.5rem 0;
+            margin: 1.5rem 0;
+        }
+
+        .solve-step {
+            border-left: 2px dashed #cbd5e1;
+            margin-left: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .solve-step::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .math-block {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-6xl font-extrabold mb-4 tracking-tight">Ozanmath</h1>
+            <p class="text-2xl font-semibold opacity-90 mb-6">Kuasai Konsep Kesebangunan</p>
+            <p class="text-sm opacity-70 max-w-xl mx-auto leading-relaxed">
+                Pelajari syarat-syarat dua bangun dikatakan sebangun, perbandingan sisi pada segitiga, hingga penyelesaian soal-soal tingkat lanjut secara sistematis.
+            </p>
+        </div>
+    </header>
+
+    <main class="content-container">
+        
+        <!-- Bagian 1: Definisi Mendalam -->
+        <div class="relative">
+            <span class="step-badge">Bagian 1</span>
+            <section class="main-card">
+                <h2 class="text-3xl font-extrabold text-blue-700 mb-6">Konsep Dasar & Syarat</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                    Dua buah bangun datar dikatakan <strong>sebangun</strong> (simbol: <span class="text-blue-600 font-bold">~</span>) jika kedua bangun tersebut memiliki bentuk yang sama, meskipun ukurannya berbeda.
+                </p>
+
+                <div class="note-box">
+                    <h3 class="font-extrabold text-slate-800 mb-3 underline">Syarat Mutlak Kesebangunan:</h3>
+                    <ol class="list-decimal list-inside space-y-3 font-medium text-slate-700">
+                        <li><strong>Sudut-sudut yang bersesuaian sama besar.</strong></li>
+                        <li><strong>Sisi-sisi yang bersesuaian memiliki perbandingan yang senilai (proposional).</strong></li>
+                    </ol>
+                </div>
+
+                <p class="text-slate-600 mt-6">
+                    Mari kita lihat persegi panjang ABCD dan PQRS. Jika panjang sisi-sisinya dikalikan dengan faktor yang sama (misal: 2x), maka kedua bangun tersebut sebangun.
+                </p>
+            </section>
+        </div>
+
+        <!-- Bagian 2: Kesebangunan pada Segitiga -->
+        <div class="relative">
+            <span class="step-badge">Bagian 2</span>
+            <section class="main-card">
+                <h2 class="text-3xl font-extrabold text-blue-700 mb-6">Kesebangunan pada Segitiga</h2>
+                <p class="text-slate-600 mb-6">
+                    Segitiga adalah bangun yang unik. Kamu tidak perlu mengecek semua sisi dan sudut. Cukup salah satu syarat ini terpenuhi:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-8">
+                    <div class="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-700 mb-2">Sudut - Sudut</h4>
+                        <p class="text-xs text-slate-500 italic">Dua sudut yang bersesuaian sama besar.</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-700 mb-2">Sisi - Sudut - Sisi</h4>
+                        <p class="text-xs text-slate-500 italic">Dua sisi sebanding dan satu sudut di antaranya sama besar.</p>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-slate-800 mb-4">Rumus Garis Sejajar pada Segitiga:</h3>
+                <div class="flex justify-center mb-6">
+                    <!-- SVG Segitiga dengan Garis Sejajar - viewBox diperbaiki agar tidak terpotong -->
+                    <svg width="220" height="170" viewBox="-10 -10 220 170" style="overflow: visible;">
+                        <path d="M100 10 L10 140 L190 140 Z" fill="none" stroke="#2563eb" stroke-width="3"/>
+                        <line x1="55" y1="75" x2="145" y2="75" stroke="#3b82f6" stroke-width="3" stroke-dasharray="4"/>
+                        <!-- Label Sudut -->
+                        <text x="95" y="0" font-size="14" font-weight="bold" fill="#1e3a8a">A</text>
+                        <text x="0" y="155" font-size="14" font-weight="bold" fill="#1e3a8a">B</text>
+                        <text x="190" y="155" font-size="14" font-weight="bold" fill="#1e3a8a">C</text>
+                        <text x="35" y="75" font-size="14" font-weight="bold" fill="#1e3a8a">D</text>
+                        <text x="155" y="75" font-size="14" font-weight="bold" fill="#1e3a8a">E</text>
+                    </svg>
+                </div>
+                <div class="math-block">
+                    AD / AB = AE / AC = DE / BC
+                </div>
+            </section>
+        </div>
+
+        <!-- Bagian 3: Lab Skala (Visualisasi) -->
+        <div class="relative">
+            <span class="step-badge">Bagian 3</span>
+            <section class="main-card text-center">
+                <h2 class="text-3xl font-extrabold text-blue-700 mb-4">Lab Eksplorasi Skala</h2>
+                <p class="text-slate-500 mb-10">Ubah faktor skala untuk melihat perubahan ukuran namun perbandingan tetap sama.</p>
+                
+                <div class="flex flex-col items-center">
+                    <div class="flex gap-16 items-end min-h-[220px] mb-12">
+                        <div class="flex flex-col items-center">
+                            <div class="w-20 h-20 bg-slate-200 rounded-xl flex items-center justify-center text-slate-500 font-bold border-2 border-dashed border-slate-300">ASLI</div>
+                            <span class="mt-2 text-xs font-bold text-slate-400">Sisi: 5 unit</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div id="dynamicBox" class="bg-blue-600 rounded-xl shadow-2xl flex items-center justify-center text-white font-bold transition-all duration-300" style="width: 80px; height: 80px;">?</div>
+                            <span id="scaleVal" class="mt-2 font-black text-blue-600 text-lg">Skala: 1.0x</span>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full max-w-sm">
+                        <input type="range" id="scaleSlider" min="0.4" max="2.5" step="0.1" value="1">
+                        <div class="flex justify-between mt-2 text-[10px] font-bold text-slate-400 uppercase">
+                            <span>Kecil</span>
+                            <span>Besar</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Bagian 4: Latihan Soal Detail -->
+        <div class="relative">
+            <span class="step-badge">Bagian 4</span>
+            <section class="main-card">
+                <h2 class="text-3xl font-extrabold text-blue-700 mb-8">Latihan Soal Terbimbing</h2>
+                
+                <!-- Soal 1 -->
+                <div class="mb-12">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-lg font-black">01</span>
+                        <h3 class="text-xl font-bold text-slate-800">Menghitung Sisi Segitiga</h3>
+                    </div>
+                    <p class="text-slate-600 mb-6 bg-slate-50 p-4 rounded-xl italic">
+                        "Diketahui segitiga ABC dengan panjang BC = 12 cm. Sebuah garis sejajar BC memotong AB di D dan AC di E sehingga AD = 4 cm dan DB = 2 cm. Berapakah panjang DE?"
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <button onclick="toggleSolve('ex1')" class="w-full text-left p-5 bg-blue-50 rounded-2xl font-bold text-blue-700 flex justify-between items-center group">
+                            <span>Lihat Pembahasan Bertahap</span>
+                            <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
+                        </button>
+                        <div id="ex1" class="hidden bg-white border-2 border-blue-50 rounded-2xl p-6">
+                            <div class="solve-step">
+                                <p class="font-bold">Identifikasi Sisi</p>
+                                <p class="text-sm text-slate-500">AD = 4 cm, DB = 2 cm. Maka total panjang AB = AD + DB = 4 + 2 = 6 cm.</p>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Gunakan Rumus Kesebangunan</p>
+                                <p class="text-sm text-slate-500">Karena DE sejajar BC, maka ΔADE ~ ΔABC. Berlaku perbandingan:</p>
+                                <div class="math-block">AD / AB = DE / BC</div>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Substitusi Nilai</p>
+                                <div class="math-block">4 / 6 = DE / 12</div>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Hitung Hasil</p>
+                                <p class="text-sm text-slate-500">6 × DE = 4 × 12 <br> 6 × DE = 48 <br> DE = 8 cm.</p>
+                                <p class="mt-4 text-green-600 font-bold">Jadi, panjang DE adalah 8 cm.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-10 border-slate-100">
+
+                <!-- Soal 2 -->
+                <div class="mb-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-lg font-black">02</span>
+                        <h3 class="text-xl font-bold text-slate-800">Tinggi Pohon (Aplikasi)</h3>
+                    </div>
+                    <p class="text-slate-600 mb-6 bg-slate-50 p-4 rounded-xl italic">
+                        "Seorang anak setinggi 150 cm berdiri di samping sebuah pohon. Bayangan anak tersebut panjangnya 2 meter, sedangkan bayangan pohon panjangnya 8 meter. Berapakah tinggi pohon?"
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <button onclick="toggleSolve('ex2')" class="w-full text-left p-5 bg-blue-50 rounded-2xl font-bold text-blue-700 flex justify-between items-center group">
+                            <span>Lihat Pembahasan Bertahap</span>
+                            <i class="fas fa-chevron-down group-hover:translate-y-1 transition-transform"></i>
+                        </button>
+                        <div id="ex2" class="hidden bg-white border-2 border-blue-50 rounded-2xl p-6">
+                            <div class="solve-step">
+                                <p class="font-bold">Pahami Kesebangunan Bayangan</p>
+                                <p class="text-sm text-slate-500">Sudut datang sinar matahari dianggap sama, sehingga tinggi objek dan panjang bayangan membentuk segitiga yang sebangun.</p>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Tentukan Perbandingan</p>
+                                <div class="math-block">Tinggi Anak / Tinggi Pohon = Bayangan Anak / Bayangan Pohon</div>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Konversi Satuan & Substitusi</p>
+                                <p class="text-sm text-slate-500">Tinggi anak = 150 cm = 1.5 meter.</p>
+                                <div class="math-block">1.5 / T = 2 / 8</div>
+                            </div>
+                            <div class="solve-step">
+                                <p class="font-bold">Hitung Hasil</p>
+                                <p class="text-sm text-slate-500">2 × T = 1.5 × 8 <br> 2 × T = 12 <br> T = 6 meter.</p>
+                                <p class="mt-4 text-green-600 font-bold">Jadi, tinggi pohon adalah 6 meter.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Bagian 5: Quiz Cepat -->
+        <div class="relative" id="quiz-section">
+            <span class="step-badge">Bagian 5</span>
+            <section class="main-card bg-slate-900 text-white border-none overflow-hidden">
+                <div id="quiz-init">
+                    <h2 class="text-3xl font-black mb-4 text-blue-400">Evaluasi Mandiri</h2>
+                    <p class="text-slate-400 mb-8">Uji pemahamanmu dengan soal-soal hitungan bertahap.</p>
+                    <div id="quiz-engine"></div>
+                </div>
+
+                <div id="quiz-final" class="hidden text-center py-10">
+                    <div class="text-7xl font-black text-blue-500 mb-4" id="final-score">0</div>
+                    <h3 class="text-3xl font-bold mb-4" id="final-status">Selesai!</h3>
+                    <p class="text-slate-400 mb-10 max-w-sm mx-auto" id="final-msg"></p>
+                    <button onclick="resetQuiz()" class="bg-blue-600 px-12 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-900/50">Coba Lagi</button>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="py-20 text-center">
+        <div class="max-w-xs mx-auto mb-6">
+            <h4 class="text-2xl font-black text-blue-700">Ozanmath</h4>
+            <div class="h-1 bg-blue-100 rounded-full mt-1"></div>
+        </div>
+        <p class="text-slate-400 text-sm font-semibold tracking-widest uppercase">Edukasi Matematika Interaktif &copy; 2024</p>
+    </footer>
+
+    <script>
+        // Lab Scaling Logic
+        const slider = document.getElementById('scaleSlider');
+        const box = document.getElementById('dynamicBox');
+        const label = document.getElementById('scaleVal');
+
+        slider.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            const size = 80 * val;
+            box.style.width = size + 'px';
+            box.style.height = size + 'px';
+            label.innerText = `Skala: ${val.toFixed(1)}x`;
+            
+            if (val > 1.3) box.innerText = "BESAR";
+            else if (val < 0.7) box.innerText = "KECIL";
+            else box.innerText = "SAMA";
+        });
+
+        // Toggle Explanation Steps
+        function toggleSolve(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Quiz Logic System - Updated to reflect numerical problems like examples
+        const questions = [
+            { 
+                q: "Segitiga PQR memiliki garis sejajar ST di tengahnya (seperti gambar Bagian 2). Jika PS=3, SQ=6, dan QR=18, berapakah ST?", 
+                o: ["6", "9", "12", "4"], 
+                c: 0 // PS/(PS+SQ) = ST/QR -> 3/9 = ST/18 -> ST = 6
+            },
+            { 
+                q: "Tinggi sebuah tiang adalah 2m dengan bayangan 3m. Jika bayangan sebuah gedung adalah 15m, berapa tinggi gedung tersebut?", 
+                o: ["5m", "8m", "10m", "12m"], 
+                c: 2 // 2/T = 3/15 -> 3T = 30 -> T = 10
+            },
+            { 
+                q: "Sebuah foto 4cm x 6cm diperbesar sehingga lebarnya menjadi 12cm. Berapakah panjang foto yang baru?", 
+                o: ["14cm", "18cm", "24cm", "10cm"], 
+                c: 1 // 4/12 = 6/P -> 4P = 72 -> P = 18
+            },
+            { 
+                q: "Pada segitiga, jika AD=2, AB=10, dan BC=25, berapakah panjang DE (garis sejajar)?", 
+                o: ["5", "4", "2", "10"], 
+                c: 0 // AD/AB = DE/BC -> 2/10 = DE/25 -> 10DE = 50 -> DE = 5
+            },
+            { 
+                q: "Jika dua persegi panjang sebangun dengan perbandingan sisi 1:3, dan luas yang kecil adalah 5 cm², berapakah luas yang besar?", 
+                o: ["15 cm²", "30 cm²", "45 cm²", "10 cm²"], 
+                c: 2 // Skala luas = (skala sisi)^2 -> 3^2 = 9. Luas = 9 * 5 = 45
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userScore = 0;
+
+        function renderQuiz() {
+            const data = questions[currentQuestionIdx];
+            const engine = document.getElementById('quiz-engine');
+            engine.innerHTML = `
+                <div class="mb-10">
+                    <span class="text-blue-500 font-bold uppercase tracking-widest text-xs">Soal Hitungan ${currentQuestionIdx + 1} dari 5</span>
+                    <h4 class="text-2xl font-bold mt-3 leading-snug">${data.q}</h4>
+                </div>
+                <div class="grid gap-4">
+                    ${data.o.map((option, i) => `
+                        <button onclick="handleAnswer(${i})" class="w-full text-left p-5 bg-slate-800 hover:bg-blue-600 rounded-2xl border border-slate-700 transition-all font-semibold">
+                            ${option}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function handleAnswer(choice) {
+            if (choice === questions[currentQuestionIdx].c) userScore += 20;
+            currentQuestionIdx++;
+            
+            if (currentQuestionIdx < questions.length) {
+                renderQuiz();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-init').classList.add('hidden');
+            document.getElementById('quiz-final').classList.remove('hidden');
+            document.getElementById('final-score').innerText = userScore;
+            
+            let statusText = "Hampir Sempurna!";
+            let msg = "Kamu sudah bisa menghitung soal kesebangunan dengan baik. Mantap!";
+            
+            if (userScore < 60) {
+                statusText = "Ayo Latihan Lagi!";
+                msg = "Coba perhatikan lagi cara perkalian silang di bagian pengerjaan bertahap.";
+            } else if (userScore === 100) {
+                statusText = "Master Kesebangunan!";
+                msg = "Sempurna! Semua soal hitungan berhasil kamu babat habis.";
+            }
+
+            document.getElementById('final-status').innerText = statusText;
+            document.getElementById('final-msg').innerText = msg;
+        }
+
+        function resetQuiz() {
+            currentQuestionIdx = 0;
+            userScore = 0;
+            document.getElementById('quiz-init').classList.remove('hidden');
+            document.getElementById('quiz-final').classList.add('hidden');
+            renderQuiz();
+        }
+
+        renderQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Bilangan Bulat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .gradient-blue { background: radial-gradient(circle at top right, #eff6ff 0%, #dbeafe 100%); }
+        .card-modern { 
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+        .progress-bar { transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            border: 3px solid white;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section id="intro" class="relative pt-20 pb-20 px-4 gradient-blue overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 mb-6 text-sm font-bold text-blue-700 bg-blue-100/50 backdrop-blur rounded-full">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
+                </span>
+                <span>Ozmath - Modul Interaktif</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight">
+                Kuasai <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Bilangan Bulat</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Panduan langkah demi langkah untuk memahami angka negatif, nol, dan positif dengan cara yang lebih hidup dan menyenangkan.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#tahap-1" class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 hover:scale-105 shadow-xl shadow-blue-200 transition-all">Pelajari Materi</a>
+                <a href="#quiz-section" class="px-10 py-4 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition-all">Latihan Soal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tahap 1: Konsep Dasar (Updated with More Detail) -->
+    <section id="tahap-1" class="py-24 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col items-center text-center mb-16">
+                <div class="inline-block p-4 bg-blue-600 rounded-2xl text-white mb-6 shadow-lg shadow-blue-200">
+                    <i class="fas fa-layer-group fa-2xl"></i>
+                </div>
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">01. Fondasi Bilangan Bulat</h2>
+                <p class="text-slate-600 text-lg max-w-3xl leading-relaxed">
+                    Bilangan bulat bukan hanya sekadar angka, tapi cara kita menggambarkan arah dan posisi dalam kehidupan nyata. Mari kita pecah menjadi tiga bagian utama.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Detail Positif -->
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-4 text-slate-900">Bilangan Positif</h3>
+                    <p class="text-slate-500 mb-6">Mewakili segala sesuatu yang bertambah, di atas permukaan laut, atau keuntungan.</p>
+                    <ul class="space-y-3 text-slate-700 font-medium">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Di kanan angka 0</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Semakin kanan, semakin besar</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Ditulis tanpa simbol (5, 10, 20)</li>
+                    </ul>
+                </div>
+
+                <!-- Detail Nol -->
+                <div class="bg-blue-600 p-8 rounded-[2rem] shadow-xl shadow-blue-200 text-white relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 opacity-10 text-9xl font-black">0</div>
+                    <div class="w-14 h-14 bg-white/20 text-white rounded-2xl flex items-center justify-center mb-6 text-2xl font-black backdrop-blur-md">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-4 text-white">Angka Nol (0)</h3>
+                    <p class="text-blue-100 mb-6">Titik netral. Tidak positif dan tidak negatif. Ini adalah cermin pemisah.</p>
+                    <ul class="space-y-3 text-white/90 font-medium">
+                        <li class="flex items-center"><i class="fas fa-dot-circle mr-2"></i> Titik awal (Origin)</li>
+                        <li class="flex items-center"><i class="fas fa-dot-circle mr-2"></i> Batas permukaan air laut</li>
+                        <li class="flex items-center"><i class="fas fa-dot-circle mr-2"></i> Pemisah arah berlawanan</li>
+                    </ul>
+                </div>
+
+                <!-- Detail Negatif -->
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-4 text-slate-900">Bilangan Negatif</h3>
+                    <p class="text-slate-500 mb-6">Mewakili pengurangan, kedalaman laut, hutang, atau suhu di bawah titik beku.</p>
+                    <ul class="space-y-3 text-slate-700 font-medium">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-red-500 mr-2"></i> Di kiri angka 0</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-red-500 mr-2"></i> Semakin kiri, semakin kecil</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-red-500 mr-2"></i> Harus pakai simbol (-) (-5, -10)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Visualisasi Tambahan (Elevasi) -->
+            <div class="mt-16 bg-slate-900 rounded-[3rem] p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+                <div class="absolute inset-0 bg-blue-500/5 opacity-50"></div>
+                <div class="relative z-10 w-full md:w-1/3">
+                    <h4 class="text-2xl font-bold mb-4">Analogi Ketinggian</h4>
+                    <p class="text-slate-400 mb-6">Gunakan visualisasi gedung ini untuk memahami perbandingan nilai secara vertikal.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 text-green-400">
+                            <span class="text-xl font-black">+10</span>
+                            <span class="text-sm">Lantai Atas (Tinggi)</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-white">
+                            <span class="text-xl font-black">0</span>
+                            <span class="text-sm">Lantai Lobi (Netral)</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-red-400">
+                            <span class="text-xl font-black">-10</span>
+                            <span class="text-sm">Basement (Rendah)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative z-10 flex-1 grid grid-cols-5 gap-2 h-64 items-end">
+                    <div class="bg-red-600 w-full rounded-t-lg" style="height: 20%"></div>
+                    <div class="bg-red-400 w-full rounded-t-lg" style="height: 40%"></div>
+                    <div class="bg-blue-600 w-full rounded-t-lg" style="height: 5%"></div> <!-- Zero -->
+                    <div class="bg-green-400 w-full rounded-t-lg" style="height: 70%"></div>
+                    <div class="bg-green-600 w-full rounded-t-lg" style="height: 100%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garis Bilangan Interaktif -->
+    <section class="py-24 px-4 bg-slate-100/50 border-y border-slate-200">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-extrabold mb-4">Eksplorasi Garis Bilangan</h2>
+            <p class="text-slate-600">Geser slider untuk melihat letak angka pada garis horizontal.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto bg-white p-12 rounded-[2.5rem] card-modern">
+            <div class="relative py-16">
+                <div class="h-2 bg-slate-200 w-full rounded-full relative">
+                    <div class="absolute inset-0 flex justify-between px-1">
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-1 h-8 bg-blue-600 -mt-3 rounded-full"></div> 
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                        <div class="w-0.5 h-6 bg-slate-300 -mt-2"></div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between mt-6 font-bold text-slate-400">
+                    <span>-10</span>
+                    <span class="text-blue-600 font-black">0</span>
+                    <span>10</span>
+                </div>
+
+                <input type="range" min="-10" max="10" value="0" id="numSlider" class="absolute top-14 left-0 w-full h-2 bg-transparent appearance-none cursor-pointer">
+                
+                <div class="mt-20 text-center">
+                    <div id="sliderOutput" class="inline-flex items-center justify-center bg-blue-600 text-white text-6xl font-black w-24 h-24 rounded-3xl shadow-2xl">
+                        0
+                    </div>
+                </div>
+                <p id="sliderDesc" class="mt-8 text-center text-xl font-bold text-blue-900">Titik Pusat (Nol)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contoh Soal Terbimbing -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center mb-16 text-slate-900">Pelajari Lewat Contoh</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 p-8 rounded-[2rem] border border-blue-100 relative">
+                    <span class="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 text-white flex items-center justify-center rounded-2xl font-bold shadow-lg">1</span>
+                    <h3 class="text-xl font-bold mb-4">Membandingkan Angka</h3>
+                    <p class="text-slate-700 mb-6 font-medium">Manakah yang lebih besar: -7 atau -2?</p>
+                    <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm">
+                        <p class="text-blue-600 font-bold mb-2">Jawaban:</p>
+                        <p class="text-slate-600 font-medium">Jawabannya adalah <span class="bg-blue-600 text-white px-2 py-0.5 rounded">-2</span>. <br><br> Kenapa? Karena pada garis bilangan, -2 berada lebih di sebelah kanan dibandingkan -7. Ingat: Semakin ke kanan, semakin besar!</p>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 relative">
+                    <span class="absolute -top-4 -left-4 w-12 h-12 bg-indigo-600 text-white flex items-center justify-center rounded-2xl font-bold shadow-lg">2</span>
+                    <h3 class="text-xl font-bold mb-4">Operasi Dasar</h3>
+                    <p class="text-slate-700 mb-6 font-medium">Hasil dari 5 + (-8) adalah...?</p>
+                    <div class="bg-white p-6 rounded-2xl border border-indigo-100 shadow-sm">
+                        <p class="text-indigo-600 font-bold mb-2">Jawaban:</p>
+                        <p class="text-slate-600 font-medium">Jawabannya adalah <span class="bg-indigo-600 text-white px-2 py-0.5 rounded">-3</span>. <br><br> Caranya: Mulai dari angka 5, lalu melangkah mundur sebanyak 8 kali. Kamu akan berhenti di titik -3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" class="py-24 px-4 bg-slate-50">
+        <div id="quiz-container" class="max-w-4xl mx-auto">
+            <div class="text-center mb-16" id="quiz-intro">
+                <h2 class="text-4xl font-black mb-4 text-slate-900">Uji Kemampuanmu</h2>
+                <p class="text-slate-500">Selesaikan 5 soal tantangan di bawah ini!</p>
+            </div>
+
+            <!-- Quiz Steps -->
+            <div id="quiz-flow" class="space-y-12">
+                <!-- Soal 1 -->
+                <div class="quiz-card bg-white p-10 rounded-[2.5rem] card-modern" data-step="1">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">Soal 1 / 5</span>
+                        <div class="w-1/3 bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full w-1/5"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-8 text-slate-800">Bilangan manakah yang nilainya terkecil?</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <button onclick="pickAnswer(1, 0, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">-1</button>
+                        <button onclick="pickAnswer(1, 1, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">0</button>
+                        <button onclick="pickAnswer(1, 2, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all" data-correct="true">-5</button>
+                    </div>
+                </div>
+
+                <!-- Soal 2 -->
+                <div class="quiz-card bg-white p-10 rounded-[2.5rem] card-modern hidden" data-step="2">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">Soal 2 / 5</span>
+                        <div class="w-1/3 bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full w-2/5"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-8 text-slate-800">Berapa hasil dari -3 + 7?</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <button onclick="pickAnswer(2, 0, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">-4</button>
+                        <button onclick="pickAnswer(2, 1, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all" data-correct="true">4</button>
+                        <button onclick="pickAnswer(2, 2, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">10</button>
+                    </div>
+                </div>
+
+                <!-- Soal 3 -->
+                <div class="quiz-card bg-white p-10 rounded-[2.5rem] card-modern hidden" data-step="3">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">Soal 3 / 5</span>
+                        <div class="w-1/3 bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full w-3/5"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-8 text-slate-800">Lawan dari bilangan -25 adalah?</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <button onclick="pickAnswer(3, 0, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all" data-correct="true">25</button>
+                        <button onclick="pickAnswer(3, 1, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">0</button>
+                        <button onclick="pickAnswer(3, 2, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">-25</button>
+                    </div>
+                </div>
+
+                <!-- Soal 4 -->
+                <div class="quiz-card bg-white p-10 rounded-[2.5rem] card-modern hidden" data-step="4">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">Soal 4 / 5</span>
+                        <div class="w-1/3 bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full w-4/5"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-8 text-slate-800">Seekor lumba-lumba berenang di kedalaman 4 meter di bawah laut. Lambang bilangannya adalah...</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <button onclick="pickAnswer(4, 0, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">4</button>
+                        <button onclick="pickAnswer(4, 1, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all" data-correct="true">-4</button>
+                        <button onclick="pickAnswer(4, 2, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">0</button>
+                    </div>
+                </div>
+
+                <!-- Soal 5 -->
+                <div class="quiz-card bg-white p-10 rounded-[2.5rem] card-modern hidden" data-step="5">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full font-bold text-sm">Soal 5 / 5</span>
+                        <div class="w-1/3 bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-blue-600 h-full w-full"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-extrabold mb-8 text-slate-800">Hasil dari -10 - 5 adalah?</h3>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <button onclick="pickAnswer(5, 0, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">-5</button>
+                        <button onclick="pickAnswer(5, 1, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all">15</button>
+                        <button onclick="pickAnswer(5, 2, this)" class="option-btn p-5 border-2 border-slate-100 rounded-2xl hover:border-blue-500 font-bold transition-all" data-correct="true">-15</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Dashboard -->
+            <div id="result-dashboard" class="hidden text-center py-10">
+                <div class="bg-white p-12 rounded-[3rem] shadow-2xl border border-slate-100 animate-fade-in">
+                    <div class="w-32 h-32 bg-blue-600 rounded-full mx-auto flex items-center justify-center text-white text-5xl font-black mb-8 border-8 border-blue-100 shadow-xl">
+                        <span id="final-score">0</span>
+                    </div>
+                    <h3 class="text-3xl font-extrabold mb-4 text-slate-900" id="result-title">Menganalisis Hasilmu...</h3>
+                    <div id="analysis-text" class="text-slate-600 text-lg mb-10 max-w-md mx-auto leading-relaxed"></div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-10">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Ketelitian</p>
+                            <p id="accuracy-stat" class="text-2xl font-black text-blue-600">0%</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Status</p>
+                            <p id="status-stat" class="text-2xl font-black text-indigo-600">-</p>
+                        </div>
+                    </div>
+
+                    <button onclick="resetQuiz()" class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all flex items-center justify-center mx-auto space-x-2">
+                        <i class="fas fa-undo"></i>
+                        <span>Ulangi Latihan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-white border-t border-slate-100 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <div class="bg-blue-600 p-2 rounded-xl text-white">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <span class="text-2xl font-black tracking-tighter text-slate-900">Ozmath</span>
+            </div>
+            <p class="text-slate-400 text-sm">Platform edukasi masa depan untuk belajar Matematika dengan mudah.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Slider
+        const slider = document.getElementById('numSlider');
+        const output = document.getElementById('sliderOutput');
+        const desc = document.getElementById('sliderDesc');
+
+        if (slider) {
+            slider.oninput = function() {
+                const val = parseInt(this.value);
+                output.innerHTML = val;
+                
+                if (val > 0) {
+                    desc.innerHTML = "Bilangan Bulat Positif";
+                    desc.className = "mt-8 text-center text-xl font-bold text-green-600";
+                    output.className = "inline-flex items-center justify-center bg-green-600 text-white text-6xl font-black w-24 h-24 rounded-3xl shadow-2xl";
+                } else if (val < 0) {
+                    desc.innerHTML = "Bilangan Bulat Negatif";
+                    desc.className = "mt-8 text-center text-xl font-bold text-red-600";
+                    output.className = "inline-flex items-center justify-center bg-red-600 text-white text-6xl font-black w-24 h-24 rounded-3xl shadow-2xl";
+                } else {
+                    desc.innerHTML = "Titik Pusat (Nol)";
+                    desc.className = "mt-8 text-center text-xl font-bold text-blue-900";
+                    output.className = "inline-flex items-center justify-center bg-blue-600 text-white text-6xl font-black w-24 h-24 rounded-3xl shadow-2xl";
+                }
+            };
+        }
+
+        // Quiz Logic
+        let score = 0;
+        let currentStep = 1;
+
+        function pickAnswer(step, optIdx, btn) {
+            const container = btn.closest('.quiz-card');
+            if (container.classList.contains('answered')) return;
+            
+            container.classList.add('answered');
+            const isCorrect = btn.getAttribute('data-correct') === 'true';
+            if (isCorrect) score++;
+
+            // Visual feedback
+            btn.classList.add(isCorrect ? 'bg-green-100' : 'bg-red-100', isCorrect ? 'border-green-500' : 'border-red-500');
+            
+            // Move to next or show result
+            setTimeout(() => {
+                container.classList.add('hidden');
+                
+                if (step < 5) {
+                    currentStep++;
+                    const nextCard = document.querySelector(`.quiz-card[data-step="${currentStep}"]`);
+                    if (nextCard) nextCard.classList.remove('hidden');
+                } else {
+                    showAnalysis();
+                }
+            }, 600);
+        }
+
+        function showAnalysis() {
+            const flow = document.getElementById('quiz-flow');
+            const intro = document.getElementById('quiz-intro');
+            const dashboard = document.getElementById('result-dashboard');
+            
+            if (flow) flow.classList.add('hidden');
+            if (intro) intro.classList.add('hidden');
+            if (dashboard) dashboard.classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById('final-score');
+            const analysisTitle = document.getElementById('result-title');
+            const analysisText = document.getElementById('analysis-text');
+            const accuracyStat = document.getElementById('accuracy-stat');
+            const statusStat = document.getElementById('status-stat');
+
+            if (scoreDisplay) scoreDisplay.innerText = score;
+            if (accuracyStat) accuracyStat.innerText = (Math.round(score / 5 * 100)) + '%';
+
+            if (analysisTitle && analysisText && statusStat) {
+                if (score === 5) {
+                    analysisTitle.innerText = "Sempurna! Kamu Jenius.";
+                    analysisText.innerText = "Kamu sudah sangat menguasai konsep bilangan bulat. Siap untuk materi yang lebih menantang!";
+                    statusStat.innerText = "MASTER";
+                } else if (score >= 3) {
+                    analysisTitle.innerText = "Bagus! Kamu Paham.";
+                    analysisText.innerText = "Pemahamanmu sudah kuat, namun masih ada sedikit ruang untuk perbaikan. Teruslah berlatih!";
+                    statusStat.innerText = "CAKAP";
+                } else {
+                    analysisTitle.innerText = "Ayo Semangat Belajar!";
+                    analysisText.innerText = "Sepertinya kamu butuh sedikit lebih banyak waktu untuk memahami konsep ini. Cobalah baca kembali materi di atas.";
+                    statusStat.innerText = "PEMULA";
+                }
+            }
+        }
+
+        function resetQuiz() {
+            score = 0;
+            currentStep = 1;
+            
+            const dashboard = document.getElementById('result-dashboard');
+            const flow = document.getElementById('quiz-flow');
+            const intro = document.getElementById('quiz-intro');
+            
+            if (dashboard) dashboard.classList.add('hidden');
+            if (flow) flow.classList.remove('hidden');
+            if (intro) intro.classList.remove('hidden');
+            
+            document.querySelectorAll('.quiz-card').forEach((card, idx) => {
+                card.classList.toggle('hidden', idx !== 0);
+                card.classList.remove('answered');
+            });
+            
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('bg-green-100', 'bg-red-100', 'border-green-500', 'border-red-500');
+            });
+        }
+    </script>
+</body>
+</html>

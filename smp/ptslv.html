@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Pertidaksamaan Linear Satu Variabel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .step-shadow { box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1); }
+        .option-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="max-w-5xl mx-auto px-6 py-16 text-center">
+        <span class="bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Ozmath</span>
+        <h1 class="mt-6 text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Pertidaksamaan Linear <br><span class="text-blue-600">Satu Variabel</span></h1>
+        <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Belajar cara membandingkan dua nilai yang tidak sama dengan langkah-langkah yang mudah diikuti dan menyenangkan.
+        </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pb-24 space-y-20">
+
+        <!-- Step 1: Apa itu PtLSV? -->
+        <section id="konsep" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-24">
+            <div>
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg">1</div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Apa itu PtLSV?</h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Pertidaksamaan Linear Satu Variabel (PtLSV) adalah kalimat terbuka yang dihubungkan oleh tanda ketidaksamaan dan hanya memiliki satu variabel berpangkat satu.
+                </p>
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-blue-600 shadow-sm">
+                    <p class="italic text-slate-700">"Uang saku Budi lebih dari Rp10.000"</p>
+                    <p class="mt-2 text-sm font-semibold text-blue-600 uppercase">Model Matematika: x > 10.000</p>
+                </div>
+            </div>
+            <div class="bg-blue-600 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                <h3 class="text-xl font-bold mb-4">Ciri-ciri Utama:</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle mt-1"></i>
+                        <span>Hanya ada <b>satu variabel</b> (misal: x, y, atau p).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle mt-1"></i>
+                        <span>Pangkat tertinggi variabel adalah <b>satu</b>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle mt-1"></i>
+                        <span>Menggunakan tanda: <b><, >, ≤, atau ≥</b>.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Interactive Symbols -->
+        <section id="simbol" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Mengenal Simbol</h2>
+                <p class="text-slate-500 mt-2">Klik simbol di bawah untuk melihat artinya</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="showInfo('less')" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition group text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition">&lt;</div>
+                    <div class="text-sm font-semibold text-slate-700">Kurang Dari</div>
+                </button>
+                <button onclick="showInfo('greater')" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition group text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition">&gt;</div>
+                    <div class="text-sm font-semibold text-slate-700">Lebih Dari</div>
+                </button>
+                <button onclick="showInfo('lessEq')" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition group text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition">&le;</div>
+                    <div class="text-sm font-semibold text-slate-700">Maksimal</div>
+                </button>
+                <button onclick="showInfo('greaterEq')" class="p-6 bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition group text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition">&ge;</div>
+                    <div class="text-sm font-semibold text-slate-700">Minimal</div>
+                </button>
+            </div>
+            <div id="infoBox" class="mt-6 p-6 bg-blue-50 rounded-2xl border border-blue-100 text-blue-800 text-center hidden animate-pulse">
+                Pilih simbol untuk penjelasan lengkap.
+            </div>
+        </section>
+
+        <!-- How to Solve with Step-by-Step Examples -->
+        <section id="penyelesaian" class="scroll-mt-24">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
+                <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg">2</div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-8">Cara Menyelesaikan</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="flex gap-6">
+                            <div class="shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-800">Kumpulkan Suku Sejenis</h4>
+                                <p class="text-slate-600">Pindahkan semua variabel ke kiri dan konstanta ke kanan.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-800">Sederhanakan</h4>
+                                <p class="text-slate-600">Lakukan penjumlahan atau pengurangan pada masing-masing ruas.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="shrink-0 w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold">!</div>
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                                <h4 class="text-lg font-bold text-red-800">Hati-hati!</h4>
+                                <p class="text-red-700 text-sm">Tanda pertidaksamaan <b>berubah arah</b> jika dikali atau dibagi bilangan negatif.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step-by-Step Examples -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <h4 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                            <i class="fas fa-lightbulb text-yellow-500"></i> Contoh Terbimbing
+                        </h4>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                                <p class="text-sm font-bold text-blue-600 mb-2">CONTOH 1: (Normal)</p>
+                                <p class="font-mono font-bold mb-3">3x - 5 < 10</p>
+                                <div class="text-sm space-y-2 text-slate-600">
+                                    <p><span class="text-slate-400"># Tambah 5 di kedua ruas</span><br>3x < 10 + 5</p>
+                                    <p><span class="text-slate-400"># Hasil sementara</span><br>3x < 15</p>
+                                    <p><span class="text-slate-400"># Bagi kedua ruas dengan 3</span><br>x < 5</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                                <p class="text-sm font-bold text-red-600 mb-2">CONTOH 2: (Ada Negatif)</p>
+                                <p class="font-mono font-bold mb-3">-2x + 6 &ge; 14</p>
+                                <div class="text-sm space-y-2 text-slate-600">
+                                    <p><span class="text-slate-400"># Kurangi 6 di kedua ruas</span><br>-2x &ge; 14 - 6</p>
+                                    <p><span class="text-slate-400"># Hasil sementara</span><br>-2x &ge; 8</p>
+                                    <p class="text-red-600 font-semibold"><span class="text-slate-400"># Bagi -2 (BALIK TANDA!)</span><br>x &le; -4</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Practice (Quiz with 5 Questions) -->
+        <section id="latihan" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Uji Pemahamanmu</h2>
+                <p class="text-slate-500 mt-2">Selesaikan 5 tantangan untuk melihat analisis kemampuanmu!</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl p-8 shadow-2xl border-t-8 border-blue-600" id="quiz-box">
+                <!-- Quiz Header -->
+                <div class="flex justify-between items-center mb-6 text-sm font-bold text-blue-600 tracking-widest uppercase">
+                    <span id="question-number">Soal 1 dari 5</span>
+                    <span id="score-display">Skor: 0</span>
+                </div>
+
+                <!-- Quiz Content Area -->
+                <div id="quiz-content">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-slate-800 mb-4" id="question-text">Tentukan nilai x:</h3>
+                        <div class="inline-block px-6 py-4 bg-slate-100 rounded-2xl text-3xl font-mono font-bold text-blue-700" id="equation-display">
+                            2x + 4 > 10
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-3" id="options-container">
+                        <!-- Options will be generated by JS -->
+                    </div>
+
+                    <div id="feedback" class="mt-8 hidden p-4 rounded-xl text-center font-bold"></div>
+                    
+                    <div id="explanation" class="mt-4 hidden p-6 bg-blue-50 rounded-2xl text-sm text-slate-600 leading-relaxed border border-blue-100">
+                        <!-- Explanation will be generated by JS -->
+                    </div>
+
+                    <div class="mt-8 flex justify-center">
+                        <button id="next-btn" onclick="nextQuestion()" class="hidden px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition shadow-lg">
+                            Soal Berikutnya <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Area (Initially Hidden) -->
+                <div id="result-area" class="hidden text-center">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Hasil Analisis</h2>
+                    <p class="text-slate-500 mb-6">Berdasarkan jawabanmu, berikut adalah gambaran kemampuanmu:</p>
+                    
+                    <div id="score-final" class="text-5xl font-extrabold text-blue-600 mb-8">0/50</div>
+                    
+                    <div id="analysis-card" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-left mb-8">
+                        <!-- Analysis text will be here -->
+                    </div>
+
+                    <button onclick="resetQuiz()" class="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition">
+                        Ulangi Kuis
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <i class="fas fa-equals text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-white tracking-tight">EduMath.</span>
+            </div>
+            <p class="text-sm">Dibuat untuk membantu siswa Indonesia menguasai Matematika dengan mudah.</p>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-xs">
+                &copy; 2024 EduMath Interactive Learning.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Symbol Info Toggle
+        function showInfo(type) {
+            const box = document.getElementById('infoBox');
+            box.classList.remove('hidden');
+            box.classList.remove('animate-pulse');
+            const data = {
+                less: "<strong>&lt; (Kurang dari):</strong> Nilai di kiri harus lebih kecil. Contoh: x < 5 artinya x bisa 4, 3, 2...",
+                greater: "<strong>&gt; (Lebih dari):</strong> Nilai di kiri harus lebih besar. Contoh: x > 5 artinya x bisa 6, 7, 8...",
+                lessEq: "<strong>&le; (Maksimal/Kurang dari sama dengan):</strong> Nilai kiri bisa sama dengan atau lebih kecil.",
+                greaterEq: "<strong>&ge; (Minimal/Lebih dari sama dengan):</strong> Nilai kiri bisa sama dengan atau lebih besar."
+            };
+            box.innerHTML = data[type];
+        }
+
+        // Quiz Data
+        const quizData = [
+            {
+                q: "Tentukan nilai x:",
+                eq: "2x + 4 > 10",
+                options: ["x > 7", "x > 3", "x < 3", "x < 7"],
+                correct: 1,
+                exp: "1. Kurangi 4: 2x > 6 <br> 2. Bagi 2: x > 3."
+            },
+            {
+                q: "Tentukan nilai y:",
+                eq: "3y - 5 ≤ 7",
+                options: ["y ≤ 4", "y ≤ 2", "y ≥ 4", "y < 4"],
+                correct: 0,
+                exp: "1. Tambah 5: 3y ≤ 12 <br> 2. Bagi 3: y ≤ 4."
+            },
+            {
+                q: "Hati-hati dengan negatif!",
+                eq: "-2x + 10 < 2",
+                options: ["x < 4", "x > 4", "x < -4", "x > -4"],
+                correct: 1,
+                exp: "1. Kurangi 10: -2x < -8 <br> 2. Bagi -2: x > 4 (Ingat, tanda dibalik karena dibagi bilangan negatif!)."
+            },
+            {
+                q: "Selesaikan pertidaksamaan:",
+                eq: "5p + 2 ≥ 3p + 10",
+                options: ["p ≥ 6", "p ≥ 8", "p ≥ 4", "p ≤ 4"],
+                correct: 2,
+                exp: "1. Kumpulkan p: 5p - 3p ≥ 10 - 2 <br> 2. Sederhanakan: 2p ≥ 8 <br> 3. Bagi 2: p ≥ 4."
+            },
+            {
+                q: "Tantangan Terakhir:",
+                eq: "10 - x > 15",
+                options: ["x > 5", "x < -5", "x > -5", "x < 5"],
+                correct: 1,
+                exp: "1. Kurangi 10: -x > 5 <br> 2. Bagi -1 (atau kali -1): x < -5 (Tanda dibalik!)."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const data = quizData[currentQuestion];
+            document.getElementById('question-number').innerText = `Soal ${currentQuestion + 1} dari 5`;
+            document.getElementById('question-text').innerText = data.q;
+            document.getElementById('equation-display').innerText = data.eq;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            data.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn p-4 rounded-xl border-2 border-slate-100 hover:border-blue-200 hover:bg-blue-50 text-left font-medium transition";
+                btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('explanation').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(selectedIndex, btn) {
+            const data = quizData[currentQuestion];
+            const feedback = document.getElementById('feedback');
+            const explanation = document.getElementById('explanation');
+            const btns = document.querySelectorAll('.option-btn');
+            
+            btns.forEach(b => b.disabled = true);
+            
+            if (selectedIndex === data.correct) {
+                btn.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                feedback.innerHTML = "🎉 Benar!";
+                feedback.className = "mt-8 p-4 rounded-xl text-center font-bold bg-green-100 text-green-700";
+                score += 10;
+                document.getElementById('score-display').innerText = `Skor: ${score}`;
+            } else {
+                btn.classList.add('bg-red-100', 'border-red-500', 'text-red-700');
+                feedback.innerHTML = "❌ Kurang Tepat";
+                feedback.className = "mt-8 p-4 rounded-xl text-center font-bold bg-red-100 text-red-700";
+                // Show the correct answer
+                btns[data.correct].classList.add('border-green-500', 'bg-green-50');
+            }
+            
+            feedback.classList.remove('hidden');
+            explanation.innerHTML = `<p class="font-bold text-blue-800 mb-2">Penjelasan:</p>${data.exp}`;
+            explanation.classList.remove('hidden');
+            document.getElementById('next-btn').classList.remove('hidden');
+            
+            if (currentQuestion === quizData.length - 1) {
+                document.getElementById('next-btn').innerText = "Lihat Hasil Analisis";
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showAnalysis();
+            }
+        }
+
+        function showAnalysis() {
+            document.getElementById('quiz-content').classList.add('hidden');
+            document.getElementById('result-area').classList.remove('hidden');
+            document.getElementById('score-final').innerText = `${score}/50`;
+            
+            const analysisCard = document.getElementById('analysis-card');
+            let analysisText = "";
+
+            if (score === 50) {
+                analysisText = `
+                    <h4 class="font-bold text-green-700 text-lg mb-2">Luar Biasa! (Master PtLSV)</h4>
+                    <p class="text-slate-600">Kamu sudah menguasai seluruh konsep, termasuk aturan pembagian negatif yang sering menjebak. Kamu siap untuk materi yang lebih kompleks seperti Sistem Persamaan Linear Dua Variabel!</p>
+                `;
+            } else if (score >= 30) {
+                analysisText = `
+                    <h4 class="font-bold text-blue-700 text-lg mb-2">Pemahaman Bagus (Cukup Mahir)</h4>
+                    <p class="text-slate-600">Kamu memahami alur dasar pengerjaan. Namun, perhatikan kembali soal yang melibatkan <b>bilangan negatif</b>. Ingatlah untuk selalu membalik tanda saat membagi atau mengali dengan negatif.</p>
+                `;
+            } else {
+                analysisText = `
+                    <h4 class="font-bold text-orange-700 text-lg mb-2">Butuh Latihan Ekstra (Pemula)</h4>
+                    <p class="text-slate-600">Jangan menyerah! Kamu mungkin masih bingung saat memindahkan ruas atau menyederhanakan angka. Coba baca kembali bagian <b>Contoh Terbimbing</b> di atas dan fokuslah pada langkah-langkah pengumpulan suku sejenis.</p>
+                `;
+            }
+            
+            analysisCard.innerHTML = analysisText;
+        }
+
+        function resetQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score-display').innerText = `Skor: 0`;
+            document.getElementById('quiz-content').classList.remove('hidden');
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('next-btn').innerText = "Soal Berikutnya";
+            loadQuestion();
+        }
+
+        // Initialize quiz
+        window.onload = loadQuestion;
+    </script>
+</body>
+</html>

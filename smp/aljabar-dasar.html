@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - aljabar Dasar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* Timbangan animation */
+        .scale-tilt-left { transform: rotate(-5deg); transform-origin: center; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scale-tilt-right { transform: rotate(5deg); transform-origin: center; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scale-balanced { transform: rotate(0deg); transform-origin: center; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        .quiz-option:hover { border-color: #3b82f6; background-color: #eff6ff; }
+        .quiz-option.selected { border-color: #3b82f6; background-color: #dbeafe; }
+        
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Hero Section (No Navbar) -->
+    <header class="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-16 md:py-24 px-4 md:px-6">
+        <div class="container mx-auto text-center max-w-4xl">
+            <div class="inline-flex items-center space-x-2 bg-blue-600/30 px-4 py-2 rounded-full mb-6 border border-blue-400/30">
+                <i class="fas fa-graduation-cap text-xs md:text-sm"></i>
+                <span class="text-[10px] md:text-xs font-bold tracking-widest uppercase">Ozmath - Modul Aljabar Dasar</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">Aljabar<span class="text-blue-300">Seru</span></h1>
+            <p class="text-base md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Kuasai konsep variabel, operasi suku sejenis, dan sifat-sifat matematika dalam satu halaman interaktif.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#unsur" class="bg-white text-blue-700 px-8 py-4 rounded-full font-bold shadow-lg hover:bg-blue-50 transition transform hover:scale-105 text-sm md:text-base">Mulai Belajar</a>
+                <a href="#kuiz" class="bg-blue-600/50 backdrop-blur text-white border border-blue-400 px-8 py-4 rounded-full font-bold hover:bg-blue-600 transition text-sm md:text-base">Uji Kemampuan</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+        
+        <!-- Section 1: Unsur Aljabar -->
+        <section id="unsur" class="mb-20 md:mb-24">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">1. Mengenal Unsur Aljabar</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto italic text-sm md:text-base">"Anatomi dasar yang harus kamu pahami."</p>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-2xl md:rounded-3xl shadow-sm border border-slate-200 mb-8">
+                <div class="text-center mb-10">
+                    <p class="text-[10px] md:text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold">Contoh Bentuk Aljabar</p>
+                    <div class="text-3xl md:text-5xl font-mono font-bold text-blue-700 tracking-wider">
+                        2x + 5
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div class="p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-2 italic">Variabel</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Simbol huruf mewakili angka. Contoh: <span class="font-bold">x</span>.</p>
+                    </div>
+                    <div class="p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-2 italic">Koefisien</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Angka pengali variabel. Contoh: <span class="font-bold text-blue-600">2</span>.</p>
+                    </div>
+                    <div class="p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-2 italic">Konstanta</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Angka tetap tanpa variabel. Contoh: <span class="font-bold text-blue-600">5</span>.</p>
+                    </div>
+                    <div class="p-5 bg-blue-50 rounded-2xl border border-blue-100">
+                        <h4 class="font-bold text-blue-800 mb-2 italic">Suku</h4>
+                        <p class="text-xs md:text-sm text-slate-600">Dipisahkan + atau -. Contoh: <span class="font-bold text-blue-600">2x</span> dan <span class="font-bold text-blue-600">5</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Operasi Penjumlahan & Pengurangan -->
+        <section id="operasi" class="mb-20 md:mb-24">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">2. Penjumlahan & Pengurangan</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base">Aturan Emas: Gunakan <span class="font-bold text-blue-600">Suku Sejenis</span>.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg md:text-xl font-bold text-blue-800 mb-4"><i class="fas fa-plus-circle mr-2"></i>Penjumlahan</h3>
+                    <p class="text-slate-600 mb-4 font-mono text-sm bg-slate-50 p-3 rounded">3x + 2x = 5x</p>
+                    <p class="text-slate-600 text-xs md:text-sm italic">3 apel + 2 apel = 5 apel.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg md:text-xl font-bold text-blue-800 mb-4"><i class="fas fa-minus-circle mr-2"></i>Pengurangan</h3>
+                    <p class="text-slate-600 mb-4 font-mono text-sm bg-slate-50 p-3 rounded">10y - 4y = 6y</p>
+                    <p class="text-slate-600 text-xs md:text-sm italic">Hanya kurangi koefisien variabel yang sama.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Sifat-Sifat Aljabar -->
+        <section id="sifat" class="mb-20 md:mb-24">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">3. Sifat-Sifat Aljabar</h2>
+                <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto">Memahami "cara main" dalam menyederhanakan bentuk matematika.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Komutatif -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                            <i class="fas fa-arrows-alt-h"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-blue-700">Komutatif</h3>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600 mb-6">"Pertukaran tempat tidak mengubah hasil akhir."</p>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Rumus Umum</p>
+                            <p class="font-mono text-blue-600">a + b = b + a</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-[10px] font-bold text-blue-400 uppercase mb-2">Contoh Bertahap</p>
+                            <ul class="text-xs space-y-2 text-slate-700">
+                                <li><span class="font-bold">1.</span> Misal ada <span class="bg-white px-1 rounded border">3x + 5y</span></li>
+                                <li><span class="font-bold">2.</span> Tukar posisi sukunya.</li>
+                                <li><span class="font-bold">3.</span> Menjadi <span class="bg-white px-1 rounded border">5y + 3x</span></li>
+                                <li class="pt-2 text-blue-600 italic">Keduanya bernilai sama!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asosiatif -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-blue-700">Asosiatif</h3>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600 mb-6">"Pengelompokan suku tidak mengubah hasil akhir."</p>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Rumus Umum</p>
+                            <p class="font-mono text-blue-600">(a + b) + c = a + (b + c)</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-[10px] font-bold text-blue-400 uppercase mb-2">Contoh Bertahap</p>
+                            <ul class="text-xs space-y-2 text-slate-700">
+                                <li><span class="font-bold">1.</span> Misal: <span class="bg-white px-1 rounded border">(2x + 3x) + 4x</span></li>
+                                <li><span class="font-bold">2.</span> Kerjakan kurung: <span class="bg-white px-1 rounded border">5x + 4x = 9x</span></li>
+                                <li><span class="font-bold">3.</span> Coba ubah kurung: <span class="bg-white px-1 rounded border">2x + (3x + 4x)</span></li>
+                                <li><span class="font-bold">4.</span> Hasil tetap: <span class="bg-white px-1 rounded border">2x + 7x = 9x</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distributif -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-blue-700">Distributif</h3>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600 mb-6">"Penyebaran perkalian ke dalam penjumlahan."</p>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase mb-2">Rumus Umum</p>
+                            <p class="font-mono text-blue-600">a(b + c) = ab + ac</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-[10px] font-bold text-blue-400 uppercase mb-2">Contoh Bertahap</p>
+                            <ul class="text-xs space-y-2 text-slate-700">
+                                <li><span class="font-bold">1.</span> Soal: <span class="bg-white px-1 rounded border">3(x + 4)</span></li>
+                                <li><span class="font-bold">2.</span> Kalikan 3 dengan x: <span class="bg-white px-1 rounded border">3 * x = 3x</span></li>
+                                <li><span class="font-bold">3.</span> Kalikan 3 dengan 4: <span class="bg-white px-1 rounded border">3 * 4 = 12</span></li>
+                                <li><span class="font-bold">4.</span> Gabungkan: <span class="bg-white px-1 rounded border text-blue-600 font-bold">3x + 12</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Lab Interaktif (CLEANED UP & POLISHED) -->
+        <section id="interaktif" class="mb-20 md:mb-24 bg-gradient-to-br from-blue-900 to-indigo-950 rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 text-white overflow-hidden relative border border-blue-800 shadow-2xl">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
+                <div class="flex-1 w-full text-center lg:text-left">
+                    <div class="inline-block bg-blue-600/30 border border-blue-400/30 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">Lab Simulasi</div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Keseimbangan Aljabar</h2>
+                    <p class="text-blue-200 mb-8 leading-relaxed text-base md:text-lg max-w-lg">Temukan nilai <span class="text-yellow-400 font-bold px-2 py-0.5 bg-yellow-400/10 rounded">x</span> yang tepat agar timbangan sejajar secara horizontal.</p>
+                    
+                    <div class="bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/10 shadow-inner max-w-md mx-auto lg:mx-0">
+                        <div id="equationDisplay" class="text-3xl md:text-4xl font-mono font-bold text-center mb-8 bg-blue-950/50 py-6 rounded-2xl border border-blue-800 text-blue-100">x + 5 = 12</div>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="relative flex-1">
+                                <input type="number" id="interactiveInput" class="w-full bg-slate-900 text-white border-2 border-blue-800 focus:border-yellow-400 outline-none px-6 py-4 rounded-2xl text-2xl font-bold text-center transition-all" placeholder="?">
+                                <span class="absolute -top-3 left-4 bg-indigo-950 px-2 text-[10px] font-bold text-blue-400 uppercase">Input x</span>
+                            </div>
+                            <button onclick="checkAnswer()" class="bg-yellow-400 text-blue-950 px-10 py-4 rounded-2xl font-extrabold hover:bg-yellow-300 active:scale-95 transition-all shadow-lg shadow-yellow-400/20">CEK</button>
+                        </div>
+                        <div id="feedback" class="mt-6 text-center text-sm font-semibold h-8 flex items-center justify-center"></div>
+                    </div>
+                    <button onclick="generateProblem()" class="mt-8 text-blue-400 hover:text-white flex items-center gap-2 mx-auto lg:mx-0 text-sm font-medium transition-colors">
+                        <i class="fas fa-sync-alt animate-spin-slow"></i> Ganti Soal Baru
+                    </button>
+                </div>
+                
+                <!-- Improved Visual Scale -->
+                <div class="flex-1 w-full flex flex-col items-center justify-center scale-[0.85] md:scale-110">
+                    <div class="relative w-full max-w-md">
+                        <!-- Main Beam -->
+                        <div id="scaleBeam" class="w-full h-4 bg-gradient-to-b from-slate-200 to-slate-400 rounded-full relative scale-balanced z-20 shadow-lg">
+                            <!-- Pivot Point -->
+                            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-slate-100 rounded-full border-4 border-blue-900 z-30 shadow-md"></div>
+                            
+                            <!-- Left Plate -->
+                            <div class="absolute left-4 top-4 w-32 md:w-36 flex flex-col items-center origin-top transform-gpu">
+                                <div class="w-1.5 h-12 bg-slate-400 shadow-sm"></div>
+                                <div class="w-32 md:w-36 min-h-[80px] bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm rounded-b-3xl border-t-[6px] border-blue-500 p-3 flex flex-wrap justify-center items-end gap-1.5 shadow-xl">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-black shadow-lg border border-blue-400">X</div>
+                                    <div id="leftConstants" class="flex flex-wrap justify-center gap-1"></div>
+                                </div>
+                                <div class="text-[10px] font-bold text-blue-300 mt-2 uppercase tracking-tighter">Sisi Kiri</div>
+                            </div>
+
+                            <!-- Right Plate -->
+                            <div class="absolute right-4 top-4 w-32 md:w-36 flex flex-col items-center origin-top transform-gpu">
+                                <div class="w-1.5 h-12 bg-slate-400 shadow-sm"></div>
+                                <div class="w-32 md:w-36 min-h-[80px] bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm rounded-b-3xl border-t-[6px] border-emerald-500 p-3 flex flex-wrap justify-center items-end gap-1.5 shadow-xl">
+                                    <div id="rightConstants" class="flex flex-wrap justify-center gap-1"></div>
+                                </div>
+                                <div class="text-[10px] font-bold text-emerald-300 mt-2 uppercase tracking-tighter">Sisi Kanan</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Base of the scale -->
+                        <div class="w-10 h-32 md:w-12 md:h-40 bg-gradient-to-r from-slate-400 to-slate-500 mx-auto -mt-2 rounded-t-xl shadow-2xl relative z-10">
+                            <div class="absolute inset-0 bg-black/10 rounded-t-xl"></div>
+                        </div>
+                        <div class="w-32 h-6 md:w-40 md:h-8 bg-slate-600 mx-auto rounded-full shadow-lg border-b-4 border-slate-800"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Abstract background shapes -->
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl"></div>
+        </section>
+
+        <!-- Section 5: Evaluasi Kuiz -->
+        <section id="kuiz" class="max-w-3xl mx-auto px-2">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Evaluasi Akhir</h2>
+                <p class="text-slate-600 text-sm md:text-base">Uji pemahamanmu dan lihat analisis kemampuanmu.</p>
+            </div>
+
+            <div id="quizContainer" class="bg-white p-6 md:p-10 rounded-3xl shadow-xl border border-blue-100 overflow-hidden">
+                <div id="questionArea">
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+                        <span id="questionCounter" class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-xs font-bold">Soal 1 dari 5</span>
+                        <div class="w-full sm:w-32 h-2 bg-slate-100 rounded-full overflow-hidden">
+                            <div id="progressBar" class="h-full bg-blue-500 transition-all duration-500" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <h3 id="questionText" class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-relaxed">Memuat soal...</h3>
+                    <div id="optionsArea" class="space-y-3"></div>
+                    <button id="nextBtn" disabled onclick="handleNextQuestion()" class="mt-10 w-full bg-slate-200 text-slate-400 py-4 rounded-xl md:rounded-2xl font-bold transition-all duration-300">Lanjut</button>
+                </div>
+
+                <div id="resultArea" class="hidden text-center animate-fadeIn py-4">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl md:text-3xl mx-auto mb-6">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2">Analisis Hasil Belajar</h3>
+                    <p class="text-slate-500 mb-8 text-sm md:text-base">Skor Kamu: <span id="finalScore" class="text-blue-600 font-bold text-xl md:text-2xl">0</span>/100</p>
+                    
+                    <div class="bg-slate-50 p-5 md:p-6 rounded-2xl text-left border border-slate-200 mb-8">
+                        <h4 class="font-bold text-slate-700 mb-4 tracking-wide uppercase text-[10px] md:text-xs">Diagnosis Kemampuan:</h4>
+                        <p id="analysisText" class="text-slate-600 leading-relaxed italic text-xs md:text-sm">Menganalisis jawabanmu...</p>
+                    </div>
+
+                    <button onclick="restartQuiz()" class="text-blue-600 font-bold hover:underline flex items-center justify-center gap-2 mx-auto text-sm">
+                        <i class="fas fa-redo"></i> Coba Lagi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+   <!-- Footer Ultra Modern -->
+    <footer class="relative bg-white pt-24 pb-12 overflow-hidden border-t border-slate-100">
+        
+        <!-- Background Accents -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-50 rounded-full blur-[100px] opacity-40"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-50 rounded-full blur-[100px] opacity-40"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center">
+                
+                <!-- Back Button: Modern Pill Style -->
+                <div class="mb-16">
+                    <a href="index.html" class="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-slate-900 text-white hover:bg-blue-600 hover:shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)] transition-all duration-500 transform hover:-translate-y-1 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:-translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                        <span class="text-xs font-extrabold uppercase tracking-[0.2em]">Kembali</span>
+                    </a>
+                </div>
+
+                <!-- Logo & Brand: Dynamic Layout -->
+                <div class="flex flex-col items-center mb-10 group cursor-default">
+                    <div class="relative mb-6">
+                        <!-- Logo Glow -->
+                        <div class="absolute inset-0 bg-blue-400 blur-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-700"></div>
+                        <!-- Calculator Icon with Motion -->
+                        <div class="relative w-20 h-20 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-[2.2rem] flex items-center justify-center transform transition-all duration-700 group-hover:rotate-[10deg] border border-slate-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-[900] text-slate-900 tracking-tighter mb-4">
+                        Ozmath<span class="text-gradient">.SMP</span>
+                    </h2>
+                    <p class="text-center text-slate-500 max-w-sm md:max-w-lg text-sm md:text-base leading-relaxed font-medium">
+                        Platform edukasi matematika tercanggih yang dirancang untuk membangun logika siswa Indonesia secara interaktif.
+                    </p>
+                </div>
+
+                <!-- Social Icons: Floating Dark Style -->
+                <div class="flex items-center gap-4 mb-20">
+                    <a href="#" class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-500 border border-slate-100 hover:shadow-2xl hover:scale-110 group">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-red-600 transition-all duration-500 border border-slate-100 hover:shadow-2xl hover:scale-110 group">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-500 border border-slate-100 hover:shadow-2xl hover:scale-110 group">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.87-1.57v7.14c.01 5.28-5.01 9.47-10.14 8.51-3.91-.74-6.71-4.72-5.98-8.65.62-3.32 3.53-5.81 6.9-5.82 1.02-.02 2.04.14 3.01.47V9.01a5.41 5.41 0 0 0-2.92-.85c-2.91 0-5.28 2.37-5.28 5.28 0 2.91 2.37 5.28 5.28 5.28 2.91 0 5.28-2.37 5.28-5.28V0z"/></svg>
+                    </a>
+                </div>
+
+                <!-- Final Divider & Bottom Credits -->
+                <div class="w-full flex flex-col md:flex-row items-center justify-between gap-8 py-8 border-t border-slate-100">
+                    <div class="flex flex-col items-center md:items-start space-y-2">
+                        <span class="text-[10px] font-[800] text-slate-400 uppercase tracking-[0.4em]">Developer & Core Team</span>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                                <span class="text-[10px] font-bold">OP</span>
+                            </div>
+                            <span class="text-sm font-bold text-slate-900 hover:text-blue-600 cursor-pointer transition-colors">ozanptrdev_</span>
+                        </div>
+                    </div>
+                    
+                    <div class="order-last md:order-none">
+                        <p class="text-[11px] font-extrabold text-slate-300 uppercase tracking-[0.3em]">
+                            &copy; 2024 Ozmath International
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-slate-50 px-5 py-2 rounded-full border border-slate-100">
+                        <div class="flex -space-x-2">
+                            <div class="w-5 h-5 rounded-full bg-blue-400 border border-white"></div>
+                            <div class="w-5 h-5 rounded-full bg-teal-400 border border-white"></div>
+                        </div>
+                        <span class="text-[10px] font-[800] text-slate-500 uppercase tracking-widest leading-none">Global Network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Lab Variables ---
+        let currentX = 0, currentConstant = 0, currentResult = 0;
+        
+        // --- Quiz Data ---
+        const quizData = [
+            {
+                q: "Pada bentuk aljabar 5y - 3, manakah yang merupakan konstanta?",
+                options: ["5", "y", "-3", "5y"],
+                correct: 2,
+                topic: "unsur"
+            },
+            {
+                q: "Sederhanakan: 2x + 7x - 4x",
+                options: ["13x", "5x", "9x", "x"],
+                correct: 1,
+                topic: "operasi"
+            },
+            {
+                q: "Manakah contoh dari sifat Distributif?",
+                options: ["x + y = y + x", "a(b + c) = ab + ac", "(a + b) + c = a + (b + c)", "x + 0 = x"],
+                correct: 1,
+                topic: "sifat"
+            },
+            {
+                q: "Hasil dari 3(x - 2) adalah...",
+                options: ["3x - 2", "3x - 6", "x - 6", "3x + 6"],
+                correct: 1,
+                topic: "sifat"
+            },
+            {
+                q: "Jika 2x + 3x = 25, maka nilai x adalah...",
+                options: ["5", "10", "15", "20"],
+                correct: 0,
+                topic: "operasi"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        let topicAnalysis = { unsur: 0, operasi: 0, sifat: 0 };
+
+        function generateProblem() {
+            currentX = Math.floor(Math.random() * 8) + 1; 
+            currentConstant = Math.floor(Math.random() * 8) + 1;
+            currentResult = currentX + currentConstant;
+            document.getElementById('equationDisplay').innerText = `x + ${currentConstant} = ${currentResult}`;
+            document.getElementById('feedback').innerText = "";
+            document.getElementById('interactiveInput').value = "";
+            document.getElementById('scaleBeam').className = "w-full h-4 bg-gradient-to-b from-slate-200 to-slate-400 rounded-full relative scale-tilt-left shadow-lg";
+            renderVisuals();
+        }
+
+        function renderVisuals() {
+            const leftC = document.getElementById('leftConstants'), rightC = document.getElementById('rightConstants');
+            leftC.innerHTML = ""; rightC.innerHTML = "";
+            
+            // Left (x + constant)
+            for(let i=0; i<currentConstant; i++) {
+                const dot = document.createElement('div');
+                dot.className = "w-3 h-3 md:w-4 md:h-4 bg-yellow-400 rounded-full shadow-sm animate-fadeIn border border-yellow-500";
+                leftC.appendChild(dot);
+            }
+            
+            // Right (Result)
+            for(let i=0; i<currentResult; i++) {
+                const dot = document.createElement('div');
+                dot.className = "w-3 h-3 md:w-4 md:h-4 bg-emerald-400 rounded-full shadow-sm animate-fadeIn border border-emerald-500";
+                rightC.appendChild(dot);
+            }
+        }
+
+        function checkAnswer() {
+            const val = document.getElementById('interactiveInput').value;
+            const userVal = parseInt(val);
+            const feedback = document.getElementById('feedback'), beam = document.getElementById('scaleBeam');
+            if (val === "" || isNaN(userVal)) return;
+            
+            if (userVal === currentX) {
+                feedback.innerHTML = "<span class='text-emerald-400 flex items-center gap-2'><i class='fas fa-check-circle'></i> x = " + currentX + " (Sempurna & Seimbang!)</span>";
+                beam.className = "w-full h-4 bg-gradient-to-b from-slate-200 to-slate-400 rounded-full relative scale-balanced shadow-lg";
+            } else if (userVal < currentX) {
+                feedback.innerHTML = "<span class='text-yellow-400 flex items-center gap-2'><i class='fas fa-arrow-up'></i> Nilai x terlalu kecil!</span>";
+                beam.className = "w-full h-4 bg-gradient-to-b from-slate-200 to-slate-400 rounded-full relative scale-tilt-left shadow-lg";
+            } else {
+                feedback.innerHTML = "<span class='text-red-400 flex items-center gap-2'><i class='fas fa-arrow-down'></i> Nilai x terlalu besar!</span>";
+                beam.className = "w-full h-4 bg-gradient-to-b from-slate-200 to-slate-400 rounded-full relative scale-tilt-right shadow-lg";
+            }
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentQuestionIndex];
+            document.getElementById('questionText').innerText = q.q;
+            document.getElementById('questionCounter').innerText = `Soal ${currentQuestionIndex + 1} dari 5`;
+            document.getElementById('progressBar').style.width = `${((currentQuestionIndex + 1) / 5) * 100}%`;
+            const optionsArea = document.getElementById('optionsArea');
+            optionsArea.innerHTML = "";
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "quiz-option w-full p-4 border-2 border-slate-100 rounded-xl md:rounded-2xl text-left transition-all duration-200 flex items-center justify-between group text-sm md:text-base";
+                btn.innerHTML = `<span>${opt}</span> <div class="w-4 h-4 md:w-5 md:h-5 rounded-full border-2 border-slate-200"></div>`;
+                btn.onclick = () => selectOption(idx, btn);
+                optionsArea.appendChild(btn);
+            });
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+            nextBtn.className = "mt-10 w-full bg-slate-200 text-slate-400 py-4 rounded-xl md:rounded-2xl font-bold transition-all duration-300 cursor-not-allowed";
+            selectedOption = null;
+        }
+
+        function selectOption(index, element) {
+            selectedOption = index;
+            document.querySelectorAll('.quiz-option').forEach(el => {
+                el.classList.remove('selected', 'bg-blue-50', 'border-blue-500');
+                el.querySelector('div').classList.remove('bg-blue-600', 'border-blue-600');
+            });
+            element.classList.add('selected', 'bg-blue-50', 'border-blue-500');
+            element.querySelector('div').classList.add('bg-blue-600', 'border-blue-600');
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = false;
+            nextBtn.className = "mt-10 w-full bg-blue-600 text-white py-4 rounded-xl md:rounded-2xl font-bold shadow-lg hover:bg-blue-700 transition-all cursor-pointer transform active:scale-[0.98]";
+        }
+
+        function handleNextQuestion() {
+            const currentQ = quizData[currentQuestionIndex];
+            if (selectedOption === currentQ.correct) {
+                score += 20;
+                topicAnalysis[currentQ.topic]++;
+            }
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('questionArea').classList.add('hidden');
+            document.getElementById('resultArea').classList.remove('hidden');
+            document.getElementById('finalScore').innerText = score;
+            let analysis = "";
+            if (score === 100) {
+                analysis = "Sempurna! Kamu telah menguasai variabel, operasi suku, hingga sifat distributif dengan sangat baik. Pertahankan prestasimu!";
+            } else if (score >= 60) {
+                analysis = "Bagus! Kamu sudah mengerti sebagian besar konsep. ";
+                if(topicAnalysis.sifat < 2) analysis += "Tampaknya kamu perlu meninjau kembali bagian 'Sifat Distributif' karena masih ada kesalahan di sana.";
+                else if(topicAnalysis.operasi < 2) analysis += "Fokuslah pada cara menjumlahkan suku yang memiliki variabel sama (sejenis).";
+                else analysis += "Tingkatkan ketelitianmu dalam menjawab soal!";
+            } else {
+                analysis = "Jangan berkecil hati! Aljabar memang butuh banyak latihan. Silakan baca kembali bagian 'Unsur Aljabar' dan coba bermain lagi di 'Lab Keseimbangan' untuk mengasah logikamu.";
+            }
+            document.getElementById('analysisText').innerText = analysis;
+            document.getElementById('kuiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            topicAnalysis = { unsur: 0, operasi: 0, sifat: 0 };
+            document.getElementById('questionArea').classList.remove('hidden');
+            document.getElementById('resultArea').classList.add('hidden');
+            loadQuestion();
+        }
+
+        window.onload = () => {
+            generateProblem();
+            loadQuestion();
+        };
+    </script>
+</body>
+</html>

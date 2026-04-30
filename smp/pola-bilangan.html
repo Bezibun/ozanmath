@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Kuasai Pola Bilangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .number-box {
+            transition: all 0.3s ease;
+        }
+        
+        .number-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Modern Header -->
+    <header class="relative overflow-hidden bg-white border-b border-slate-100">
+        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 py-16 md:py-24 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <div class="mb-6 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full inline-flex items-center gap-2">
+                    <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                    <span class="text-blue-700 text-sm font-semibold tracking-wide uppercase">Platform Edukasi Digital</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                    Oz<span class="text-blue-600">math</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto mb-10 leading-relaxed">
+                    Eksplorasi keajaiban pola angka dengan cara yang interaktif dan bertahap. Belajar jadi lebih ringan dan terukur.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#materi" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all flex items-center gap-2">
+                        Mulai Belajar <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                    <a href="#kuis" class="bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-2xl font-bold hover:bg-slate-50 transition-all">
+                        Uji Kemampuan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="materi" class="max-w-4xl mx-auto px-4 md:px-6 py-12 space-y-20">
+        
+        <!-- Bagian 1: Pengenalan -->
+        <section class="scroll-reveal bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg shadow-blue-100">1</div>
+                <h2 class="text-2xl md:text-3xl font-bold">Apa itu Pola Bilangan?</h2>
+            </div>
+            
+            <p class="text-lg leading-relaxed text-slate-600 mb-8">
+                Pola bilangan adalah sekumpulan bilangan yang memiliki **aturan tertentu**. Bayangkan sebuah susunan ubin atau detak jantung, ada ritme yang membuatnya teratur!
+            </p>
+            
+            <div class="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-100">
+                <p class="text-center font-semibold text-slate-500 mb-6 uppercase tracking-widest text-xs">Contoh Visualisasi</p>
+                <div class="flex flex-wrap gap-4 justify-center items-center">
+                    <div class="w-14 h-14 bg-white border-2 border-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-sm">2</div>
+                    <i class="fas fa-plus text-slate-300 text-xs"></i>
+                    <div class="w-14 h-14 bg-white border-2 border-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-sm">4</div>
+                    <i class="fas fa-plus text-slate-300 text-xs"></i>
+                    <div class="w-14 h-14 bg-white border-2 border-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-sm text-blue-400">6</div>
+                    <i class="fas fa-arrow-right text-slate-300 mx-2"></i>
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg animate-bounce">?</div>
+                </div>
+                <p class="mt-8 text-center text-slate-500 text-sm">Setiap angka bertambah 2. Maka angka berikutnya adalah <strong>8</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Bagian 2: Jenis Pola -->
+        <section class="scroll-reveal bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg shadow-blue-100">2</div>
+                <h2 class="text-2xl md:text-3xl font-bold">Jenis-Jenis Populer</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="group p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-blue-200 hover:bg-white transition-all">
+                    <h3 class="font-bold text-lg mb-2 text-blue-600">Pola Ganjil</h3>
+                    <p class="text-slate-500 text-sm mb-3">Dimulai dari 1 dan berlanjut selisih 2.</p>
+                    <code class="text-slate-700 font-bold bg-white border border-slate-200 px-3 py-1 rounded-lg">1, 3, 5, 7, 9...</code>
+                </div>
+                <div class="group p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-blue-200 hover:bg-white transition-all">
+                    <h3 class="font-bold text-lg mb-2 text-indigo-600">Pola Genap</h3>
+                    <p class="text-slate-500 text-sm mb-3">Dimulai dari 2 dan berkelipatan 2.</p>
+                    <code class="text-slate-700 font-bold bg-white border border-slate-200 px-3 py-1 rounded-lg">2, 4, 6, 8, 10...</code>
+                </div>
+                <div class="group p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-blue-200 hover:bg-white transition-all">
+                    <h3 class="font-bold text-lg mb-2 text-purple-600">Pola Persegi</h3>
+                    <p class="text-slate-500 text-sm mb-3">Hasil dari pengkuadratan angka (n²).</p>
+                    <code class="text-slate-700 font-bold bg-white border border-slate-200 px-3 py-1 rounded-lg">1, 4, 9, 16, 25...</code>
+                </div>
+                <div class="group p-6 bg-slate-50 rounded-3xl border border-transparent hover:border-blue-200 hover:bg-white transition-all">
+                    <h3 class="font-bold text-lg mb-2 text-teal-600">Pola Aritmatika</h3>
+                    <p class="text-slate-500 text-sm mb-3">Bedanya selalu sama/tetap.</p>
+                    <code class="text-slate-700 font-bold bg-white border border-slate-200 px-3 py-1 rounded-lg">5, 8, 11, 14, 17...</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian 3: Lab Interaktif -->
+        <section class="scroll-reveal bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg shadow-blue-100">3</div>
+                <h2 class="text-2xl md:text-3xl font-bold">Eksperimen Sendiri</h2>
+            </div>
+            <p class="text-slate-600 mb-8">Pahami bagaimana pola terbentuk dengan memasukkan angka buatanmu sendiri!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-500 ml-1">Mulai dari Angka:</label>
+                    <input type="number" id="startNum" value="1" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-semibold text-slate-500 ml-1">Selisih/Lompatan:</label>
+                    <input type="number" id="stepNum" value="5" class="w-full p-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:outline-none transition">
+                </div>
+            </div>
+
+            <div id="visualizer" class="flex flex-wrap gap-3 justify-center min-h-[80px] mb-10 p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+                <!-- Javascript will render items here -->
+            </div>
+
+            <button onclick="generatePattern()" class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-black transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-magic"></i> Generate Barisan
+            </button>
+        </section>
+
+        <!-- Bagian 4: Kuis & Analisis -->
+        <section id="kuis" class="scroll-reveal bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100 mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold shadow-lg shadow-blue-100">4</div>
+                <h2 class="text-2xl md:text-3xl font-bold">Uji Kemampuanmu</h2>
+            </div>
+            
+            <div id="quiz-container" class="space-y-10">
+                <!-- Question 1 -->
+                <div class="quiz-item" data-id="1">
+                    <p class="font-bold text-lg mb-4 text-slate-700">1. Pola: 2, 5, 8, 11, ... Berapa dua angka selanjutnya?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="selectOption(this, false)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">13, 15</button>
+                        <button onclick="selectOption(this, true)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">14, 17</button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-item" data-id="2">
+                    <p class="font-bold text-lg mb-4 text-slate-700">2. Berapakah suku ke-6 dari pola bilangan ganjil (1, 3, 5, ...)?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="selectOption(this, true)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">11</button>
+                        <button onclick="selectOption(this, false)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">13</button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-item" data-id="3">
+                    <p class="font-bold text-lg mb-4 text-slate-700">3. Pola Persegi: 1, 4, 9, 16. Berapakah suku ke-10?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="selectOption(this, false)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">81</button>
+                        <button onclick="selectOption(this, true)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">100</button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-item" data-id="4">
+                    <p class="font-bold text-lg mb-4 text-slate-700">4. Pola Genap: 2, 4, 6, 8, ... Rumus umum suku ke-n (Un) adalah?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="selectOption(this, true)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">Un = 2n</button>
+                        <button onclick="selectOption(this, false)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">Un = n + 2</button>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-item" data-id="5">
+                    <p class="font-bold text-lg mb-4 text-slate-700">5. Barisan: 50, 45, 40, 35. Aturan pola ini adalah?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="selectOption(this, false)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">Ditambah 5</button>
+                        <button onclick="selectOption(this, true)" class="option-btn p-4 bg-slate-50 rounded-2xl border border-slate-200 font-medium hover:border-blue-400 text-left transition">Dikurang 5</button>
+                    </div>
+                </div>
+
+                <button id="finish-btn" onclick="analyzeResult()" class="w-full bg-blue-600 text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-100 hover:bg-blue-700 transition-all opacity-50 cursor-not-allowed" disabled>
+                    Lihat Hasil Analisis
+                </button>
+            </div>
+
+            <!-- Analysis Dashboard (Hidden by default) -->
+            <div id="analysis-dashboard" class="hidden mt-10 p-8 bg-slate-900 text-white rounded-3xl animate-fadeIn">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Hasil Analisis Kemampuan</h3>
+                    <p class="text-slate-400">Berdasarkan jawaban kuis kamu hari ini</p>
+                </div>
+                
+                <div class="flex justify-around items-center mb-10">
+                    <div class="text-center">
+                        <div id="score-circle" class="text-5xl font-extrabold text-blue-400">0</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-500 mt-2">Skor Kamu</div>
+                    </div>
+                    <div class="h-12 w-[1px] bg-slate-800"></div>
+                    <div class="text-center">
+                        <div id="status-label" class="text-xl font-bold text-white">-</div>
+                        <div class="text-xs uppercase tracking-widest text-slate-500 mt-2">Tingkat Pemahaman</div>
+                    </div>
+                </div>
+
+                <div id="advice-box" class="p-6 bg-slate-800 rounded-2xl border border-slate-700 italic text-slate-300">
+                    <!-- Advice injected here -->
+                </div>
+
+                <button onclick="location.reload()" class="w-full mt-8 bg-white text-black py-4 rounded-xl font-bold hover:bg-slate-200 transition">
+                    Ulangi Belajar
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-white py-12 border-t border-slate-100 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Ozmath</h2>
+            <p class="text-slate-500 text-sm mb-6">Membantu siswa memahami matematika langkah demi langkah.</p>
+            <div class="mt-10 pt-10 border-t border-slate-50 text-[10px] text-slate-300 uppercase tracking-[0.2em]">
+                &copy; 2026 Ozmath Lab. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Interactive Lab Logic
+        function generatePattern() {
+            const start = parseInt(document.getElementById('startNum').value) || 0;
+            const step = parseInt(document.getElementById('stepNum').value) || 0;
+            const visualizer = document.getElementById('visualizer');
+            visualizer.innerHTML = '';
+            
+            for(let i = 0; i < 7; i++) {
+                const val = start + (i * step);
+                const card = document.createElement('div');
+                card.className = 'number-box w-14 h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center font-bold text-xl text-blue-600 shadow-sm';
+                card.innerText = val;
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                visualizer.appendChild(card);
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, i * 100);
+            }
+        }
+
+        // Quiz Logic
+        let userAnswers = {};
+        const totalQuestions = 5;
+
+        function selectOption(btn, isCorrect) {
+            const questionItem = btn.closest('.quiz-item');
+            const qId = questionItem.dataset.id;
+            
+            // Mark as answered
+            userAnswers[qId] = isCorrect;
+
+            // Visual update
+            questionItem.querySelectorAll('.option-btn').forEach(b => {
+                b.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                b.classList.add('bg-slate-50', 'text-slate-800', 'border-slate-200');
+            });
+            btn.classList.remove('bg-slate-50', 'text-slate-800');
+            btn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+
+            // Enable finish button if all answered
+            if(Object.keys(userAnswers).length === totalQuestions) {
+                const finishBtn = document.getElementById('finish-btn');
+                finishBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                finishBtn.disabled = false;
+            }
+        }
+
+        function analyzeResult() {
+            let correctCount = 0;
+            for(let key in userAnswers) {
+                if(userAnswers[key]) correctCount++;
+            }
+
+            const score = (correctCount / totalQuestions) * 100;
+            document.getElementById('quiz-container').classList.add('hidden');
+            const dashboard = document.getElementById('analysis-dashboard');
+            dashboard.classList.remove('hidden');
+
+            // Animate score
+            let currentScore = 0;
+            const scoreInterval = setInterval(() => {
+                if(currentScore >= score) {
+                    clearInterval(scoreInterval);
+                } else {
+                    currentScore++;
+                    document.getElementById('score-circle').innerText = currentScore;
+                }
+            }, 20);
+
+            // Analysis details
+            const statusLabel = document.getElementById('status-label');
+            const adviceBox = document.getElementById('advice-box');
+            
+            if(score === 100) {
+                statusLabel.innerText = "Master Pola!";
+                statusLabel.className = "text-xl font-bold text-green-400";
+                adviceBox.innerText = "Luar biasa! Kamu sudah memahami konsep dasar dan rumus pola bilangan dengan sempurna. Kamu siap untuk materi yang lebih kompleks seperti Deret Geometri!";
+            } else if(score >= 60) {
+                statusLabel.innerText = "Sudah Paham";
+                statusLabel.className = "text-xl font-bold text-blue-400";
+                adviceBox.innerText = "Kamu sudah mengerti dasar-dasarnya. Coba perhatikan lagi rumus-rumus pola khusus seperti pola persegi dan aritmatika untuk menyempurnakan pemahamanmu.";
+            } else {
+                statusLabel.innerText = "Butuh Latihan";
+                statusLabel.className = "text-xl font-bold text-red-400";
+                adviceBox.innerText = "Jangan menyerah! Coba ulangi lagi bagian Eksperimen Sendiri di atas untuk melihat bagaimana angka berubah. Fokus pada konsep 'selisih' antar bilangan.";
+            }
+            
+            dashboard.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = generatePattern;
+    </script>
+</body>
+</html>

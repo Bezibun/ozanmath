@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozanmath - Belajar Kekongruenan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); }
+        .math-box { background: #f0f7ff; border-left: 4px solid #2563eb; }
+        .math-display { font-family: 'Cambria', 'Times New Roman', serif; font-size: 1.2rem; line-height: 2rem; color: #1e3a8a; }
+        .symbol { font-family: 'Cambria', serif; font-style: italic; font-weight: bold; color: #1e40af; }
+    </style>
+</head>
+<body class="bg-[#f8faff] text-gray-800">
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white pt-20 pb-32 px-6 text-center relative overflow-hidden">
+        <div class="absolute top-10 left-10 opacity-20 transform -rotate-12">
+            <svg width="100" height="100" viewBox="0 0 100 100"><path d="M10 90 L50 10 L90 90 Z" fill="white"/></svg>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight">Ozanmath</h1>
+        <p class="text-xl md:text-2xl font-medium mb-2">Mari Belajar Kekongruenan Bersama!</p>
+        <p class="text-lg opacity-80 max-w-2xl mx-auto font-light leading-relaxed">
+            Pahami materi kekongruenan dengan penjelasan yang mengalir dan mudah dimengerti.
+        </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 -mt-16 relative z-10 pb-20 space-y-12">
+        
+        <!-- MATERI 1: PENGERTIAN -->
+        <section class="bg-white rounded-[2rem] card-shadow border border-gray-100 p-8 md:p-12">
+            <div class="inline-block bg-blue-600 text-white px-6 py-1.5 rounded-full text-sm font-bold mb-6">Materi 1</div>
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Apa itu Kekongruenan?</h2>
+            <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                Dua bangun datar dikatakan <strong>Kongruen</strong> jika mereka memiliki bentuk dan ukuran yang benar-benar sama. Singkatnya, mereka adalah "kembar identik".
+            </p>
+            
+            <div class="bg-blue-50 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-around gap-6 mb-8">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-blue-600 rounded-lg flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-2">A</div>
+                    <span class="text-sm font-semibold text-blue-800">Bangun A</span>
+                </div>
+                <div class="text-4xl text-blue-400 font-serif">≅</div>
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-blue-600 rounded-lg flex items-center justify-center text-white text-3xl font-bold shadow-lg mb-2">B</div>
+                    <span class="text-sm font-semibold text-blue-800">Bangun B</span>
+                </div>
+            </div>
+
+            <div class="math-box p-6 rounded-r-xl">
+                <h4 class="font-bold text-blue-900 mb-4 text-lg">Dua syarat utama kekongruenan:</h4>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-center gap-3">
+                        <span class="text-blue-600 text-xl">●</span>
+                        <span>Sisi-sisi yang bersesuaian <strong>sama panjang</strong>.</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="text-blue-600 text-xl">●</span>
+                        <span>Sudut-sudut yang bersesuaian <strong>sama besar</strong>.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MATERI 2: SEGITIGA -->
+        <section class="bg-white rounded-[2rem] card-shadow border border-gray-100 p-8 md:p-12">
+            <div class="inline-block bg-blue-600 text-white px-6 py-1.5 rounded-full text-sm font-bold mb-6">Materi 2</div>
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Kekongruenan pada Segitiga</h2>
+            <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                Khusus untuk segitiga, kita tidak perlu mengecek semua sisi dan sudut. Cukup gunakan aturan praktis (postulat) berikut ini:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-300 transition-colors">
+                    <h5 class="font-bold text-blue-700 mb-2">1. Sisi - Sisi - Sisi (S - S - S)</h5>
+                    <p class="text-sm text-gray-600 italic leading-relaxed">Ketiga sisi yang bersesuaian pada kedua segitiga memiliki panjang yang sama.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-300 transition-colors">
+                    <h5 class="font-bold text-blue-700 mb-2">2. Sisi - Sudut - Sisi (S - Sd - S)</h5>
+                    <p class="text-sm text-gray-600 italic leading-relaxed">Dua sisi sama panjang dan satu sudut yang terletak di antara kedua sisi tersebut sama besar.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-300 transition-colors">
+                    <h5 class="font-bold text-blue-700 mb-2">3. Sudut - Sisi - Sudut (Sd - S - Sd)</h5>
+                    <p class="text-sm text-gray-600 italic leading-relaxed">Dua sudut sama besar dan satu sisi yang terletak di antara kedua sudut tersebut sama panjang.</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-300 transition-colors">
+                    <h5 class="font-bold text-blue-700 mb-2">4. Sudut - Sudut - Sisi (Sd - Sd - S)</h5>
+                    <p class="text-sm text-gray-600 italic leading-relaxed">Dua sudut sama besar dan satu sisi di hadapan salah satu sudut tersebut sama panjang.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTOH SOAL & PEMBAHASAN BERTAHAP -->
+        <section class="space-y-8">
+            <h2 class="text-3xl font-bold text-blue-900 text-center">Contoh Soal & Pembahasan</h2>
+            
+            <!-- Contoh Soal 1 -->
+            <div class="bg-white rounded-3xl p-8 card-shadow border border-gray-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Contoh 1</span>
+                </div>
+                <p class="text-xl font-semibold text-gray-800 mb-8 leading-relaxed">
+                    Diberikan segitiga ABC dan segitiga PQR yang kongruen. Diketahui panjang AB = 6 cm, BC = 8 cm, dan sudut B = 90°. Hitunglah panjang sisi PR pada segitiga PQR!
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">1</span>
+                            Analisis Soal
+                        </p>
+                        <p class="text-gray-700">Karena <span class="symbol">ΔABC ≅ ΔPQR</span>, maka:</p>
+                        <ul class="list-disc ml-6 mt-2 text-gray-700">
+                            <li>Sisi AC bersesuaian dengan sisi PR</li>
+                            <li>Panjang AC = Panjang PR</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">2</span>
+                            Langkah Perhitungan (Pythagoras)
+                        </p>
+                        <p class="text-gray-700 mb-4">Kita cari panjang AC terlebih dahulu menggunakan rumus Pythagoras pada segitiga ABC:</p>
+                        <div class="bg-white p-6 rounded-xl math-display text-center shadow-inner">
+                            AC² = AB² + BC² <br>
+                            AC² = 6² + 8² <br>
+                            AC² = 36 + 64 <br>
+                            AC² = 100 <br>
+                            AC = √100 <br>
+                            <strong>AC = 10 cm</strong>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <p class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-xs">3</span>
+                            Hasil Akhir
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Berdasarkan syarat kekongruenan, karena AC = 10 cm dan AC bersesuaian dengan PR, maka: <br>
+                            <span class="text-xl font-bold text-green-700">Panjang PR = 10 cm</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contoh Soal 2 -->
+            <div class="bg-white rounded-3xl p-8 card-shadow border border-gray-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Contoh 2</span>
+                </div>
+                <p class="text-xl font-semibold text-gray-800 mb-8 leading-relaxed">
+                    Perhatikan dua segitiga berikut. Segitiga KLM memiliki sudut K = 40°, sudut L = 60°, dan panjang KL = 12 cm. Segitiga XYZ memiliki sudut X = 40°, sudut Y = 60°, dan panjang XY = 12 cm. Apakah kedua segitiga tersebut kongruen?
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">1</span>
+                            Identifikasi Bagian yang Bersesuaian
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 math-display text-base bg-white p-4 rounded-xl shadow-inner">
+                            <div>
+                                <strong>Segitiga KLM:</strong><br>
+                                ∠K = 40°<br>
+                                ∠L = 60°<br>
+                                KL = 12 cm (Sisi di antara sudut)
+                            </div>
+                            <div class="border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-4">
+                                <strong>Segitiga XYZ:</strong><br>
+                                ∠X = 40°<br>
+                                ∠Y = 60°<br>
+                                XY = 12 cm (Sisi di antara sudut)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">2</span>
+                            Penerapan Aturan Kekongruenan
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Kedua segitiga memiliki: <br>
+                            1. Sudut yang sama besar (40°)<br>
+                            2. Panjang sisi yang sama (12 cm)<br>
+                            3. Sudut yang sama besar (60°)<br>
+                            Ini memenuhi aturan <strong>Sudut - Sisi - Sudut (Sd - S - Sd)</strong>.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <p class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-xs">3</span>
+                            Kesimpulan
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Karena memenuhi salah satu aturan kekongruenan segitiga, maka: <br>
+                            <span class="text-xl font-bold text-green-700">Ya, ΔKLM dan ΔXYZ adalah Kongruen</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contoh Soal 3 -->
+            <div class="bg-white rounded-3xl p-8 card-shadow border border-gray-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Contoh 3</span>
+                </div>
+                <p class="text-xl font-semibold text-gray-800 mb-8 leading-relaxed">
+                    Dua segitiga ABC dan DEF adalah kongruen. Diketahui sudut A = 50° dan sudut B = 70°. Jika sudut D bersesuaian dengan sudut A, berapakah besar sudut F?
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">1</span>
+                            Gunakan Sifat Jumlah Sudut Segitiga
+                        </p>
+                        <p class="text-gray-700 mb-4">Pertama, cari besar sudut C pada segitiga ABC. Ingat, jumlah sudut dalam segitiga selalu 180°:</p>
+                        <div class="bg-white p-6 rounded-xl math-display text-center shadow-inner">
+                            ∠A + ∠B + ∠C = 180° <br>
+                            50° + 70° + ∠C = 180° <br>
+                            120° + ∠C = 180° <br>
+                            ∠C = 180° - 120° <br>
+                            <strong>∠C = 60°</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">2</span>
+                            Hubungkan dengan Kekongruenan
+                        </p>
+                        <p class="text-gray-700">Karena <span class="symbol">ΔABC ≅ ΔDEF</span>, maka sudut-sudut yang bersesuaian pasti sama besar:</p>
+                        <ul class="list-disc ml-6 mt-2 text-gray-700">
+                            <li>∠A = ∠D = 50°</li>
+                            <li>∠B = ∠E = 70°</li>
+                            <li>∠C = ∠F = 60°</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <p class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-xs">3</span>
+                            Kesimpulan
+                        </p>
+                        <p class="text-gray-700">
+                            Berdasarkan analisis di atas, besar sudut F adalah: <br>
+                            <span class="text-xl font-bold text-green-700">∠F = 60°</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contoh Soal 4 -->
+            <div class="bg-white rounded-3xl p-8 card-shadow border border-gray-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider">Contoh 4</span>
+                </div>
+                <p class="text-xl font-semibold text-gray-800 mb-8 leading-relaxed">
+                    Terdapat dua trapesium sama kaki ABCD dan PQRS yang kongruen. Jika panjang sisi sejajar AB = 10 cm, CD = 16 cm, dan tinggi trapesium ABCD adalah 4 cm, berapakah luas trapesium PQRS?
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">1</span>
+                            Analisis Kekongruenan Bangun
+                        </p>
+                        <p class="text-gray-700">Karena trapesium ABCD dan PQRS kongruen, maka semua ukuran komponennya (sisi dan tinggi) adalah sama.</p>
+                        <p class="mt-2 text-gray-700 font-semibold">Komponen PQRS:</p>
+                        <ul class="list-disc ml-6 text-gray-700">
+                            <li>Sisi atas (a) = 10 cm</li>
+                            <li>Sisi bawah (b) = 16 cm</li>
+                            <li>Tinggi (t) = 4 cm</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-blue-50 rounded-2xl">
+                        <p class="font-bold text-blue-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs">2</span>
+                            Hitung Luas Trapesium
+                        </p>
+                        <p class="text-gray-700 mb-4">Gunakan rumus luas trapesium = (jumlah sisi sejajar) x tinggi / 2:</p>
+                        <div class="bg-white p-6 rounded-xl math-display text-center shadow-inner">
+                            Luas = ( (a + b) x t ) / 2 <br>
+                            Luas = ( (10 + 16) x 4 ) / 2 <br>
+                            Luas = ( 26 x 4 ) / 2 <br>
+                            Luas = 104 / 2 <br>
+                            <strong>Luas = 52 cm²</strong>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                        <p class="font-bold text-green-800 mb-3 flex items-center gap-2">
+                            <span class="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-xs">3</span>
+                            Kesimpulan
+                        </p>
+                        <p class="text-gray-700">
+                            Karena ukuran trapesium PQRS sama dengan ABCD, maka: <br>
+                            <span class="text-xl font-bold text-green-700">Luas Trapesium PQRS = 52 cm²</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KUIS INTERAKTIF -->
+        <section id="quiz-area" class="bg-blue-900 rounded-[3rem] p-10 md:p-16 text-white text-center">
+            <div id="quiz-intro">
+                <h2 class="text-4xl font-bold mb-6">Waktunya Kuis!</h2>
+                <p class="text-blue-200 mb-10 text-lg">Uji pemahamanmu dengan 5 pertanyaan seru.</p>
+                <button onclick="initQuiz()" class="px-12 py-4 bg-white text-blue-900 rounded-full font-bold text-lg hover:bg-blue-50 transition shadow-xl transform hover:scale-105">Mulai Sekarang</button>
+            </div>
+
+            <div id="quiz-content" class="hidden text-left max-w-2xl mx-auto">
+                <div class="flex justify-between mb-6">
+                    <span id="q-num" class="font-bold text-blue-300 italic text-sm">Pertanyaan 1/5</span>
+                    <div class="w-40 h-2 bg-blue-800 rounded-full mt-2">
+                        <div id="q-progress" class="h-full bg-blue-400 rounded-full transition-all" style="width: 20%"></div>
+                    </div>
+                </div>
+                <h3 id="q-text" class="text-2xl font-bold mb-8 leading-tight"></h3>
+                <div id="q-options" class="space-y-4"></div>
+            </div>
+
+            <div id="quiz-finish" class="hidden">
+                <h2 class="text-3xl font-bold mb-2">Hasil Analisis Kamu</h2>
+                <p id="score-text" class="text-6xl font-black text-blue-400 mb-6">0/5</p>
+                <div id="analysis-box" class="bg-white/10 p-8 rounded-3xl mb-10 text-blue-100 text-lg leading-relaxed italic"></div>
+                <button onclick="location.reload()" class="px-10 py-3 bg-blue-600 rounded-full font-bold hover:bg-blue-700 transition border border-blue-500 shadow-lg">Ulangi Materi</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white py-12 border-t border-gray-100 text-center">
+        <h3 class="text-blue-600 font-bold text-xl mb-2">Ozanmath</h3>
+        <p class="text-gray-400 text-sm">Platform Belajar Matematika Terlengkap</p>
+        <p class="text-gray-300 text-xs mt-4">© 2024 Semua Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        const questions = [
+            { q: "Apa nama simbol '≅' dalam matematika?", o: ["Sebangun", "Sejajar", "Kongruen", "Sama dengan"], a: 2 },
+            { q: "Dua segitiga dikatakan kongruen jika memiliki bentuk dan ukuran yang...", o: ["Berbeda", "Mirip saja", "Sama persis", "Berlawanan"], a: 2 },
+            { q: "Manakah yang merupakan salah satu aturan kekongruenan segitiga?", o: ["Sisi - Sisi - Sudut", "Sisi - Sisi - Sisi", "Sudut - Sudut - Sudut", "Sisi - Warna - Sudut"], a: 1 },
+            { q: "Jika Segitiga A kongruen dengan Segitiga B, dan Luas A adalah 45 cm², maka luas B adalah...", o: ["22.5 cm²", "90 cm²", "45 cm²", "Tidak dapat ditentukan"], a: 2 },
+            { q: "Dua lingkaran akan selalu kongruen jika memiliki...", o: ["Warna yang sama", "Titik pusat yang sama", "Panjang jari-jari yang sama", "Letak yang sama"], a: 2 }
+        ];
+
+        let qIdx = 0;
+        let score = 0;
+
+        function initQuiz() {
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-content').classList.remove('hidden');
+            renderQ();
+        }
+
+        function renderQ() {
+            const current = questions[qIdx];
+            document.getElementById('q-num').innerText = `Pertanyaan ${qIdx + 1}/5`;
+            document.getElementById('q-progress').style.width = `${((qIdx + 1) / 5) * 100}%`;
+            document.getElementById('q-text').innerText = current.q;
+            
+            const optDiv = document.getElementById('q-options');
+            optDiv.innerHTML = '';
+            current.o.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/20 hover:border-blue-400 transition-all font-medium text-lg";
+                btn.innerText = opt;
+                btn.onclick = () => handleAns(i);
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function handleAns(i) {
+            if(i === questions[qIdx].a) score++;
+            qIdx++;
+            if(qIdx < questions.length) renderQ();
+            else finishQuiz();
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-content').classList.add('hidden');
+            document.getElementById('quiz-finish').classList.remove('hidden');
+            document.getElementById('score-text').innerText = `${score}/5`;
+            
+            let msg = "";
+            if(score === 5) msg = "Luar biasa! Kamu sudah benar-benar menguasai konsep kekongruenan. Pertahankan prestasi ini!";
+            else if(score >= 3) msg = "Kerja yang bagus! Kamu sudah paham dasarnya, tinggal lebih teliti lagi pada aturan-aturan segitiga.";
+            else msg = "Jangan berkecil hati. Matematika memang butuh latihan. Yuk, coba baca lagi materi di atas pelan-pelan!";
+            
+            document.getElementById('analysis-box').innerText = msg;
+        }
+    </script>
+</body>
+</html>

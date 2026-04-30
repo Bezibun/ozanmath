@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplorasi Garis & Sudut</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .angle-sector {
+            fill: transparent;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .angle-active {
+            fill: var(--active-color) !important;
+            stroke: var(--active-stroke) !important;
+            opacity: 0.6;
+        }
+
+        .bento-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        .quiz-option {
+            transition: all 0.2s ease;
+        }
+        .quiz-option.correct { background-color: #dcfce7; border-color: #22c55e; color: #166534; }
+        .quiz-option.wrong { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+
+        .transversal-btn {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .transversal-btn.active {
+            background-color: #f1f5f9;
+            border-left-color: #3b82f6;
+            transform: translateX(8px);
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 leading-relaxed">
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 px-6 overflow-hidden bg-white">
+        <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-6 tracking-wider uppercase">
+                <i class="fas fa-shapes"></i> Geometri Interaktif
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+                Pahami <span class="text-blue-600">Garis</span> <br class="hidden md:block"> & Hubungan <span class="text-indigo-600">Sudut</span>
+            </h1>
+            <p class="text-lg text-slate-500 max-w-2xl mb-10">
+                Visualisasi mandiri untuk membantu siswa SMP memahami konsep garis sejajar, jenis sudut, dan pola geometri dengan cara yang menyenangkan.
+            </p>
+            <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm bento-item">
+                    <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-200">
+                        <i class="fas fa-arrows-left-right"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Eksplorasi Garis</h3>
+                    <p class="text-sm text-slate-500">Pelajari hubungan antara garis sejajar dan berpotongan.</p>
+                </div>
+                <div class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm bento-item">
+                    <div class="w-12 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-indigo-200">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Ukur Sudut</h3>
+                    <p class="text-sm text-slate-500">Klik dan lihat bagaimana sudut diukur secara akurat.</p>
+                </div>
+                <div class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm bento-item">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-4 shadow-lg shadow-emerald-200">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1">Tes Kemampuan</h3>
+                    <p class="text-sm text-slate-500">Uji pemahamanmu dengan kuis berbasis analisis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-6 space-y-24 pb-32">
+
+        <!-- Section 1: Konsep Garis -->
+        <section>
+            <div class="flex items-end justify-between mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight">Hubungan Dua Garis</h2>
+                    <p class="text-slate-500">Dasar dari pembentukan sudut dalam geometri.</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group p-8 bg-white rounded-[2rem] border border-slate-200 bento-item">
+                    <div class="h-40 flex items-center justify-center bg-slate-50 rounded-2xl mb-6 overflow-hidden">
+                        <svg width="240" height="120" viewBox="0 0 240 120">
+                            <line x1="40" y1="40" x2="200" y2="40" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
+                            <line x1="40" y1="80" x2="200" y2="80" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
+                            <path d="M110 30 L125 40 L110 50 M110 70 L125 80 L110 90" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Garis Sejajar</h3>
+                    <p class="text-slate-600 text-sm">Dua garis yang berada pada satu bidang dan tidak akan pernah berpotongan meski diperpanjang tanpa batas.</p>
+                </div>
+                <div class="group p-8 bg-white rounded-[2rem] border border-slate-200 bento-item">
+                    <div class="h-40 flex items-center justify-center bg-slate-50 rounded-2xl mb-6 overflow-hidden">
+                        <svg width="240" height="120" viewBox="0 0 240 120">
+                            <line x1="60" y1="20" x2="180" y2="100" stroke="#6366f1" stroke-width="6" stroke-linecap="round" />
+                            <line x1="180" y1="20" x2="60" y2="100" stroke="#6366f1" stroke-width="6" stroke-linecap="round" />
+                            <circle cx="120" cy="60" r="6" fill="#1e293b" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Garis Berpotongan</h3>
+                    <p class="text-slate-600 text-sm">Dua garis yang memiliki satu titik persekutuan yang disebut titik potong.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Jenis Sudut Interaktif (Updated Descriptions) -->
+        <section>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3 tracking-tight">Klasifikasi Sudut</h2>
+                <p class="text-slate-500">Klik kartu untuk melihat simulasi pengukuran busur derajat digital.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button onclick="demoAngle('Sudut Lancip', 45, '#3b82f6', 'Sudut yang kurang dari 90 derajat tapi bukan 0 derajat.')" class="p-6 bg-white rounded-3xl border-2 border-slate-100 hover:border-blue-500 transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Sudut Lancip</span>
+                </button>
+                <button onclick="demoAngle('Sudut Siku-siku', 90, '#ef4444', 'Sudut yang besarnya tepat 90 derajat.')" class="p-6 bg-white rounded-3xl border-2 border-slate-100 hover:border-red-500 transition-all group">
+                    <div class="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-square-full text-[10px]"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Siku-siku</span>
+                </button>
+                <button onclick="demoAngle('Sudut Tumpul', 135, '#10b981', 'Sudut yang besarnya lebih dari 90 derajat tapi kurang dari 180 derajat.')" class="p-6 bg-white rounded-3xl border-2 border-slate-100 hover:border-emerald-500 transition-all group">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Sudut Tumpul</span>
+                </button>
+                <button onclick="demoAngle('Sudut Lurus', 180, '#8b5cf6', 'Sudut yang besarnya 180 derajat.')" class="p-6 bg-white rounded-3xl border-2 border-slate-100 hover:border-purple-500 transition-all group">
+                    <div class="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mx-auto mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <span class="font-bold text-slate-700">Sudut Lurus</span>
+                </button>
+            </div>
+
+            <div id="angle-viz" class="hidden bg-slate-900 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-12 text-white overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-[0.03] rounded-full -mr-32 -mt-32"></div>
+                <div class="relative w-56 h-56 flex items-center justify-center bg-white/5 rounded-full border border-white/10">
+                    <svg viewBox="0 0 200 200" class="w-48 h-48 overflow-visible">
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="20" />
+                        <line x1="100" y1="100" x2="180" y2="100" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                        <line id="demo-arm" x1="100" y1="100" x2="180" y2="100" stroke="#facc15" stroke-width="4" stroke-linecap="round" class="transition-all duration-1000 ease-out" />
+                        <text x="100" y="70" id="demo-text" text-anchor="middle" fill="#facc15" class="text-3xl font-bold">0°</text>
+                    </svg>
+                </div>
+                <div>
+                    <h3 id="demo-title" class="text-3xl font-bold mb-3">Pilih Sudut</h3>
+                    <p id="demo-desc" class="text-slate-400 max-w-md">Klik kategori di atas untuk memvisualisasikan besar sudut pada busur derajat digital.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Transversal 2.0 (MODERNIZED) -->
+        <section>
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4 tracking-tight">Hubungan Antar Sudut</h2>
+                    <p class="text-slate-500 mb-8 leading-relaxed">
+                        Ketika sebuah garis transversal memotong dua garis sejajar, tercipta 8 sudut dengan hubungan yang unik.
+                    </p>
+                    
+                    <div class="space-y-3" id="transversal-controls">
+                        <button onclick="showTransversal('sehadap', [1,5], '#3b82f6', 'Sudut Sehadap', 'Sudut yang menghadap arah yang sama. Besarnya selalu SAMA.')" class="transversal-btn w-full p-5 rounded-2xl bg-white border border-slate-100 text-left flex justify-between items-center group">
+                            <span class="font-bold text-slate-700">Sudut Sehadap (1 & 5)</span>
+                            <i class="fas fa-chevron-right text-slate-300 group-hover:text-blue-500"></i>
+                        </button>
+                        <button onclick="showTransversal('dalam-berseberangan', [3,6], '#10b981', 'Dalam Berseberangan', 'Terletak di bagian dalam garis sejajar dan berseberangan arah. Besarnya SAMA.')" class="transversal-btn w-full p-5 rounded-2xl bg-white border border-slate-100 text-left flex justify-between items-center group">
+                            <span class="font-bold text-slate-700">Dalam Berseberangan (3 & 6)</span>
+                            <i class="fas fa-chevron-right text-slate-300 group-hover:text-emerald-500"></i>
+                        </button>
+                        <button onclick="showTransversal('luar-berseberangan', [1,8], '#8b5cf6', 'Luar Berseberangan', 'Terletak di luar garis sejajar dan berseberangan. Besarnya SAMA.')" class="transversal-btn w-full p-5 rounded-2xl bg-white border border-slate-100 text-left flex justify-between items-center group">
+                            <span class="font-bold text-slate-700">Luar Berseberangan (1 & 8)</span>
+                            <i class="fas fa-chevron-right text-slate-300 group-hover:text-purple-500"></i>
+                        </button>
+                        <button onclick="showTransversal('dalam-sepihak', [3,5], '#ef4444', 'Dalam Sepihak', 'Berada di dalam dan sisi yang sama. Jumlah keduanya adalah 180°.')" class="transversal-btn w-full p-5 rounded-2xl bg-white border border-slate-100 text-left flex justify-between items-center group">
+                            <span class="font-bold text-slate-700">Dalam Sepihak (3 + 5 = 180°)</span>
+                            <i class="fas fa-chevron-right text-slate-300 group-hover:text-red-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 sticky top-10">
+                    <div class="p-10 bg-white rounded-[3rem] border border-slate-200 shadow-xl shadow-slate-100 relative">
+                        <svg viewBox="0 0 400 350" class="w-full h-auto select-none drop-shadow-sm">
+                            <line x1="40" y1="100" x2="360" y2="100" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
+                            <line x1="40" y1="240" x2="360" y2="240" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
+                            <line x1="120" y1="30" x2="280" y2="320" stroke="#64748b" stroke-width="3" stroke-dasharray="6" />
+
+                            <path id="angle-1" class="angle-sector" d="M 158 100 L 135 100 A 25 25 0 0 1 146 75 Z" />
+                            <path id="angle-2" class="angle-sector" d="M 158 100 L 146 75 A 25 25 0 0 1 182 100 Z" />
+                            <path id="angle-3" class="angle-sector" d="M 158 100 L 182 100 A 25 25 0 0 1 170 125 Z" />
+                            <path id="angle-4" class="angle-sector" d="M 158 100 L 170 125 A 25 25 0 0 1 135 100 Z" />
+                            
+                            <path id="angle-5" class="angle-sector" d="M 235 240 L 212 240 A 25 25 0 0 1 223 215 Z" />
+                            <path id="angle-6" class="angle-sector" d="M 235 240 L 223 215 A 25 25 0 0 1 258 240 Z" />
+                            <path id="angle-7" class="angle-sector" d="M 235 240 L 258 240 A 25 25 0 0 1 247 265 Z" />
+                            <path id="angle-8" class="angle-sector" d="M 235 240 L 247 265 A 25 25 0 0 1 212 240 Z" />
+
+                            <g class="font-bold text-xs" fill="#475569" style="font-family: sans-serif">
+                                <text x="130" y="85">1</text><text x="175" y="85">2</text>
+                                <text x="180" y="130">3</text><text x="140" y="130">4</text>
+                                <text x="210" y="225">5</text><text x="250" y="225">6</text>
+                                <text x="255" y="270">7</text><text x="215" y="270">8</text>
+                            </g>
+                        </svg>
+
+                        <div id="transversal-tip" class="mt-8 p-6 rounded-2xl border-2 border-dashed border-slate-100 text-center text-slate-500">
+                            <i class="fas fa-hand-pointer mb-2 block text-2xl"></i>
+                            Pilih hubungan sudut di kiri untuk menyorot gambar
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Kuis Modern -->
+        <section class="max-w-4xl mx-auto">
+            <div class="bg-indigo-600 rounded-[3rem] p-10 md:p-16 text-white shadow-2xl shadow-indigo-200">
+                <div id="quiz-container">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="px-4 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-widest">Kuis Interaktif</span>
+                        <span id="quiz-status" class="text-sm font-medium opacity-80">Soal 1/5</span>
+                    </div>
+                    
+                    <div id="quiz-content">
+                        <h2 id="q-text" class="text-2xl md:text-3xl font-bold mb-8 leading-tight">Siap untuk menguji pengetahuanmu?</h2>
+                        <div id="q-options" class="grid gap-4 mb-10">
+                            <!-- Dynamic Options -->
+                        </div>
+                        <div class="flex justify-end">
+                            <button id="q-next" disabled onclick="nextQuestion()" class="px-10 py-4 bg-white text-indigo-600 rounded-2xl font-bold shadow-lg opacity-50 cursor-not-allowed transition-all hover:bg-slate-50">
+                                Lanjut <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="quiz-result" class="hidden text-center">
+                        <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-4xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-2">Analisis Performa</h3>
+                        <p id="analysis-text" class="text-indigo-100 mb-10 max-w-md mx-auto"></p>
+                        <div class="grid grid-cols-2 gap-4 mb-10 max-w-xs mx-auto">
+                            <div class="p-4 bg-white/10 rounded-2xl">
+                                <div class="text-2xl font-bold" id="res-score">0</div>
+                                <div class="text-xs opacity-60">Skor</div>
+                            </div>
+                            <div class="p-4 bg-white/10 rounded-2xl">
+                                <div class="text-2xl font-bold" id="res-level">-</div>
+                                <div class="text-xs opacity-60">Level</div>
+                            </div>
+                        </div>
+                        <button onclick="resetQuiz()" class="px-8 py-3 bg-white text-indigo-600 rounded-xl font-bold hover:scale-105 transition">Coba Lagi</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- ANGLE DEMO LOGIC ---
+        function demoAngle(title, angle, color, description) {
+            const viz = document.getElementById('angle-viz');
+            viz.classList.remove('hidden');
+            viz.style.borderBottom = `6px solid ${color}`;
+            
+            document.getElementById('demo-title').textContent = title;
+            document.getElementById('demo-title').style.color = color;
+            document.getElementById('demo-desc').textContent = description;
+            
+            const arm = document.getElementById('demo-arm');
+            const text = document.getElementById('demo-text');
+            arm.style.transformOrigin = "100px 100px";
+            arm.style.transform = `rotate(-${angle}deg)`;
+            
+            let current = 0;
+            const speed = angle / 50; 
+            const interval = setInterval(() => {
+                current += speed;
+                if(current >= angle) {
+                    current = angle;
+                    clearInterval(interval);
+                }
+                text.textContent = Math.round(current) + "°";
+                text.style.fill = color;
+            }, 15);
+        }
+
+        // --- TRANSVERSAL LOGIC ---
+        function showTransversal(type, ids, color, title, desc) {
+            document.querySelectorAll('.angle-sector').forEach(p => {
+                p.classList.remove('angle-active');
+                p.style.setProperty('--active-color', 'transparent');
+            });
+            
+            document.querySelectorAll('.transversal-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            ids.forEach(id => {
+                const el = document.getElementById(`angle-${id}`);
+                el.style.setProperty('--active-color', color);
+                el.style.setProperty('--active-stroke', color);
+                el.classList.add('angle-active');
+            });
+
+            const tip = document.getElementById('transversal-tip');
+            tip.innerHTML = `<h4 class="font-bold text-slate-800 text-lg" style="color:${color}">${title}</h4><p class="text-sm mt-1">${desc}</p>`;
+            tip.style.borderColor = color;
+            tip.style.backgroundColor = `${color}05`;
+        }
+
+        // --- QUIZ DATA & LOGIC ---
+        const quizData = [
+            { q: "Apa nama sudut yang besarnya tepat 180 derajat?", a: ["Sudut Lurus", "Sudut Tumpul", "Sudut Siku-siku", "Sudut Refleks"], c: 0 },
+            { q: "Dua garis yang tidak pernah berpotongan disebut garis...", a: ["Berhimpit", "Berpotongan", "Sejajar", "Transversal"], c: 2 },
+            { q: "Sudut Sehadap memiliki besar sudut yang...", a: ["Berbeda", "Sama Besar", "Berpelurus", "Berpenyiku"], c: 1 },
+            { q: "Jika Sudut A dan B Dalam Sepihak, maka A + B = ...", a: ["90°", "180°", "360°", "Tidak tentu"], c: 1 },
+            { q: "Sudut yang besarnya lebih dari 90 derajat tapi kurang dari 180 derajat adalah...", a: ["Sudut Tumpul", "Sudut Siku-siku", "Sudut Lancip", "Sudut Lurus"], c: 0 }
+        ];
+
+        let curQ = 0;
+        let score = 0;
+
+        function initQuiz() {
+            const data = quizData[curQ];
+            document.getElementById('q-text').textContent = data.q;
+            document.getElementById('quiz-status').textContent = `Soal ${curQ + 1}/${quizData.length}`;
+            
+            const container = document.getElementById('q-options');
+            container.innerHTML = '';
+            
+            data.a.forEach((opt, i) => {
+                const b = document.createElement('button');
+                b.className = "quiz-option w-full p-5 rounded-2xl bg-white/10 border border-white/20 text-left font-semibold hover:bg-white/20 transition-all";
+                b.textContent = opt;
+                b.onclick = () => selectOpt(i, b);
+                container.appendChild(b);
+            });
+            document.getElementById('q-next').disabled = true;
+            document.getElementById('q-next').classList.add('opacity-50');
+        }
+
+        function selectOpt(idx, el) {
+            const btns = document.querySelectorAll('.quiz-option');
+            const correct = quizData[curQ].c;
+            
+            btns.forEach((btn, i) => {
+                btn.disabled = true;
+                if(i === correct) btn.classList.add('correct', 'bg-white', 'text-green-700');
+                else if(i === idx) btn.classList.add('wrong', 'bg-white', 'text-red-700');
+            });
+
+            if(idx === correct) score++;
+            
+            const nextBtn = document.getElementById('q-next');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function nextQuestion() {
+            if(curQ < quizData.length - 1) {
+                curQ++;
+                initQuiz();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-content').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            
+            const finalScore = (score / quizData.length) * 100;
+            document.getElementById('res-score').textContent = finalScore;
+            
+            let analysis = "";
+            let level = "";
+            if(finalScore === 100) { 
+                analysis = "Luar biasa! Kamu menguasai konsep dasar geometri dengan sempurna."; 
+                level = "Master";
+            } else if(finalScore >= 60) {
+                analysis = "Bagus! Kamu memahami sebagian besar materi, coba perhatikan lagi detail sudut transversal.";
+                level = "Menengah";
+            } else {
+                analysis = "Jangan menyerah. Cobalah ulangi visualisasi interaktif di atas untuk memahami pola sudut.";
+                level = "Pemula";
+            }
+            
+            document.getElementById('analysis-text').textContent = analysis;
+            document.getElementById('res-level').textContent = level;
+        }
+
+        function resetQuiz() {
+            curQ = 0; score = 0;
+            document.getElementById('quiz-content').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            initQuiz();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Belajar Lingkaran Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #38bdf8;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 50%, #f1f5f9 100%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .visual-box {
+            background: #f1f5f9;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            height: 140px;
+            overflow: hidden;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 640px) {
+            .visual-box { height: 120px; }
+            h2 { font-size: 2.25rem !important; }
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Centered Brand Header -->
+    <div class="absolute top-6 sm:top-10 left-0 right-0 z-50 flex justify-center px-6">
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tighter text-blue-600">Ozmath<span class="text-slate-400">.</span></h1>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-screen flex items-center relative pt-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+            <div class="z-10 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                    </span>
+                    <span>Modul Interaktif v3.0</span>
+                </div>
+                <h2 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 sm:mb-8">
+                    Anatomi <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Lingkaran.</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-slate-500 mb-8 sm:mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Visualisasi materi geometri yang memudahkan siswa memahami setiap jengkal bagian lingkaran secara nyata dan responsif.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                    <a href="#materi" class="w-full sm:w-auto bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all flex justify-center items-center group">
+                        Lihat Bagian Lingkaran
+                        <i class="fa-solid fa-arrow-down ml-3 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative flex justify-center items-center">
+                <div class="absolute w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                <div class="relative floating">
+                    <div class="w-56 h-56 md:w-80 md:h-80 rounded-full border-[10px] sm:border-[12px] border-white shadow-2xl glass flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="w-full h-full p-4">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 2" />
+                            <line x1="50" y1="50" x2="80" y2="20" stroke="#2563eb" stroke-width="3" />
+                            <circle cx="50" cy="50" r="3" fill="#1e40af" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bagian-Bagian Lingkaran Detail -->
+    <section id="materi" class="py-20 sm:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 italic">Bagian-Bagian Lingkaran</h2>
+                <p class="text-lg text-slate-500">Setiap elemen memiliki peran unik dalam membentuk sebuah lingkaran yang sempurna.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Card 1: Jari-jari & Diameter -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <line x1="50" y1="50" x2="90" y2="50" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="10" y1="50" x2="50" y2="50" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4"/>
+                            <circle cx="50" cy="50" r="3" fill="#1e40af"/>
+                            <text x="65" y="45" fill="#2563eb" font-size="8" font-weight="bold">r</text>
+                            <text x="25" y="45" fill="#94a3b8" font-size="8">d</text>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Jari-jari & Diameter</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-4 flex-grow">
+                        Jari-jari (r) adalah jarak pusat ke tepi. Diameter (d) adalah garis lurus melewati pusat, d = 2r.
+                    </p>
+                    <div class="text-xs font-mono bg-blue-50 p-2 rounded-lg text-blue-700 text-center">d = 2 × r</div>
+                </div>
+
+                <!-- Card 2: Busur -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <path d="M 84.6 23.4 A 40 40 0 0 1 84.6 76.6" fill="none" stroke="#06b6d4" stroke-width="6" stroke-linecap="round"/>
+                            <text x="88" y="52" fill="#06b6d4" font-size="8" font-weight="bold">Busur</text>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Busur Lingkaran</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-grow">
+                        Garis lengkung pada keliling lingkaran yang menghubungkan dua titik sembarang.
+                    </p>
+                </div>
+
+                <!-- Card 3: Tali Busur -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <line x1="21.7" y1="21.7" x2="21.7" y2="78.3" stroke="#6366f1" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Tali Busur</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-grow">
+                        Garis lurus yang menghubungkan dua titik pada keliling lingkaran tanpa melalui pusat.
+                    </p>
+                </div>
+
+                <!-- Card 4: Juring -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <path d="M 50 50 L 84.6 23.4 A 40 40 0 0 1 84.6 76.6 Z" fill="#f97316" fill-opacity="0.2" stroke="#f97316" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Juring</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-grow">
+                        Daerah yang dibatasi oleh dua jari-jari dan sebuah busur. (Seperti potongan pizza).
+                    </p>
+                </div>
+
+                <!-- Card 5: Tembereng -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <path d="M 21.7 21.7 A 40 40 0 0 0 21.7 78.3 Z" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Tembereng</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-grow">
+                        Daerah yang dibatasi oleh tali busur dan busur lingkaran.
+                    </p>
+                </div>
+
+                <!-- Card 6: Apotema -->
+                <div class="glass p-6 sm:p-8 rounded-[40px] border border-slate-100 card-hover flex flex-col">
+                    <div class="visual-box">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+                            <line x1="21.7" y1="21.7" x2="21.7" y2="78.3" stroke="#cbd5e1" stroke-width="2"/>
+                            <line x1="50" y1="50" x2="21.7" y2="50" stroke="#f43f5e" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="50" cy="50" r="2" fill="#1e40af"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Apotema</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed flex-grow">
+                        Garis terpendek yang menghubungkan titik pusat dengan tali busur secara tegak lurus.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Interaktif -->
+    <section class="py-20 sm:py-32 bg-slate-900 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 italic">Simulation Lab</h2>
+                <p class="text-blue-300">Geser untuk mengubah ukuran lingkaran dan perhatikan nilainya.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-7 flex justify-center">
+                    <div class="relative bg-slate-800/50 p-6 sm:p-12 rounded-[40px] sm:rounded-[50px] border border-slate-700 w-full flex items-center justify-center min-h-[300px] sm:min-h-[450px] overflow-hidden">
+                        <div id="circle-visual" class="rounded-full border-4 border-blue-500 bg-blue-500/10 flex items-center justify-center transition-all duration-300" style="width: 140px; height: 140px;">
+                            <div class="w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white/5 border border-white/10 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] backdrop-blur-md">
+                        <label class="block text-blue-300 text-[10px] font-bold uppercase tracking-widest mb-6">Radius (cm)</label>
+                        <input type="range" id="r-slider" min="20" max="140" value="70" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer mb-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                <span class="block text-[10px] text-slate-400 uppercase mb-1">r</span>
+                                <span id="r-display" class="text-2xl font-bold text-white">70 cm</span>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 text-center">
+                                <span class="block text-[10px] text-slate-400 uppercase mb-1">d</span>
+                                <span id="d-display" class="text-2xl font-bold text-blue-400">140 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="p-6 rounded-[24px] bg-blue-600 text-white flex justify-between items-center">
+                            <span class="text-xs font-bold uppercase">Keliling</span>
+                            <span id="k-val" class="text-2xl font-black">439.82 cm</span>
+                        </div>
+                        <div class="p-6 rounded-[24px] bg-slate-800 text-white border border-slate-700 flex justify-between items-center">
+                            <span class="text-xs font-bold uppercase">Luas</span>
+                            <span id="l-val" class="text-2xl font-black">15,393.80 cm²</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="py-20 sm:py-32 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div id="quiz-container" class="bg-white p-8 sm:p-16 rounded-[40px] sm:rounded-[60px] shadow-2xl border border-slate-100 relative overflow-hidden transition-all duration-500">
+                <!-- Question View -->
+                <div id="quiz-view">
+                    <div class="flex justify-between items-center mb-8">
+                        <span id="q-badge" class="px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-extrabold uppercase tracking-widest">Question 1/5</span>
+                        <div id="timer" class="text-slate-400 text-sm font-bold"><i class="fa-regular fa-clock mr-2"></i>Kuis Aktif</div>
+                    </div>
+                    
+                    <h2 id="q-title" class="text-2xl sm:text-3xl font-bold mb-10 text-slate-900 leading-tight">Garis lurus yang menghubungkan pusat lingkaran dengan titik pada tali busur secara tegak lurus adalah...</h2>
+
+                    <div id="q-options" class="grid gap-4">
+                        <!-- Options generated by JS -->
+                    </div>
+
+                    <div id="q-feedback" class="hidden mt-8 p-6 rounded-[24px] font-bold transition-all"></div>
+                    
+                    <button id="q-next" onclick="next()" class="hidden mt-8 w-full py-5 bg-slate-900 text-white rounded-[24px] font-bold text-lg hover:bg-slate-800 transition shadow-xl">
+                        Lanjut <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Result View (Hidden initially) -->
+                <div id="result-view" class="hidden text-center py-10">
+                    <div class="w-24 h-24 bg-blue-600 text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6 shadow-2xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="text-3xl font-black mb-2">Analisis Hasil Belajar</h2>
+                    <p class="text-slate-500 mb-10">Berikut adalah evaluasi pemahaman kamu tentang lingkaran.</p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                        <div class="p-8 rounded-[35px] bg-slate-50 border border-slate-100">
+                            <span class="block text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-[0.2em]">Skor Akhir</span>
+                            <span id="score-text" class="text-6xl font-black text-blue-600">80</span>
+                        </div>
+                        <div class="p-8 rounded-[35px] bg-slate-50 border border-slate-100 flex flex-col justify-center">
+                            <span class="block text-[10px] font-bold uppercase text-slate-400 mb-2 tracking-[0.2em]">Status</span>
+                            <span id="status-text" class="text-2xl font-extrabold text-slate-900">Bagus Sekali!</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 p-8 rounded-[40px] text-left border border-blue-100">
+                        <h4 class="font-bold text-blue-900 mb-4 flex items-center">
+                            <i class="fa-solid fa-brain mr-3"></i> Analisis Kemampuan:
+                        </h4>
+                        <p id="analysis-desc" class="text-blue-800 leading-relaxed text-sm italic">
+                            Kamu memiliki pemahaman yang sangat kuat pada dasar-dasar lingkaran. Disarankan untuk mencoba soal aplikasi luas dan keliling pada bangun gabungan.
+                        </p>
+                    </div>
+
+                    <button onclick="location.reload()" class="mt-10 px-10 py-5 bg-slate-900 text-white rounded-[24px] font-bold hover:bg-slate-800 transition">
+                        Ulangi Belajar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-white text-center border-t border-slate-100">
+        <h3 class="text-2xl font-black text-blue-600 mb-2">Ozmath<span class="text-slate-300">.</span></h3>
+        <p class="text-slate-400 text-sm font-medium tracking-wide">Inovasi Pembelajaran Matematika Digital</p>
+    </footer>
+
+    <script>
+        // Interactive Logic
+        const slider = document.getElementById('r-slider');
+        const visual = document.getElementById('circle-visual');
+        const rDisp = document.getElementById('r-display');
+        const dDisp = document.getElementById('d-display');
+        const kVal = document.getElementById('k-val');
+        const lVal = document.getElementById('l-val');
+
+        slider.addEventListener('input', (e) => {
+            const r = parseInt(e.target.value);
+            const d = r * 2;
+            const pi = Math.PI;
+            const k = 2 * pi * r;
+            const l = pi * r * r;
+
+            visual.style.width = `${r * 2}px`;
+            visual.style.height = `${r * 2}px`;
+            
+            rDisp.textContent = `${r} cm`;
+            dDisp.textContent = `${d} cm`;
+            kVal.textContent = `${k.toLocaleString('id-ID', {maximumFractionDigits: 2})} cm`;
+            lVal.textContent = `${l.toLocaleString('id-ID', {maximumFractionDigits: 2})} cm²`;
+        });
+
+        // Expanded Quiz Logic (5 Questions)
+        const questions = [
+            {
+                q: "Garis lurus yang menghubungkan pusat lingkaran dengan titik pada tali busur secara tegak lurus adalah...",
+                a: ["Jari-jari", "Apotema", "Tali Busur", "Diameter"],
+                c: 1,
+                e: "Apotema selalu tegak lurus dengan tali busur dan merupakan jarak terpendek dari pusat."
+            },
+            {
+                q: "Daerah yang dibatasi oleh dua buah jari-jari dan sebuah busur disebut...",
+                a: ["Tembereng", "Apotema", "Juring", "Busur"],
+                c: 2,
+                e: "Juring adalah daerah seperti potongan kue yang dibatasi oleh dua jari-jari."
+            },
+            {
+                q: "Jika jari-jari lingkaran adalah 7 cm, berapakah kelilingnya? (Gunakan π = 22/7)",
+                a: ["22 cm", "44 cm", "154 cm", "14 cm"],
+                c: 1,
+                e: "Keliling = 2 × π × r = 2 × 22/7 × 7 = 44 cm."
+            },
+            {
+                q: "Bagian lingkaran yang berupa garis lengkung dan merupakan bagian dari keliling disebut...",
+                a: ["Tali Busur", "Jari-jari", "Busur", "Apotema"],
+                c: 2,
+                e: "Busur adalah garis lengkung pada tepi lingkaran."
+            },
+            {
+                q: "Daerah yang dibatasi oleh tali busur dan busur lingkaran disebut...",
+                a: ["Juring", "Tembereng", "Apotema", "Diameter"],
+                c: 1,
+                e: "Tembereng adalah daerah di antara tali busur dan lengkungan busur."
+            }
+        ];
+
+        let cur = 0;
+        let score = 0;
+
+        function renderQuestion() {
+            const container = document.getElementById('q-options');
+            const title = document.getElementById('q-title');
+            const badge = document.getElementById('q-badge');
+            
+            badge.textContent = `Question ${cur + 1}/5`;
+            title.textContent = questions[cur].q;
+            container.innerHTML = '';
+            
+            questions[cur].a.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "q-opt text-left p-5 rounded-[20px] border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all font-bold text-slate-700 flex justify-between items-center group";
+                btn.innerHTML = `<span>${String.fromCharCode(65 + i)}. ${opt}</span> <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-100"></i>`;
+                btn.onclick = () => check(i);
+                container.appendChild(btn);
+            });
+        }
+
+        function check(idx) {
+            const fb = document.getElementById('q-feedback');
+            const next = document.getElementById('q-next');
+            const opts = document.querySelectorAll('.q-opt');
+            
+            fb.classList.remove('hidden');
+            opts.forEach(o => o.disabled = true);
+
+            if(idx === questions[cur].c) {
+                score += 20;
+                fb.className = "mt-8 p-6 rounded-[24px] bg-green-50 text-green-700 border border-green-100";
+                fb.innerHTML = `<i class="fa-solid fa-check-circle mr-2"></i> Benar! ${questions[cur].e}`;
+                opts[idx].classList.add('bg-green-500', 'text-white', 'border-green-500');
+            } else {
+                fb.className = "mt-8 p-6 rounded-[24px] bg-rose-50 text-rose-700 border border-rose-100";
+                fb.innerHTML = `<i class="fa-solid fa-times-circle mr-2"></i> Kurang tepat. ${questions[cur].e}`;
+                opts[idx].classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+            }
+            next.classList.remove('hidden');
+        }
+
+        function next() {
+            cur++;
+            if(cur < questions.length) {
+                document.getElementById('q-feedback').classList.add('hidden');
+                document.getElementById('q-next').classList.add('hidden');
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-view').classList.add('hidden');
+            document.getElementById('result-view').classList.remove('hidden');
+            document.getElementById('score-text').textContent = score;
+            
+            const statusText = document.getElementById('status-text');
+            const analysisDesc = document.getElementById('analysis-desc');
+            
+            if(score >= 100) {
+                statusText.textContent = "Sempurna!";
+                statusText.className = "text-2xl font-extrabold text-emerald-600";
+                analysisDesc.textContent = "Luar biasa! Kamu telah menguasai seluruh konsep anatomi lingkaran dengan sangat baik. Kamu siap untuk materi yang lebih kompleks seperti Sudut Pusat dan Sudut Keliling.";
+            } else if(score >= 80) {
+                statusText.textContent = "Bagus Sekali!";
+                statusText.className = "text-2xl font-extrabold text-blue-600";
+                analysisDesc.textContent = "Pemahaman kamu sangat kuat. Sedikit ketelitian lagi pada bagian perhitungan akan membuatmu menjadi ahli geometri.";
+            } else if(score >= 60) {
+                statusText.textContent = "Cukup Baik";
+                statusText.className = "text-2xl font-extrabold text-orange-600";
+                analysisDesc.textContent = "Kamu sudah mengerti konsep dasarnya, namun masih perlu memperdalam perbedaan antara Tembereng, Juring, dan Apotema agar tidak tertukar.";
+            } else {
+                statusText.textContent = "Perlu Belajar Lagi";
+                statusText.className = "text-2xl font-extrabold text-rose-600";
+                analysisDesc.textContent = "Jangan menyerah! Coba ulas kembali visualisasi pada kartu materi di atas, perhatikan perbedaan garis dan area (Juring vs Tembereng) sebelum mencoba kuis lagi.";
+            }
+        }
+
+        // Init Quiz
+        renderQuestion();
+    </script>
+</body>
+</html>

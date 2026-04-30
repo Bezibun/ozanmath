@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Materi Matematika SMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fffafb;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #e11d48, #9f1239);
+        }
+
+        .card-modern {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (hover: hover) {
+            .card-modern:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(225, 29, 72, 0.1), 0 10px 10px -5px rgba(225, 29, 72, 0.04);
+            }
+        }
+
+        .reveal {
+            animation: reveal 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e11d48'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Header / Hero Section -->
+    <header class="gradient-bg pt-16 pb-24 md:pt-20 md:pb-32 px-4 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg class="absolute -top-24 -left-24 w-64 h-64 md:w-96 md:h-96" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 px-2">
+            <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-md mb-6 border border-white/20">
+                <span class="w-2 h-2 bg-rose-300 rounded-full animate-pulse"></span>
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-rose-100">Ozmath - Portal Edukasi SMA</span>
+            </div>
+            <h1 class="text-3xl md:text-6xl font-extrabold mb-4 md:mb-6 tracking-tight leading-tight">
+                Ozmath<br/><span class="text-rose-200">Materi Matematika SMA</span>
+            </h1>
+            <p class="text-rose-100 text-sm md:text-lg opacity-80 max-w-2xl mx-auto">
+                Persiapan UTBK, Ujian Sekolah, dan olimpiade jadi lebih mudah. Akses materi lengkap dari Kelas 10 sampai Kelas 12.
+            </p>
+        </div>
+    </header>
+
+    <!-- Search & Statistics Section -->
+    <section class="max-w-6xl mx-auto px-4 -mt-10 md:-mt-14 relative z-20">
+        <!-- Stats Mini -->
+        <div class="grid grid-cols-3 gap-3 md:gap-6 mb-6">
+            <div class="bg-white/95 backdrop-blur shadow-md border border-white p-3 md:p-5 rounded-2xl text-center">
+                <div class="text-rose-600 font-bold text-lg md:text-2xl" id="countK10">0</div>
+                <div class="text-slate-400 text-[9px] md:text-xs uppercase font-bold tracking-tight">Materi Kelas 10</div>
+            </div>
+            <div class="bg-white/95 backdrop-blur shadow-md border border-white p-3 md:p-5 rounded-2xl text-center">
+                <div class="text-rose-600 font-bold text-lg md:text-2xl" id="countK11">0</div>
+                <div class="text-slate-400 text-[9px] md:text-xs uppercase font-bold tracking-tight">Materi Kelas 11</div>
+            </div>
+            <div class="bg-white/95 backdrop-blur shadow-md border border-white p-3 md:p-5 rounded-2xl text-center">
+                <div class="text-rose-600 font-bold text-lg md:text-2xl" id="countK12">0</div>
+                <div class="text-slate-400 text-[9px] md:text-xs uppercase font-bold tracking-tight">Materi Kelas 12</div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="glass-panel p-3 md:p-4 rounded-3xl shadow-2xl border border-white flex flex-col md:flex-row gap-3">
+            <div class="relative flex-grow group">
+                <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-rose-500 transition-colors"></i>
+                <input type="text" id="searchInput" placeholder="Cari materi SMA (ex: Integral, Logaritma)..." 
+                    class="w-full pl-12 pr-4 py-4 rounded-2xl border-none ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all bg-white/50 focus:bg-white text-slate-700 text-base">
+            </div>
+            <div class="relative w-full md:w-56">
+                <select id="gradeFilter" class="w-full px-6 py-4 rounded-2xl border-none ring-1 ring-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500 bg-white/50 cursor-pointer font-medium text-slate-600 text-base transition-all">
+                    <option value="all">Semua Tingkat</option>
+                    <option value="10">Kelas 10</option>
+                    <option value="11">Kelas 11</option>
+                    <option value="12">Kelas 12</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        <div id="materiGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <!-- Data dirender oleh JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="noResults" class="hidden text-center py-24">
+            <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-search text-3xl text-slate-300"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-700">Materi Tidak Ditemukan</h3>
+            <p class="text-slate-500 mt-2">Coba gunakan kata kunci lain seperti "Vektor" atau "Turunan".</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-200 bg-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-7 h-7 gradient-bg rounded-lg flex items-center justify-center text-white text-[11px]">
+                    <i class="fas fa-square-root-variable"></i>
+                </div>
+                <span class="font-extrabold text-slate-800 tracking-tight">Ozmath <span class="text-rose-500">SMA</span></span>
+            </div>
+            <p class="text-slate-400 text-sm">Portal materi matematika tingkat lanjut untuk pejuang kampus. by <span class="text-rose-600 font-bold">ozanptrdev_</span></p>
+            <div class="mt-6 flex justify-center gap-4 text-slate-300">
+                <i class="fab fa-instagram hover:text-rose-500 cursor-pointer transition-colors"></i>
+                <i class="fab fa-youtube hover:text-rose-500 cursor-pointer transition-colors"></i>
+                <i class="fab fa-linkedin hover:text-rose-500 cursor-pointer transition-colors"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const materiData = [
+            // KELAS 10
+            { id: 1, kelas: 10, judul: "Eksponen & Logaritma", ikon: "fa-superscript", deskripsi: "Mempelajari sifat pangkat, grafik fungsi eksponen, dan operasi logaritma.", url: "logaritma.html" },
+            { id: 2, kelas: 10, judul: "Vektor", ikon: "fa-arrow-trend-up", deskripsi: "Konsep dasar vektor di R2 dan R3, operasi vektor, serta perkalian skalar.", url: "vektor.html" },
+            { id: 3, kelas: 10, judul: "Persamaan Kuadrat", ikon: "fa-chart-area", deskripsi: "Akar-akar persamaan, menyusun persamaan baru, dan penerapan fungsi kuadrat.", url: "kuadrat.html" },
+            { id: 4, kelas: 10, judul: "Trigonometri Dasar", ikon: "fa-wave-square", deskripsi: "Perbandingan trigonometri pada segitiga siku-siku dan sudut berelasi.", url: "trigonometri-10.html" },
+            
+            // KELAS 11
+            { id: 5, kelas: 11, judul: "Lingkaran", ikon: "fa-circle-notch", deskripsi: "Persamaan lingkaran, garis singgung, dan hubungan antar dua lingkaran.", url: "lingkaran.html" },
+            { id: 6, kelas: 11, judul: "Polinomial", ikon: "fa-plus-minus", deskripsi: "Suku banyak, pembagian bersusun, teorema sisa, dan teorema faktor.", url: "polinomial.html" },
+            { id: 7, kelas: 11, judul: "Limit Fungsi", ikon: "fa-infinity", deskripsi: "Konsep limit aljabar dan trigonometri serta limit menuju tak hingga.", url: "limit.html" },
+            { id: 8, kelas: 11, judul: "Turunan (Diferensial)", ikon: "fa-arrow-down-long", deskripsi: "Aturan rantai, aplikasi turunan, nilai stasioner, dan garis singgung kurva.", url: "turunan.html" },
+            { id: 9, kelas: 11, judul: "Integral Aljabar", ikon: "fa-integral", deskripsi: "Integral tak tentu dan tentu sebagai antiturunan dan aplikasinya pada luas.", url: "integral.html" },
+            
+            // KELAS 12
+            { id: 10, kelas: 12, judul: "Geometri Dimensi Tiga", ikon: "fa-cube", deskripsi: "Menghitung jarak titik ke garis, titik ke bidang, dan sudut dalam ruang.", url: "dimensi-tiga.html" },
+            { id: 11, kelas: 12, judul: "Statistika & Peluang", ikon: "fa-chart-bar", deskripsi: "Ukuran pemusatan data kelompok, distribusi binomial, dan kejadian majemuk.", url: "statistika.html" },
+            { id: 12, kelas: 12, judul: "Limit Trigonometri", ikon: "fa-compass-drafting", deskripsi: "Penyelesaian limit fungsi trigonometri kompleks menggunakan identitas.", url: "limit-trigo.html" },
+            { id: 13, kelas: 12, judul: "Turunan Trigonometri", ikon: "fa-wave-square", deskripsi: "Diferensial fungsi sin, cos, tan dan aplikasinya pada fenomena periodik.", url: "turunan-trigo.html" }
+        ];
+
+        const materiGrid = document.getElementById('materiGrid');
+        const searchInput = document.getElementById('searchInput');
+        const gradeFilter = document.getElementById('gradeFilter');
+        const noResults = document.getElementById('noResults');
+
+        function updateStats() {
+            document.getElementById('countK10').innerText = materiData.filter(m => m.kelas == 10).length;
+            document.getElementById('countK11').innerText = materiData.filter(m => m.kelas == 11).length;
+            document.getElementById('countK12').innerText = materiData.filter(m => m.kelas == 12).length;
+        }
+
+        function renderMateri(filterText = '', filterGrade = 'all') {
+            materiGrid.innerHTML = '';
+            
+            const filtered = materiData.filter(item => {
+                const matchesSearch = item.judul.toLowerCase().includes(filterText.toLowerCase()) || 
+                                     item.deskripsi.toLowerCase().includes(filterText.toLowerCase());
+                const matchesGrade = filterGrade === 'all' || item.kelas.toString() === filterGrade;
+                return matchesSearch && matchesGrade;
+            });
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach((item, index) => {
+                    const card = `
+                        <a href="${item.url || '#'}" class="reveal block group"> 
+                            <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-slate-100 shadow-sm card-modern cursor-pointer" style="animation-delay: ${index * 0.05}s">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl md:text-2xl group-hover:bg-rose-600 group-hover:text-white transition-all duration-300 shadow-inner">
+                                        <i class="fas ${item.ikon}"></i>
+                                    </div>
+                                    <span class="px-3 py-1 bg-rose-50 text-rose-600 text-[9px] md:text-[10px] font-bold rounded-full uppercase tracking-widest border border-rose-100">
+                                        Kelas ${item.kelas}
+                                    </span>
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-3 group-hover:text-rose-600 transition-colors">${item.judul}</h3>
+                                <p class="text-slate-500 text-xs md:text-sm leading-relaxed mb-6 opacity-80">${item.deskripsi}</p>
+                                <div class="flex items-center gap-2 text-rose-600 font-bold text-sm">
+                                    <span class="group-hover:mr-2 transition-all">Lihat Materi</span>
+                                    <i class="fas fa-arrow-right text-[10px]"></i>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    materiGrid.innerHTML += card;
+                });
+            }
+        }
+
+        searchInput.addEventListener('input', (e) => renderMateri(e.target.value, gradeFilter.value));
+        gradeFilter.addEventListener('change', (e) => renderMateri(searchInput.value, e.target.value));
+
+        updateStats();
+        renderMateri();
+    </script>
+</body>
+</html>

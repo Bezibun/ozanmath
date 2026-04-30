@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Eksplorasi Persamaan Garis Lurus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .math-card { transition: all 0.3s ease; }
+        .math-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        #grid-canvas { background-color: #ffffff; border-radius: 1.5rem; cursor: crosshair; }
+        .gradient-text { background: linear-gradient(135deg, #1e40af, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-oz-blue { background-color: #1e40af; }
+        input[type="radio"]:checked + label { border-color: #2563eb; background-color: #eff6ff; }
+        .math-step { border-left: 4px solid #3b82f6; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-20 px-4 bg-white border-b border-slate-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-5 py-2 rounded-full text-sm font-bold mb-8">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> SELAMAT DATANG DI OZMATH
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight">
+                Belajar <span class="gradient-text">Garis Lurus</span> Jadi Mudah.
+            </h1>
+            <p class="text-xl text-slate-500 leading-relaxed mb-12 max-w-2xl mx-auto">
+                Platform interaktif Ozmath membantu kamu memvisualisasikan matematika dengan cara yang menyenangkan dan mudah dipahami.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="#materi-lengkap" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-2xl shadow-blue-200 text-lg">
+                    Pelajari Materi
+                </a>
+                <a href="#interaktif" class="bg-slate-100 text-slate-700 px-10 py-5 rounded-2xl font-bold hover:bg-slate-200 transition-all text-lg">
+                    Coba Simulator
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-20">
+        
+        <!-- Section 1: Materi Detail -->
+        <section id="materi-lengkap" class="space-y-32">
+            
+            <!-- Pengenalan Dasar -->
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-bold text-slate-900">1. Mengenal Dunia Koordinat</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Bayangkan sebuah peta. Untuk menemukan lokasi sebuah toko, kamu butuh dua petunjuk: seberapa jauh ke samping dan seberapa jauh ke depan. Inilah yang kita sebut koordinat (x, y).
+                    </p>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold italic text-lg">x</div>
+                            <p class="text-slate-700"><strong>Absis:</strong> Jarak horizontal (ke kiri atau ke kanan).</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-emerald-500 text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold italic text-lg">y</div>
+                            <p class="text-slate-700"><strong>Ordinat:</strong> Jarak vertikal (ke atas atau ke bawah).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-blue-100 rounded-[3rem] blur-2xl opacity-30"></div>
+                    <div class="relative bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-xl">
+                        <h4 class="font-bold mb-4 text-blue-600">Contoh Titik</h4>
+                        <p class="text-slate-500 mb-6">Titik P(3, 4) berarti:</p>
+                        <div class="space-y-2">
+                            <div class="h-2 bg-blue-100 rounded-full w-full">
+                                <div class="h-full bg-blue-600 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <p class="text-xs font-bold text-blue-600 uppercase">3 Langkah ke Kanan</p>
+                            <div class="h-2 bg-emerald-100 rounded-full w-full mt-4">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 80%"></div>
+                            </div>
+                            <p class="text-xs font-bold text-emerald-500 uppercase">4 Langkah ke Atas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gradien Secara Detail -->
+            <div class="space-y-12">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl font-bold mb-6">2. Rahasia Kemiringan (Gradien)</h2>
+                    <p class="text-slate-600 text-lg">
+                        Gradien, yang sering dilambangkan dengan huruf kecil <strong>m</strong>, adalah nilai yang menentukan seberapa curam sebuah jalan atau garis.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 text-center hover:border-blue-300 transition-colors">
+                        <div class="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="trending-up" class="text-blue-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-blue-900">m Positif (+)</h4>
+                        <p class="text-slate-500 text-sm">Garis "mendaki" ke arah kanan. Semakin besar angkanya, semakin sulit didaki.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 text-center hover:border-red-300 transition-colors">
+                        <div class="bg-red-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="trending-down" class="text-red-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-red-900">m Negatif (-)</h4>
+                        <p class="text-slate-500 text-sm">Garis "menurun" ke arah kanan. Biasanya digunakan untuk jalanan yang curam ke bawah.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 text-center hover:border-slate-400 transition-colors">
+                        <div class="bg-slate-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="minus" class="text-slate-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-slate-900">m Nol (0)</h4>
+                        <p class="text-slate-500 text-sm">Garis horizontal datar. Tidak ada kemiringan sama sekali.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-white text-center">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-8 uppercase tracking-widest">Cara Menghitung m (Gradien)</h3>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+                        <div class="text-center">
+                            <p class="text-slate-400 text-sm mb-4 italic">Jika diketahui dua titik (x1, y1) dan (x2, y2):</p>
+                            <div class="text-4xl font-mono border-b-2 border-blue-500 pb-2 mb-2 inline-block">y2 - y1</div>
+                            <div class="text-4xl font-mono italic">x2 - x1</div>
+                        </div>
+                        <div class="hidden md:block h-20 w-px bg-slate-700"></div>
+                        <div class="text-left space-y-4 max-w-sm">
+                            <p class="text-blue-300 font-bold uppercase text-xs tracking-tighter">Langkah Praktis:</p>
+                            <p class="text-slate-300">Cari selisih nilai tinggi (atas-bawah) lalu bagi dengan selisih nilai lebar (kiri-kanan).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bentuk Umum Persamaan -->
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="bg-emerald-900 rounded-[2rem] p-12 text-white shadow-2xl relative overflow-hidden">
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-800 rounded-full opacity-50"></div>
+                        <h3 class="text-emerald-400 font-bold mb-4 uppercase text-sm tracking-widest">Formula Utama Ozmath</h3>
+                        <p class="text-6xl font-mono font-bold tracking-tighter mb-8">y = mx + c</p>
+                        <div class="space-y-4 text-emerald-100">
+                            <p><strong>m</strong> = Kemiringan garis</p>
+                            <p><strong>c</strong> = Titik di mana garis menabrak Sumbu Y</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <h2 class="text-4xl font-bold text-slate-900">3. Menyatukan Semuanya</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        Persamaan garis adalah "resep" untuk membuat garis tersebut. Jika kamu punya nilai m dan c, kamu bisa menggambar garis apapun di dunia ini.
+                    </p>
+                    <div class="p-6 bg-white border border-slate-200 rounded-2xl italic text-slate-500">
+                        "Contoh: Jika resepnya adalah y = 2x + 1, artinya garis kamu punya kemiringan 2 dan mulai memotong di angka 1 pada sumbu tegak (Y)."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Simulator (Pertahankan) -->
+        <section id="interaktif" class="mt-40 mb-40">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-5xl font-extrabold tracking-tight">Simulator Garis Ozmath</h2>
+                <p class="text-slate-500 text-lg">Eksperimen langsung untuk melihat keajaiban matematika.</p>
+            </div>
+
+            <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100">
+                <div class="grid lg:grid-cols-12">
+                    <div class="lg:col-span-5 p-10 md:p-14 bg-slate-50 border-r border-slate-100 flex flex-col justify-center">
+                        <div class="space-y-12">
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-8 bg-blue-600 rounded-full"></div>
+                                        <h4 class="font-bold text-xl">Gradien (m)</h4>
+                                    </div>
+                                    <span id="m-val" class="text-4xl font-mono font-bold text-blue-600">1</span>
+                                </div>
+                                <input type="range" id="m-slider" min="-10" max="10" step="0.5" value="1" class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-2 h-8 bg-emerald-500 rounded-full"></div>
+                                        <h4 class="font-bold text-xl">Konstanta (c)</h4>
+                                    </div>
+                                    <span id="c-val" class="text-4xl font-mono font-bold text-emerald-500">0</span>
+                                </div>
+                                <input type="range" id="c-slider" min="-100" max="100" step="5" value="0" class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                            </div>
+                            <div class="pt-8 border-t border-slate-200">
+                                <div class="p-8 bg-white rounded-3xl border border-slate-200 text-center shadow-sm">
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Rumus yang Terbentuk:</p>
+                                    <div class="text-4xl font-mono font-extrabold tracking-tighter" id="equation-display">y = 1x + 0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 p-10 flex flex-col items-center justify-center bg-white">
+                        <canvas id="grid-canvas" width="500" height="500" class="w-full max-w-[500px] aspect-square shadow-2xl border border-slate-100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Contoh Soal Terpadu (Pembaruan) -->
+        <section id="contoh-terpadu" class="mb-32">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Contoh Soal Terpandu</h2>
+                <p class="text-slate-500">Pelajari teknik penyelesaian masalah secara bertahap dan sistematis.</p>
+            </div>
+
+            <div class="space-y-10">
+                <!-- Contoh 1: Dua Titik -->
+                <div class="bg-white rounded-[3rem] p-10 md:p-12 border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="bg-blue-600 text-white w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-xl">1</div>
+                        <h3 class="text-2xl font-bold text-slate-900">Mencari Persamaan dari Dua Titik</h3>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-3xl space-y-8 border border-slate-100">
+                        <p class="text-xl font-semibold text-blue-900 italic">"Tentukan persamaan garis yang melalui titik A(1, 4) dan B(3, 10)!"</p>
+                        
+                        <div class="space-y-8">
+                            <div class="math-step">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 1: Menghitung Gradien (m)</p>
+                                <p class="text-slate-600 mb-2">Gunakan rumus selisih ordinat dibagi selisih absis:</p>
+                                <div class="font-mono bg-white p-4 rounded-xl inline-block border border-slate-200">
+                                    m = (y2 - y1) / (x2 - x1)<br>
+                                    m = (10 - 4) / (3 - 1)<br>
+                                    m = 6 / 2 = 3
+                                </div>
+                            </div>
+
+                            <div class="math-step">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 2: Mencari Konstanta (c)</p>
+                                <p class="text-slate-600 mb-2">Gunakan m = 3 dan salah satu titik, misalnya A(1, 4), lalu masukkan ke y = mx + c:</p>
+                                <div class="font-mono bg-white p-4 rounded-xl inline-block border border-slate-200">
+                                    4 = (3 * 1) + c<br>
+                                    4 = 3 + c<br>
+                                    c = 4 - 3 = 1
+                                </div>
+                            </div>
+
+                            <div class="math-step">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 3: Menyusun Persamaan</p>
+                                <p class="text-slate-600">Substitusikan m = 3 dan c = 1 kembali ke bentuk umum:</p>
+                                <div class="text-2xl font-bold text-blue-600 mt-2">y = 3x + 1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh 2: Gradien dan Satu Titik -->
+                <div class="bg-white rounded-[3rem] p-10 md:p-12 border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="bg-emerald-500 text-white w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-xl">2</div>
+                        <h3 class="text-2xl font-bold text-slate-900">Garis Melalui Titik dengan Gradien Tertentu</h3>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-3xl space-y-8 border border-slate-100">
+                        <p class="text-xl font-semibold text-emerald-900 italic">"Tentukan persamaan garis dengan gradien -2 dan melalui titik (4, 5)!"</p>
+                        
+                        <div class="space-y-8">
+                            <div class="math-step">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 1: Identifikasi Data</p>
+                                <p class="text-slate-600">Diketahui m = -2, x = 4, dan y = 5.</p>
+                            </div>
+
+                            <div class="math-step" style="border-left-color: #10b981;">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 2: Menghitung c</p>
+                                <div class="font-mono bg-white p-4 rounded-xl inline-block border border-slate-200">
+                                    y = mx + c<br>
+                                    5 = (-2 * 4) + c<br>
+                                    5 = -8 + c<br>
+                                    c = 5 + 8 = 13
+                                </div>
+                            </div>
+
+                            <div class="math-step" style="border-left-color: #10b981;">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 3: Hasil Akhir</p>
+                                <div class="text-2xl font-bold text-emerald-600 mt-2">y = -2x + 13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh 3: Mencari Titik Potong -->
+                <div class="bg-white rounded-[3rem] p-10 md:p-12 border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="bg-amber-500 text-white w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-xl">3</div>
+                        <h3 class="text-2xl font-bold text-slate-900">Mencari Titik Potong Sumbu X</h3>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-3xl space-y-8 border border-slate-100">
+                        <p class="text-xl font-semibold text-amber-900 italic">"Di manakah garis y = 2x - 8 memotong Sumbu X?"</p>
+                        
+                        <div class="space-y-8">
+                            <div class="math-step" style="border-left-color: #f59e0b;">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 1: Syarat Memotong Sumbu X</p>
+                                <p class="text-slate-600">Garis memotong sumbu X jika nilai y = 0.</p>
+                            </div>
+
+                            <div class="math-step" style="border-left-color: #f59e0b;">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 2: Operasi Aljabar</p>
+                                <div class="font-mono bg-white p-4 rounded-xl inline-block border border-slate-200">
+                                    0 = 2x - 8<br>
+                                    8 = 2x<br>
+                                    x = 8 / 2 = 4
+                                </div>
+                            </div>
+
+                            <div class="math-step" style="border-left-color: #f59e0b;">
+                                <p class="font-bold text-slate-900 mb-2">Langkah 3: Kesimpulan Titik</p>
+                                <p class="text-slate-600">Titik potongnya adalah koordinat (x, y):</p>
+                                <div class="text-2xl font-bold text-amber-600 mt-2">(4, 0)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Kuiz Interaktif (Pertahankan) -->
+        <section id="kuiz-ozmath" class="mb-32">
+            <div class="bg-blue-900 rounded-[3rem] p-10 md:p-20 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-800 rounded-full -mr-48 -mt-48 opacity-50 blur-3xl"></div>
+                
+                <div id="quiz-intro" class="text-center relative z-10">
+                    <h2 class="text-5xl font-extrabold mb-6">Uji Kemampuan (Kuiz)</h2>
+                    <p class="text-blue-200 text-lg mb-10 max-w-xl mx-auto">Selesaikan 5 soal tantangan Ozmath untuk mendapatkan analisis kemampuan hasil belajarmu!</p>
+                    <button onclick="startQuiz()" class="bg-white text-blue-900 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-blue-50 transition-all shadow-xl">Mulai Kuiz Sekarang</button>
+                </div>
+
+                <div id="quiz-container" class="hidden relative z-10">
+                    <div class="flex justify-between items-center mb-10">
+                        <div class="bg-blue-800 px-4 py-2 rounded-full text-sm font-bold">Soal <span id="current-q">1</span> dari 5</div>
+                        <div class="text-blue-300 font-mono tracking-widest uppercase text-xs font-bold">Ozmath Quiz Engine</div>
+                    </div>
+
+                    <div id="question-box" class="space-y-8">
+                        <h3 id="question-text" class="text-2xl md:text-3xl font-bold leading-tight">Memuat soal...</h3>
+                        <div id="options-grid" class="grid md:grid-cols-2 gap-4"></div>
+                    </div>
+
+                    <div class="mt-12 flex justify-end">
+                        <button id="next-btn" onclick="submitAnswer()" class="bg-emerald-500 text-white px-10 py-4 rounded-xl font-bold hover:bg-emerald-400 transition-all opacity-50 cursor-not-allowed" disabled>Pertanyaan Selanjutnya</button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="hidden text-center relative z-10">
+                    <h2 class="text-4xl font-extrabold mb-4">Hasil Analisis Belajar</h2>
+                    <div class="text-6xl font-mono font-bold text-emerald-400 mb-6" id="score-display">0%</div>
+                    
+                    <div class="bg-blue-800/50 p-8 rounded-[2rem] max-w-2xl mx-auto text-left mb-10">
+                        <h4 class="font-bold text-xl mb-4 text-blue-200">Rangkuman Kemampuan:</h4>
+                        <p id="analysis-text" class="text-blue-100 leading-relaxed italic">Menganalisis jawaban kamu...</p>
+                    </div>
+
+                    <button onclick="restartQuiz()" class="text-blue-300 font-bold border-b-2 border-blue-700 hover:text-white transition-colors">Coba Kuiz Lagi</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-24">
+        <div class="max-w-6xl mx-auto px-4 text-center md:text-left">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="flex justify-center md:justify-start gap-3 mb-6">
+                        <div class="bg-blue-600 p-3 rounded-2xl text-white">
+                            <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                        </div>
+                        <span class="font-bold text-4xl tracking-tighter text-white">Ozmath</span>
+                    </div>
+                    <p class="text-slate-500 max-w-sm mx-auto md:mx-0">Alat visualisasi matematika tercanggih untuk pelajar Indonesia.</p>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-end gap-10 font-bold text-white uppercase text-xs">
+                    <a href="#" class="hover:text-blue-400 transition">Materi</a>
+                    <a href="#" class="hover:text-blue-400 transition">Simulator</a>
+                    <a href="#" class="hover:text-blue-400 transition">Tentang</a>
+                </div>
+            </div>
+            <div class="mt-20 pt-10 border-t border-slate-800 text-xs">© 2024 Ozmath Learning Platform.</div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // SIMULATOR LOGIC
+        const canvas = document.getElementById('grid-canvas');
+        const ctx = canvas.getContext('2d');
+        const mSlider = document.getElementById('m-slider');
+        const cSlider = document.getElementById('c-slider');
+        const mValDisp = document.getElementById('m-val');
+        const cValDisp = document.getElementById('c-val');
+        const eqDisp = document.getElementById('equation-display');
+
+        function drawGrid() {
+            const width = canvas.width;
+            const height = canvas.height;
+            const step = 25; 
+            ctx.clearRect(0, 0, width, height);
+            ctx.beginPath(); ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 1;
+            for (let x = 0; x <= width; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.moveTo(0, x); ctx.lineTo(width, x); }
+            ctx.stroke();
+            ctx.beginPath(); ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+            ctx.moveTo(0, height / 2); ctx.lineTo(width, height / 2);
+            ctx.moveTo(width / 2, 0); ctx.lineTo(width / 2, height);
+            ctx.stroke();
+        }
+
+        function drawLine() {
+            const m = parseFloat(mSlider.value);
+            const rawC = parseFloat(cSlider.value);
+            const cFormatted = rawC / 10;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = 25; 
+            drawGrid();
+            ctx.beginPath(); ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+            const xRange = 25;
+            const y1 = m * (-xRange) + cFormatted;
+            const y2 = m * xRange + cFormatted;
+            ctx.moveTo(centerX - xRange * scale, centerY - y1 * scale);
+            ctx.lineTo(centerX + xRange * scale, centerY - y2 * scale);
+            ctx.stroke();
+            mValDisp.textContent = m;
+            cValDisp.textContent = cFormatted.toFixed(1);
+            let sign = cFormatted >= 0 ? "+" : "-";
+            eqDisp.innerHTML = `y = ${m}x ${sign} ${Math.abs(cFormatted).toFixed(1)}`;
+        }
+
+        mSlider.addEventListener('input', drawLine);
+        cSlider.addEventListener('input', drawLine);
+        window.onload = drawLine;
+
+        // QUIZ LOGIC
+        const questions = [
+            { q: "Jika y = 4x + 2, berapakah gradiennya?", options: ["2", "4", "4x", "1/2"], correct: 1 },
+            { q: "Garis dengan m = -3 akan terlihat...", options: ["Datar", "Naik ke kanan", "Turun ke kanan", "Tegak"], correct: 2 },
+            { q: "Gradien garis melalui (0,0) dan (2,6) adalah...", options: ["2", "6", "3", "12"], correct: 2 },
+            { q: "Titik potong sumbu Y dari y = 2x - 7 adalah...", options: ["(2, 0)", "(0, 2)", "(0, -7)", "(-7, 0)"], correct: 2 },
+            { q: "Jika m = 0, garis tersebut sejajar dengan...", options: ["Sumbu X", "Sumbu Y", "Garis miring", "Titik pusat"], correct: 0 }
+        ];
+
+        let currentQuestionIdx = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        function startQuiz() {
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIdx];
+            document.getElementById('current-q').textContent = currentQuestionIdx + 1;
+            document.getElementById('question-text').textContent = q.q;
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement('div');
+                div.innerHTML = `<input type="radio" name="qz" id="o${idx}" value="${idx}" class="hidden" onchange="enableNext(${idx})"><label for="o${idx}" class="block p-5 bg-blue-800/30 border-2 border-blue-700 rounded-2xl cursor-pointer hover:border-white transition-all">${opt}</label>`;
+                grid.appendChild(div);
+            });
+            const btn = document.getElementById('next-btn');
+            btn.disabled = true; btn.classList.add('opacity-50');
+        }
+
+        function enableNext(idx) {
+            selectedOption = idx;
+            const btn = document.getElementById('next-btn');
+            btn.disabled = false; btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function submitAnswer() {
+            if (selectedOption === questions[currentQuestionIdx].correct) score++;
+            if (currentQuestionIdx < questions.length - 1) {
+                currentQuestionIdx++; selectedOption = null; loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            const pct = (score / questions.length) * 100;
+            document.getElementById('score-display').textContent = pct + "%";
+            let analysis = pct === 100 ? "Luar biasa! Kamu Master Ozmath." : (pct >= 60 ? "Bagus! Kamu paham dasar-dasar." : "Terus belajar, coba simulasi lagi!");
+            document.getElementById('analysis-text').textContent = analysis;
+        }
+
+        function restartQuiz() {
+            currentQuestionIdx = 0; score = 0;
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-intro').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmatika Sosial - Media Pembelajaran Interaktif</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #3b82f6, #1e3a8a);
+        }
+        .math-box {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        /* Custom styles for Quiz */
+        .option-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-correct {
+            background-color: #10b981 !important;
+            border-color: #059669 !important;
+            color: white !important;
+        }
+        .option-wrong {
+            background-color: #ef4444 !important;
+            border-color: #dc2626 !important;
+            color: white !important;
+        }
+        .progress-bar-fill {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="hero-gradient py-24 px-4 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto relative z-10 space-y-8">
+            <div class="inline-block bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-sm font-semibold tracking-wide mb-4">
+                Modul Matematika SMP
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                Aritmatika <span class="text-blue-300">Sosial</span>
+            </h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+                Belajar mengelola keuangan, menghitung untung-rugi, hingga memahami bunga bank dengan cara yang menyenangkan dan interaktif.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#mulai" class="bg-white text-blue-900 px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:-translate-y-1 transition-all">
+                    Mulai Belajar Sekarang
+                </a>
+                <a href="#eksplorasi" class="bg-blue-600/50 backdrop-blur-sm border border-white/30 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-blue-600 transition-all">
+                    Coba Fitur Interaktif
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="mulai" class="max-w-5xl mx-auto px-4 py-20 space-y-32">
+
+        <!-- Tahap 1: Untung & Rugi -->
+        <section class="space-y-12">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="text-blue-600 font-black text-6xl opacity-20">01</div>
+                    <h2 class="text-4xl font-bold text-slate-900">Untung dan Rugi</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Dalam dunia perdagangan, kita mengenal dua kondisi utama berdasarkan perbandingan antara harga beli (modal) dan harga jual.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-green-600 flex items-center gap-2 mb-2">
+                                <i class="fas fa-arrow-trend-up"></i> Kondisi Untung
+                            </h4>
+                            <p class="text-slate-600 mb-3">Terjadi jika Harga Jual lebih besar dari Harga Beli.</p>
+                            <div class="math-box">Untung = Harga Jual - Harga Beli</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-red-600 flex items-center gap-2 mb-2">
+                                <i class="fas fa-arrow-trend-down"></i> Kondisi Rugi
+                            </h4>
+                            <p class="text-slate-600 mb-3">Terjadi jika Harga Beli lebih besar dari Harga Jual.</p>
+                            <div class="math-box">Rugi = Harga Beli - Harga Jual</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh Soal Langsung -->
+                <div class="bg-blue-50 p-8 rounded-[2.5rem] border border-blue-100 space-y-6">
+                    <h3 class="text-xl font-bold text-blue-900">💡 Contoh Soal 1</h3>
+                    <div class="text-slate-700 space-y-4">
+                        <p class="italic">"Pak Budi membeli sebuah sepeda seharga Rp 1.000.000. Seminggu kemudian, sepeda tersebut dijual kembali seharga Rp 1.200.000. Berapa keuntungan Pak Budi?"</p>
+                        <div class="p-4 bg-white rounded-xl text-sm border border-blue-200">
+                            <p class="font-bold text-blue-600 mb-1">Penyelesaian:</p>
+                            Untung = Harga Jual - Harga Beli <br>
+                            Untung = 1.200.000 - 1.000.000 <br>
+                            Untung = 200.000 <br>
+                            <span class="font-bold">Jadi, keuntungan Pak Budi adalah Rp 200.000.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tahap 2: Bunga Tunggal -->
+        <section class="space-y-12">
+            <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+                <div class="flex-1 space-y-6">
+                    <div class="text-blue-600 font-black text-6xl opacity-20">02</div>
+                    <h2 class="text-4xl font-bold text-slate-900">Bunga Tunggal</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        Bunga tunggal adalah jasa dari simpanan atau pinjaman yang dibayarkan di akhir periode dengan perhitungan berdasarkan modal awal saja.
+                    </p>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                        <p class="text-slate-600">Rumus mencari besarnya bunga (B) selama (n) bulan:</p>
+                        <div class="math-box text-blue-700">
+                            Bunga = (n / 12) x Persentase Bunga x Modal Awal
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-slate-900 text-white p-8 rounded-[2.5rem] space-y-6 shadow-2xl">
+                    <h3 class="text-xl font-bold text-blue-400">💡 Contoh Soal 2</h3>
+                    <div class="space-y-4">
+                        <p class="text-slate-300 italic">"Susi menabung di bank sebesar Rp 2.000.000 dengan bunga 12% per tahun. Berapa tabungan Susi setelah 10 bulan?"</p>
+                        <div class="p-4 bg-white/10 rounded-xl text-sm border border-white/20">
+                            <p class="font-bold text-blue-400 mb-1">Penyelesaian:</p>
+                            Bunga = (10/12) x 12/100 x 2.000.000 <br>
+                            Bunga = 10/100 x 2.000.000 = 200.000 <br>
+                            Total = 2.000.000 + 200.000 = 2.200.000 <br>
+                            <span class="font-bold text-white">Jadi, tabungan Susi menjadi Rp 2.200.000.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tahap 3: Bruto, Neto, Tara -->
+        <section class="space-y-12">
+            <div class="text-center space-y-4 mb-12">
+                <div class="text-blue-600 font-black text-6xl opacity-20 text-center">03</div>
+                <h2 class="text-4xl font-bold">Bruto, Neto, dan Tara</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Istilah ini sering kita temukan pada kemasan produk untuk menjelaskan berat barang.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 text-center space-y-4 hover:border-blue-300 transition-all">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3 class="font-bold text-xl">Bruto</h3>
+                    <p class="text-slate-500 text-sm">Berat kotor: Berat barang ditambah berat kemasannya.</p>
+                    <div class="math-box text-sm">Bruto = Neto + Tara</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 text-center space-y-4 hover:border-green-300 transition-all">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                        <i class="fas fa-apple-whole"></i>
+                    </div>
+                    <h3 class="font-bold text-xl">Neto</h3>
+                    <p class="text-slate-500 text-sm">Berat bersih: Berat isinya saja tanpa kemasan.</p>
+                    <div class="math-box text-sm">Neto = Bruto - Tara</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 text-center space-y-4 hover:border-orange-300 transition-all">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                        <i class="fas fa-trash-can"></i>
+                    </div>
+                    <h3 class="font-bold text-xl">Tara</h3>
+                    <p class="text-slate-500 text-sm">Berat potongan: Berat kemasan atau wadahnya.</p>
+                    <div class="math-box text-sm">Tara = Bruto - Neto</div>
+                </div>
+            </div>
+
+            <!-- Contoh Soal 3 -->
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 max-w-3xl mx-auto space-y-6">
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-600 text-white p-3 rounded-xl font-bold italic">CS-03</div>
+                    <h3 class="text-xl font-bold">Contoh Soal Bruto-Neto</h3>
+                </div>
+                <p class="text-slate-600 italic">"Sebuah karung semen memiliki Bruto 40 kg. Jika tara semen tersebut adalah 1,5%, berapakah Neto semen tersebut?"</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="p-4 bg-slate-50 rounded-xl">
+                        <p class="font-bold text-blue-600 mb-2">Langkah 1: Cari Tara (kg)</p>
+                        Tara = 1,5% x 40 kg <br>
+                        Tara = (1,5 / 100) x 40 <br>
+                        Tara = 0,6 kg
+                    </div>
+                    <div class="p-4 bg-blue-600 text-white rounded-xl">
+                        <p class="font-bold mb-2 text-blue-200">Langkah 2: Cari Neto</p>
+                        Neto = Bruto - Tara <br>
+                        Neto = 40 kg - 0,6 kg <br>
+                        Neto = 39,4 kg
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laboratorium Eksperimen Interaktif -->
+        <section id="eksplorasi" class="space-y-12">
+            <div class="text-center space-y-4">
+                <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Interactive Lab</span>
+                <h2 class="text-4xl font-bold">Laboratorium Eksperimen</h2>
+                <p class="text-slate-500">Coba masukkan angka sesukamu dan lihat hasilnya secara langsung!</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Simulasi Untung Rugi -->
+                <div class="interactive-card bg-white p-8 rounded-[2rem] border border-slate-200 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shop"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Simulator Dagang</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase">Harga Beli</label>
+                            <input type="number" id="labHB" value="10000" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase">Harga Jual</label>
+                            <input type="number" id="labHJ" value="12000" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div id="labResUntung" class="p-4 rounded-xl text-center font-bold bg-blue-50 text-blue-700">
+                            Untung: Rp 2.000 (20%)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulasi Bunga -->
+                <div class="interactive-card bg-white p-8 rounded-[2rem] border border-slate-200 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-vault"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Simulator Tabungan</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase">Tabungan Awal</label>
+                            <input type="number" id="labModal" value="1000000" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase">Bunga (%)</label>
+                                <input type="number" id="labPersen" value="10" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase">Bulan</label>
+                                <input type="number" id="labBulan" value="6" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                            </div>
+                        </div>
+                        <div id="labResBunga" class="p-4 rounded-xl text-center font-bold bg-blue-900 text-white">
+                            Total: Rp 1.050.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulasi Bruto Tara -->
+                <div class="interactive-card bg-white p-8 rounded-[2rem] border border-slate-200 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <h3 class="font-bold text-lg">Visualisasi Berat</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase">Bruto (Kg)</label>
+                            <input type="number" id="labBruto" value="50" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-400 uppercase">Tara (%)</label>
+                            <input type="number" id="labTaraPct" value="2" class="w-full bg-slate-50 p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div class="p-4 bg-slate-100 rounded-xl space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Neto (Isi):</span>
+                                <span id="labNetoRes" class="font-bold">49 Kg</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Tara (Wadah):</span>
+                                <span id="labTaraRes" class="font-bold">1 Kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kuis Interaktif & Analisis (MODERNIZED) -->
+        <section id="latihan" class="bg-slate-900 rounded-[3.5rem] p-8 md:p-16 text-white space-y-12">
+            <div class="text-center space-y-4">
+                <h2 class="text-4xl font-bold">Uji Kemampuan Akhir</h2>
+                <p class="text-slate-400">Kerjakan 5 soal tantangan untuk mendapatkan analisis kemampuanmu.</p>
+            </div>
+
+            <div id="quizContainer" class="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2.5rem] shadow-2xl space-y-10 relative overflow-hidden">
+                <!-- Progress Indicator -->
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-white/10">
+                    <div id="progressBar" class="h-full bg-blue-500 progress-bar-fill" style="width: 20%"></div>
+                </div>
+
+                <div class="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-blue-400">
+                    <span id="qNumber">Soal 1 dari 5</span>
+                    <span id="scoreDisplay" class="bg-blue-500/20 px-3 py-1 rounded-full">Skor: 0</span>
+                </div>
+                
+                <div class="space-y-6">
+                    <h4 id="quizQuestion" class="text-2xl md:text-3xl font-semibold leading-snug">...</h4>
+                </div>
+                
+                <div id="quizOptions" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Tombol pilihan akan muncul di sini -->
+                </div>
+                
+                <!-- Improved Feedback Overlay -->
+                <div id="quizFeedback" class="hidden absolute inset-0 bg-slate-900/90 backdrop-blur-sm flex flex-col items-center justify-center z-20 transition-all">
+                    <div id="feedbackIcon" class="text-6xl mb-4"></div>
+                    <div id="feedbackTitle" class="text-2xl font-bold"></div>
+                    <div id="feedbackSub" class="text-slate-400 mt-2">Menuju soal berikutnya...</div>
+                </div>
+            </div>
+
+            <!-- Analisis Kemampuan (Hidden by default) -->
+            <div id="analysisContainer" class="hidden max-w-3xl mx-auto bg-white p-10 rounded-[3rem] text-slate-900 shadow-2xl space-y-8 animate-in fade-in zoom-in duration-500">
+                <div class="text-center space-y-4">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 text-blue-600 text-3xl mb-2">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold">Analisis Kemampuan</h2>
+                    <p class="text-slate-500">Hasil kuis telah dianalisis untuk mengukur pemahamanmu.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Skor Akhir</p>
+                        <div id="finalScoreText" class="text-4xl font-black text-blue-600">0%</div>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Status Belajar</p>
+                        <div id="learningStatusText" class="text-xl font-bold text-slate-700">Menganalisis...</div>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-blue-50 rounded-3xl space-y-4">
+                    <h4 class="font-bold flex items-center gap-2"><i class="fas fa-lightbulb text-blue-600"></i> Rekomendasi:</h4>
+                    <p id="recommendationText" class="text-slate-700 leading-relaxed italic">...</p>
+                </div>
+
+                <button onclick="location.reload()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30">
+                    Ulangi Pembelajaran
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white py-16 text-center border-t border-slate-200">
+        <p class="text-slate-400 font-medium tracking-wide">MATHSOCIAL &bull; MEDIA PEMBELAJARAN DIGITAL 2024</p>
+    </footer>
+
+    <script>
+        const formatRupiah = (val) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(val);
+        }
+
+        // Logic Lab Interaktif (Tetap)
+        const updateLabs = () => {
+            const hb = parseFloat(document.getElementById('labHB').value) || 0;
+            const hj = parseFloat(document.getElementById('labHJ').value) || 0;
+            const selisih = hj - hb;
+            const pct = hb > 0 ? (selisih / hb * 100).toFixed(1) : 0;
+            const resUntung = document.getElementById('labResUntung');
+            if (selisih >= 0) {
+                resUntung.innerText = `Untung: ${formatRupiah(selisih)} (${pct}%)`;
+                resUntung.className = "p-4 rounded-xl text-center font-bold bg-green-50 text-green-700";
+            } else {
+                resUntung.innerText = `Rugi: ${formatRupiah(Math.abs(selisih))} (${Math.abs(pct)}%)`;
+                resUntung.className = "p-4 rounded-xl text-center font-bold bg-red-50 text-red-700";
+            }
+
+            const modal = parseFloat(document.getElementById('labModal').value) || 0;
+            const pBunga = parseFloat(document.getElementById('labPersen').value) || 0;
+            const bulan = parseFloat(document.getElementById('labBulan').value) || 0;
+            const bungaNominal = modal * (pBunga / 100) * (bulan / 12);
+            document.getElementById('labResBunga').innerText = `Total: ${formatRupiah(modal + bungaNominal)}`;
+
+            const bruto = parseFloat(document.getElementById('labBruto').value) || 0;
+            const taraPct = parseFloat(document.getElementById('labTaraPct').value) || 0;
+            const taraKg = bruto * (taraPct / 100);
+            const netoKg = bruto - taraKg;
+            document.getElementById('labNetoRes').innerText = `${netoKg.toFixed(2)} Kg`;
+            document.getElementById('labTaraRes').innerText = `${taraKg.toFixed(2)} Kg`;
+        };
+
+        ['labHB', 'labHJ', 'labModal', 'labPersen', 'labBulan', 'labBruto', 'labTaraPct'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateLabs);
+        });
+
+        // Quiz Logic
+        const questions = [
+            {
+                q: "Sebuah toko membeli barang seharga Rp 500.000 dan ingin mendapat untung 10%. Berapa harga jualnya?",
+                options: ["Rp 510.000", "Rp 550.000", "Rp 600.000", "Rp 505.000"],
+                answer: 1
+            },
+            {
+                q: "Andi meminjam uang Rp 1.000.000 dengan bunga 1% per bulan. Berapa bunga total setelah 1 tahun?",
+                options: ["Rp 10.000", "Rp 100.000", "Rp 120.000", "Rp 1.120.000"],
+                answer: 2
+            },
+            {
+                q: "Diketahui Bruto sekeranjang buah adalah 25 kg dengan Tara 4%. Berapakah berat Netonya?",
+                options: ["24 kg", "23 kg", "24.5 kg", "21 kg"],
+                answer: 0
+            },
+            {
+                q: "Seorang pedagang rugi Rp 50.000 setelah menjual barang seharga Rp 450.000. Berapa modal awalnya?",
+                options: ["Rp 400.000", "Rp 500.000", "Rp 550.000", "Rp 450.000"],
+                answer: 1
+            },
+            {
+                q: "Neto sebuah produk adalah 95 gram dan taranya 5 gram. Berapa persentase tara terhadap bruto?",
+                options: ["5%", "4.5%", "5.26%", "10%"],
+                answer: 0
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let isAnswering = false;
+
+        function loadQuestion() {
+            isAnswering = false;
+            const q = questions[currentQuestion];
+            document.getElementById('qNumber').innerText = `Soal ${currentQuestion + 1} dari ${questions.length}`;
+            document.getElementById('quizQuestion').innerText = q.q;
+            document.getElementById('progressBar').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+            
+            const optionsDiv = document.getElementById('quizOptions');
+            optionsDiv.innerHTML = "";
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn w-full text-left p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/30 transition-all duration-300 font-medium relative group overflow-hidden";
+                btn.innerHTML = `
+                    <span class="relative z-10">${opt}</span>
+                    <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-[90%] transition-transform duration-300 opacity-20"></div>
+                `;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(idx, clickedBtn) {
+            if (isAnswering) return;
+            isAnswering = true;
+
+            const correctIdx = questions[currentQuestion].answer;
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackTitle = document.getElementById('feedbackTitle');
+            const allBtns = document.querySelectorAll('.option-btn');
+
+            // Visual feedback on buttons
+            allBtns.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === correctIdx) {
+                    btn.classList.add('option-correct');
+                } else if (i === idx && idx !== correctIdx) {
+                    btn.classList.add('option-wrong');
+                }
+            });
+
+            // Feedback Overlay Setup
+            if (idx === correctIdx) {
+                score += 20;
+                document.getElementById('scoreDisplay').innerText = `Skor: ${score}`;
+                feedbackIcon.innerHTML = '<i class="fas fa-check-circle text-emerald-500"></i>';
+                feedbackTitle.innerText = "Jawaban Benar!";
+                feedbackTitle.className = "text-2xl font-bold text-emerald-400";
+            } else {
+                feedbackIcon.innerHTML = '<i class="fas fa-times-circle text-rose-500"></i>';
+                feedbackTitle.innerText = "Jawaban Kurang Tepat";
+                feedbackTitle.className = "text-2xl font-bold text-rose-400";
+            }
+
+            // Show feedback after a short delay
+            setTimeout(() => {
+                feedback.classList.remove('hidden');
+                feedback.classList.add('flex');
+                
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                    feedback.classList.remove('flex');
+                    if(currentQuestion < questions.length - 1) {
+                        currentQuestion++;
+                        loadQuestion();
+                    } else {
+                        showAnalysis();
+                    }
+                }, 1500);
+            }, 600);
+        }
+
+        function showAnalysis() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('analysisContainer').classList.remove('hidden');
+            
+            const finalScore = score;
+            document.getElementById('finalScoreText').innerText = `${finalScore}%`;
+            
+            let status = "";
+            let recommendation = "";
+
+            if (finalScore >= 80) {
+                status = "Master Aritmatika Sosial";
+                recommendation = "Luar biasa! Kamu sudah menguasai seluruh konsep aritmatika sosial dengan sangat baik. Kamu siap untuk lanjut ke materi matematika yang lebih kompleks seperti Aljabar atau Statistika.";
+            } else if (finalScore >= 60) {
+                status = "Cukup Kompeten";
+                recommendation = "Kamu sudah memahami konsep dasarnya, namun masih perlu ketelitian ekstra pada soal jebakan. Coba perhatikan lagi perbedaan persentase tara dan bunga bulanan.";
+            } else {
+                status = "Perlu Penguatan Materi";
+                recommendation = "Tetap semangat! Matematika adalah tentang latihan. Gunakan Simulator Simulator Dagang dan Tabungan di atas untuk memahami bagaimana angka-angka tersebut bekerja secara visual sebelum mencoba kuis lagi.";
+            }
+
+            document.getElementById('learningStatusText').innerText = status;
+            document.getElementById('recommendationText').innerText = recommendation;
+            
+            // Scroll to analysis
+            document.getElementById('analysisContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = () => {
+            loadQuestion();
+            updateLabs();
+        };
+    </script>
+</body>
+</html>

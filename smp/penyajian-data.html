@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Belajar Penyajian Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .step-content { display: none; }
+        .step-content.active { display: block; animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .gradient-blue { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="gradient-blue text-white py-16 px-6 text-center shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Ozmath</h1>
+        <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">Mari belajar cara membaca dan menyajikan data dengan cara yang seru dan mudah dipahami!</p>
+        <div class="mt-8">
+            <a href="#materi" class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-all shadow-md">Mulai Belajar</a>
+        </div>
+    </header>
+
+    <main id="materi" class="max-w-4xl mx-auto py-12 px-6">
+        
+        <!-- Progress Bar -->
+        <div class="mb-12">
+            <div class="flex justify-between mb-2 text-sm font-medium text-blue-600">
+                <span id="progress-text">Tahap 1: Pengenalan Data</span>
+                <span id="progress-percent">20%</span>
+            </div>
+            <div class="w-full bg-blue-100 rounded-full h-2.5">
+                <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style="width: 20%"></div>
+            </div>
+        </div>
+
+        <!-- Section 1: Pengenalan -->
+        <div id="step-1" class="step-content active">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Apa itu Penyajian Data?</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+                <p class="text-lg leading-relaxed mb-4">Bayangkan kamu bertanya ke 10 temanmu tentang buah kesukaan mereka. Jawabannya mungkin berantakan. <strong>Penyajian data</strong> adalah cara kita merapikan informasi tersebut agar orang lain mudah membacanya.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                        <i class="fas fa-list-ol text-blue-600 mb-2"></i>
+                        <h3 class="font-bold">Data Mentah</h3>
+                        <p class="text-sm">Apel, Jeruk, Apel, Mangga, Apel (Sulit dibaca dengan cepat)</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-xl border border-green-100">
+                        <i class="fas fa-chart-pie text-green-600 mb-2"></i>
+                        <h3 class="font-bold">Data Disajikan</h3>
+                        <p class="text-sm">Apel: 3, Jeruk: 1, Mangga: 1 (Langsung paham!)</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="nextStep(2)" class="w-full md:w-auto bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition">Lanjut: Tabel Frekuensi &rarr;</button>
+        </div>
+
+        <!-- Section 2: Tabel Frekuensi (Interaktif) -->
+        <div id="step-2" class="step-content">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Tabel Frekuensi</h2>
+            <p class="mb-6">Coba masukkan jumlah mainan yang dimiliki Budi di bawah ini untuk melihat bagaimana tabel terbentuk secara otomatis!</p>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Mobil-mobilan</label>
+                        <input type="number" id="input-mobil" value="5" oninput="updateTable()" class="w-full border-2 border-blue-100 rounded-lg p-2 focus:border-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Robot</label>
+                        <input type="number" id="input-robot" value="3" oninput="updateTable()" class="w-full border-2 border-blue-100 rounded-lg p-2 focus:border-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Bola</label>
+                        <input type="number" id="input-bola" value="8" oninput="updateTable()" class="w-full border-2 border-blue-100 rounded-lg p-2 focus:border-blue-500 outline-none">
+                    </div>
+                </div>
+
+                <div class="overflow-hidden rounded-xl border border-blue-100">
+                    <table class="w-full text-left">
+                        <thead class="bg-blue-600 text-white">
+                            <tr>
+                                <th class="p-4">Jenis Mainan</th>
+                                <th class="p-4">Frekuensi (Jumlah)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-blue-50">
+                            <tr><td class="p-4">Mobil-mobilan</td><td class="p-4 font-bold" id="val-mobil">5</td></tr>
+                            <tr><td class="p-4">Robot</td><td class="p-4 font-bold" id="val-robot">3</td></tr>
+                            <tr><td class="p-4">Bola</td><td class="p-4 font-bold" id="val-bola">8</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="nextStep(1)" class="text-blue-600 font-bold px-6 py-3">Kembali</button>
+                <button onclick="nextStep(3)" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition">Lanjut: Grafik Batang &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Section 3: Grafik Batang -->
+        <div id="step-3" class="step-content">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Grafik Batang</h2>
+            <p class="mb-6">Grafik batang membantu kita melihat perbedaan jumlah secara visual. Semakin tinggi batang, semakin banyak jumlahnya.</p>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+                <canvas id="barChart" height="150"></canvas>
+                <p class="mt-6 text-sm text-slate-500 italic text-center">Data di atas diambil dari tabel interaktif yang kamu buat sebelumnya!</p>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="nextStep(2)" class="text-blue-600 font-bold px-6 py-3">Kembali</button>
+                <button onclick="nextStep(4)" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition">Lanjut: Contoh Soal &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Section 4: Contoh Soal Bertahap -->
+        <div id="step-4" class="step-content">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Contoh Soal</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+                <div class="bg-yellow-50 p-4 rounded-xl border-l-4 border-yellow-400 mb-6">
+                    <p class="font-bold text-yellow-800">Soal:</p>
+                    <p>Hasil nilai ulangan Matematika 5 siswa adalah: 80, 90, 70, 80, 100. Berapa rata-rata nilai mereka?</p>
+                </div>
+                
+                <div id="solution-steps" class="space-y-4">
+                    <div id="sol-1" class="opacity-0 transition-all duration-500">
+                        <p class="font-bold text-blue-600">Tahap 1: Jumlahkan semua nilai</p>
+                        <p class="bg-slate-50 p-3 rounded-lg">80 + 90 + 70 + 80 + 100 = 420</p>
+                    </div>
+                    <div id="sol-2" class="hidden opacity-0 transition-all duration-500">
+                        <p class="font-bold text-blue-600">Tahap 2: Hitung jumlah siswa</p>
+                        <p class="bg-slate-50 p-3 rounded-lg">Ada 5 siswa.</p>
+                    </div>
+                    <div id="sol-3" class="hidden opacity-0 transition-all duration-500">
+                        <p class="font-bold text-blue-600">Tahap 3: Bagikan total nilai dengan jumlah siswa</p>
+                        <p class="bg-blue-600 text-white p-3 rounded-lg font-bold">Rata-rata = 420 ÷ 5 = 84</p>
+                    </div>
+                </div>
+                
+                <button id="btn-show-sol" onclick="showNextSolution()" class="mt-8 bg-slate-800 text-white px-6 py-2 rounded-lg text-sm hover:bg-slate-700">Lihat Langkah Penyelesaian</button>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="nextStep(3)" class="text-blue-600 font-bold px-6 py-3">Kembali</button>
+                <button onclick="nextStep(5)" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition">Lanjut: Kuis Akhir &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Section 5: Quiz -->
+        <div id="step-5" class="step-content">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Uji Kemampuanmu</h2>
+            <div id="quiz-container" class="bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8">
+                <div id="question-box">
+                    <span id="q-number" class="text-blue-600 font-bold text-sm block mb-2">Soal 1 dari 5</span>
+                    <h3 id="q-text" class="text-xl font-bold mb-6">Manakah cara yang benar untuk menyajikan data agar mudah dibaca?</h3>
+                    <div id="options" class="space-y-3">
+                        <!-- Options will be injected here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Result Analysis (Hidden by default) -->
+            <div id="quiz-result" class="hidden bg-white p-8 rounded-2xl shadow-sm border border-blue-50 mb-8 text-center">
+                <div class="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4" id="final-score">0</div>
+                <h3 class="text-2xl font-bold mb-2" id="result-title">Hebat!</h3>
+                <p class="text-slate-600 mb-6" id="result-desc">Kamu sudah memahami dasar-dasar penyajian data.</p>
+                <div id="analysis-box" class="text-left bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h4 class="font-bold text-blue-900 mb-3 underline">Analisis Kemampuan:</h4>
+                    <ul id="analysis-list" class="space-y-2 text-sm"></ul>
+                </div>
+                <button onclick="location.reload()" class="mt-8 text-blue-600 font-bold">Ulangi Materi</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 px-6 text-center text-slate-400 text-sm">
+        <p>&copy; 2024 Ozmath Education. Dibuat untuk masa depan Indonesia yang lebih cerdas.</p>
+    </footer>
+
+    <script>
+        // State Management
+        let currentStep = 1;
+        let chart;
+        let solutionLevel = 0;
+        let currentQuizIndex = 0;
+        let score = 0;
+        let quizAnswers = [];
+
+        // Steps Logic
+        function nextStep(step) {
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+            currentStep = step;
+            
+            // Update Progress
+            const percent = (step / 5) * 100;
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-percent').innerText = percent + '%';
+            
+            const titles = ["Pengenalan", "Tabel Frekuensi", "Grafik Batang", "Contoh Soal", "Kuis Akhir"];
+            document.getElementById('progress-text').innerText = `Tahap ${step}: ${titles[step-1]}`;
+            
+            window.scrollTo(0, 0);
+
+            if(step === 3) initChart();
+            if(step === 5) loadQuestion();
+        }
+
+        // Interaktif: Tabel & Grafik
+        function updateTable() {
+            const mobil = document.getElementById('input-mobil').value || 0;
+            const robot = document.getElementById('input-robot').value || 0;
+            const bola = document.getElementById('input-bola').value || 0;
+
+            document.getElementById('val-mobil').innerText = mobil;
+            document.getElementById('val-robot').innerText = robot;
+            document.getElementById('val-bola').innerText = bola;
+
+            if(chart) {
+                chart.data.datasets[0].data = [mobil, robot, bola];
+                chart.update();
+            }
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('barChart').getContext('2d');
+            const mobil = document.getElementById('input-mobil').value || 0;
+            const robot = document.getElementById('input-robot').value || 0;
+            const bola = document.getElementById('input-bola').value || 0;
+
+            if(chart) chart.destroy();
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mobil-mobilan', 'Robot', 'Bola'],
+                    datasets: [{
+                        label: 'Jumlah Mainan',
+                        data: [mobil, robot, bola],
+                        backgroundColor: ['#3b82f6', '#1d4ed8', '#60a5fa'],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // Contoh Soal Step-by-step
+        function showNextSolution() {
+            solutionLevel++;
+            const step = document.getElementById(`sol-${solutionLevel}`);
+            if(step) {
+                step.classList.remove('hidden');
+                setTimeout(() => step.classList.add('opacity-100'), 10);
+            }
+            if(solutionLevel === 3) {
+                document.getElementById('btn-show-sol').innerText = "Sudah Paham!";
+                document.getElementById('btn-show-sol').disabled = true;
+                document.getElementById('btn-show-sol').classList.add('opacity-50');
+            }
+        }
+
+        // Quiz Data
+        const quizData = [
+            {
+                q: "Apa tujuan utama penyajian data?",
+                options: ["Membuat data jadi berantakan", "Mempermudah membaca informasi", "Menghapus data yang ada", "Hanya untuk bergaya"],
+                correct: 1,
+                tag: "Konsep Dasar"
+            },
+            {
+                q: "Jika data buah adalah (Apel, Jeruk, Apel), berapa frekuensi Apel?",
+                options: ["1", "2", "3", "0"],
+                correct: 1,
+                tag: "Perhitungan Frekuensi"
+            },
+            {
+                q: "Apa yang ditunjukkan oleh tinggi batang pada grafik batang?",
+                options: ["Warna data", "Nama data", "Jumlah atau nilai data", "Luas kertas"],
+                correct: 2,
+                tag: "Visualisasi Grafik"
+            },
+            {
+                q: "Rata-rata dari data (5, 5, 10, 10) adalah...",
+                options: ["5", "7.5", "10", "30"],
+                correct: 1,
+                tag: "Statistika Dasar"
+            },
+            {
+                q: "Jika data disajikan dalam tabel, kolom sebelah kanan biasanya berisi...",
+                options: ["Nama benda", "Frekuensi/Jumlah", "Tanda tangan", "Gambar"],
+                correct: 1,
+                tag: "Struktur Tabel"
+            }
+        ];
+
+        function loadQuestion() {
+            const q = quizData[currentQuizIndex];
+            document.getElementById('q-number').innerText = `Soal ${currentQuizIndex + 1} dari ${quizData.length}`;
+            document.getElementById('q-text').innerText = q.q;
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition font-medium";
+                btn.innerText = opt;
+                btn.onclick = () => selectAnswer(idx);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(idx) {
+            const q = quizData[currentQuizIndex];
+            quizAnswers.push({
+                correct: idx === q.correct,
+                tag: q.tag
+            });
+
+            if(idx === q.correct) score += 20;
+
+            currentQuizIndex++;
+            if(currentQuizIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-box').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('final-score').innerText = score;
+
+            let title = "Bagus!";
+            let desc = "Kamu sudah belajar banyak hari ini.";
+            if(score === 100) { title = "Luar Biasa!"; desc = "Kamu sudah menguasai materi ini dengan sempurna!"; }
+            else if(score < 60) { title = "Tetap Semangat!"; desc = "Coba baca kembali materinya pelan-pelan ya."; }
+
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-desc').innerText = desc;
+
+            const analysisList = document.getElementById('analysis-list');
+            analysisList.innerHTML = '';
+            
+            quizAnswers.forEach((ans, i) => {
+                const li = document.createElement('li');
+                li.className = "flex items-center gap-2";
+                li.innerHTML = ans.correct 
+                    ? `<i class="fas fa-check-circle text-green-500"></i> <span>Mampu memahami <b>${ans.tag}</b> dengan baik.</span>`
+                    : `<i class="fas fa-times-circle text-red-400"></i> <span>Perlu latihan lagi pada bagian <b>${ans.tag}</b>.</span>`;
+                analysisList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

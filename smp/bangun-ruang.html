@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduRuang - Belajar Bangun Ruang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .shape-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .shape-card.active {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+        }
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section (Centered & Modern) -->
+    <header class="relative py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/20 via-slate-900 to-slate-900"></div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 px-4 py-2 rounded-full mb-8 border border-blue-500/20">
+                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest uppercase text-blue-400">Versi 2.0 Digital Learning</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+                Mastering <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Geometri</span> Mudah & Seru
+            </h1>
+            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Platform interaktif untuk memahami konsep bangun ruang dengan visualisasi presisi dan kalkulator pintar.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#materi" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition-all shadow-lg shadow-blue-600/20">Mulai Belajar</a>
+                <a href="#kalkulator" class="px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl font-bold backdrop-blur-md transition-all">Coba Kalkulator</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        
+        <!-- Shape Selection Section -->
+        <section id="materi" class="mb-24 scroll-mt-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Eksplorasi Bangun Ruang</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Pilih salah satu objek untuk membedah struktur, ciri-ciri, dan rumusnya secara mendalam.</p>
+            </div>
+
+            <!-- Shape Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-16">
+                <button onclick="showShape('kubus')" class="shape-card active group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-kubus">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.8" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><path stroke-width="1.8" d="M3.27 6.96L12 12.01l8.73-5.05"></path><path stroke-width="1.8" d="M12 22.08V12"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">KUBUS</span>
+                </button>
+                <button onclick="showShape('balok')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-balok">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.8" d="M21 14V6a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 6v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4a2 2 0 001-1.73z"></path><path stroke-width="1.8" d="M3.27 4.96L12 10l8.73-5.04"></path><path stroke-width="1.8" d="M12 20.08V10"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">BALOK</span>
+                </button>
+                <button onclick="showShape('tabung')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-tabung">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="1.8"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke-width="1.8"/></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">TABUNG</span>
+                </button>
+                <button onclick="showShape('prisma')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-prisma">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="1.8"/></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">PRISMA</span>
+                </button>
+                <button onclick="showShape('limas')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-limas">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 20h20L12 2z" stroke-width="1.8"/><path d="M12 2v18" stroke-width="1.2" stroke-dasharray="2 2"/></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">LIMAS</span>
+                </button>
+                <button onclick="showShape('kerucut')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-kerucut">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L3 18a9 4 0 0018 0L12 2z" stroke-width="1.8"/></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">KERUCUT</span>
+                </button>
+                <button onclick="showShape('bola')" class="shape-card group bg-white p-5 rounded-3xl border-2 border-slate-100 hover:border-blue-400 text-center" id="btn-bola">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.8"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke-width="1"/></svg>
+                    </div>
+                    <span class="text-xs font-bold tracking-tight">BOLA</span>
+                </button>
+            </div>
+
+            <!-- Main Content Display -->
+            <div id="shape-content" class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-2xl border border-slate-100 overflow-hidden relative">
+                <div id="content-display" class="grid md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 text-[10px] font-extrabold rounded-full mb-6 uppercase tracking-widest">Detail Bangun</span>
+                        <h3 id="shape-title" class="text-4xl font-extrabold text-slate-900 mb-6">Kubus</h3>
+                        <p id="shape-desc" class="text-slate-600 mb-8 leading-relaxed text-lg">
+                            Kubus adalah bangun ruang tiga dimensi yang dibatasi oleh enam bidang sisi yang kongruen berbentuk bujur sangkar (persegi).
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-slate-50 p-6 rounded-2xl border-l-4 border-blue-500">
+                                <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    Ciri-ciri Utama:
+                                </h4>
+                                <ul id="shape-features" class="text-slate-600 space-y-2 text-sm ml-7 list-disc font-medium">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="bg-blue-600 p-6 rounded-3xl text-white shadow-xl shadow-blue-600/20">
+                                    <p class="text-[10px] text-blue-200 font-black uppercase mb-2 tracking-widest opacity-80">Volume</p>
+                                    <p id="formula-v" class="text-2xl font-mono font-bold">V = s³</p>
+                                </div>
+                                <div class="bg-slate-900 p-6 rounded-3xl text-white shadow-xl shadow-slate-900/20">
+                                    <p class="text-[10px] text-slate-400 font-black uppercase mb-2 tracking-widest opacity-80">Luas Permukaan</p>
+                                    <p id="formula-l" class="text-2xl font-mono font-bold">L = 6 × s²</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center bg-slate-50 rounded-[2rem] p-12 h-full min-h-[400px] border border-slate-100">
+                        <div id="shape-svg-container" class="w-full max-w-[320px] drop-shadow-2xl">
+                            <!-- SVG Render -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lab Kalkulator Digital -->
+        <section id="kalkulator" class="mb-24 scroll-mt-10">
+            <div class="bg-slate-900 rounded-[3.5rem] p-8 md:p-20 text-white shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px]"></div>
+                <div class="relative z-10">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <h2 class="text-4xl font-extrabold mb-4 tracking-tight">Lab Kalkulator Cerdas</h2>
+                        <p class="text-slate-400">Pilih objek di bawah ini dan masukkan dimensinya untuk mendapatkan hasil kalkulasi presisi secara instan.</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-12 gap-12 items-start">
+                        <!-- Controls -->
+                        <div class="lg:col-span-5 bg-white/5 border border-white/10 p-10 rounded-[2.5rem] backdrop-blur-xl">
+                            <div class="mb-8">
+                                <label class="block text-xs font-black text-blue-400 uppercase tracking-widest mb-4">Jenis Bangun Ruang</label>
+                                <select id="calc-shape" onchange="updateCalcInputs()" class="w-full bg-slate-800 border border-slate-700 p-5 rounded-2xl outline-none focus:ring-2 ring-blue-500 text-white font-bold transition-all appearance-none cursor-pointer">
+                                    <option value="kubus">📦 Kubus</option>
+                                    <option value="balok">📏 Balok</option>
+                                    <option value="tabung">🛢️ Tabung</option>
+                                    <option value="prisma">📐 Prisma Segitiga</option>
+                                    <option value="limas">🔺 Limas Segiempat</option>
+                                    <option value="kerucut">🍦 Kerucut</option>
+                                    <option value="bola">⚽ Bola</option>
+                                </select>
+                            </div>
+                            
+                            <div id="calc-inputs" class="space-y-6 mb-10">
+                                <!-- Dynamically Injected -->
+                            </div>
+
+                            <button onclick="calculate()" class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-xl shadow-blue-600/30 active:scale-95">
+                                Hitung Sekarang
+                            </button>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="lg:col-span-7 grid md:grid-cols-2 gap-6 h-full">
+                            <div class="bg-blue-600 p-10 rounded-[2.5rem] flex flex-col justify-between group shadow-2xl shadow-blue-600/20">
+                                <div>
+                                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-width="2.5"/></svg>
+                                    </div>
+                                    <p class="text-blue-100 text-xs font-black uppercase tracking-widest">Estimasi Volume</p>
+                                </div>
+                                <div>
+                                    <div class="flex items-baseline gap-2">
+                                        <p id="res-volume" class="text-6xl font-mono font-bold tracking-tighter">0</p>
+                                        <span class="text-blue-200 font-bold">cm³</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-800 p-10 rounded-[2.5rem] border border-slate-700 flex flex-col justify-between shadow-2xl">
+                                <div>
+                                    <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" stroke-width="2.5"/></svg>
+                                    </div>
+                                    <p class="text-slate-400 text-xs font-black uppercase tracking-widest">Luas Permukaan</p>
+                                </div>
+                                <div>
+                                    <div class="flex items-baseline gap-2">
+                                        <p id="res-luas" class="text-6xl font-mono font-bold tracking-tighter text-blue-400">0</p>
+                                        <span class="text-slate-500 font-bold">cm²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section (New System) -->
+        <section id="kuiz" class="mb-20 scroll-mt-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-2">Evaluasi Belajar</h2>
+                    <p class="text-slate-500 text-sm">Uji pemahamanmu dengan kuis interaktif berikut ini.</p>
+                </div>
+
+                <div id="quiz-container" class="bg-white p-8 md:p-12 rounded-[2.5rem] border-2 border-slate-100 shadow-xl relative min-h-[400px] flex flex-col justify-center">
+                    <!-- Quiz content injected here -->
+                    <div id="quiz-start" class="text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-width="2"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Siap untuk Tantangan?</h3>
+                        <p class="text-slate-500 mb-8">Kuis ini terdiri dari 5 soal pilihan ganda untuk mengukur sejauh mana pemahamanmu mengenai bangun ruang.</p>
+                        <button onclick="startQuiz()" class="px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-600/20">Mulai Kuis Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <div class="bg-blue-600 p-2 rounded-lg shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                </div>
+                <span class="text-lg font-black text-blue-900">EduRuang</span>
+            </div>
+            <p class="text-slate-400 text-xs">&copy; 2024 EduRuang Digital. Didesain secara modern untuk kemajuan pendidikan.</p>
+        </div>
+    </footer>
+
+    <script>
+        const shapeData = {
+            kubus: {
+                title: "Kubus",
+                desc: "Bangun ruang yang dibatasi oleh enam bidang sisi yang kongruen berbentuk bujur sangkar. Memiliki karakteristik paling simetris di antara bangun ruang lainnya.",
+                features: ["Memiliki 6 sisi berbentuk persegi", "Memiliki 12 rusuk sama panjang", "Memiliki 8 titik sudut", "Semua sudut antar rusuk adalah 90°"],
+                formulaV: "V = s³",
+                formulaL: "L = 6 × s²",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <rect x="25" y="35" width="40" height="40" stroke="currentColor" stroke-width="2.5" />
+                        <rect x="35" y="25" width="40" height="40" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 2" fill="none"/>
+                        <line x1="25" y1="35" x2="35" y2="25" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="65" y1="35" x2="75" y2="25" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="25" y1="75" x2="35" y2="65" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="65" y1="75" x2="75" y2="65" stroke="currentColor" stroke-width="2.5" />
+                    </svg>`
+            },
+            balok: {
+                title: "Balok",
+                desc: "Bangun ruang tiga dimensi yang dibentuk oleh tiga pasang persegi panjang, dimana sisi-sisi yang berhadapan berukuran sama.",
+                features: ["Memiliki 6 sisi (3 pasang sejajar)", "Memiliki 12 rusuk (3 kelompok panjang)", "Memiliki 8 titik sudut"],
+                formulaV: "V = p × l × t",
+                formulaL: "L = 2 × (pl + pt + lt)",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <rect x="15" y="40" width="55" height="35" stroke="currentColor" stroke-width="2.5" />
+                        <rect x="30" y="25" width="55" height="35" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 2" fill="none"/>
+                        <line x1="15" y1="40" x2="30" y2="25" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="70" y1="40" x2="85" y2="25" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="15" y1="75" x2="30" y2="60" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="70" y1="75" x2="85" y2="60" stroke="currentColor" stroke-width="2.5" />
+                    </svg>`
+            },
+            tabung: {
+                title: "Tabung",
+                desc: "Bangun ruang yang memiliki alas dan tutup berbentuk lingkaran yang identik dan sejajar.",
+                features: ["Memiliki 3 bidang sisi", "Alas dan tutup berupa lingkaran", "Selimut tabung berbentuk persegi panjang jika dibuka"],
+                formulaV: "V = π × r² × t",
+                formulaL: "L = 2πr × (r + t)",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <ellipse cx="50" cy="25" rx="30" ry="10" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M20 25 v50 c0 5.5 13.4 10 30 10 s30-4.5 30-10 V25" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <ellipse cx="50" cy="75" rx="30" ry="10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" />
+                    </svg>`
+            },
+            prisma: {
+                title: "Prisma Segitiga",
+                desc: "Bangun ruang yang dibatasi oleh dua bidang sejajar (alas & tutup) yang berbentuk segitiga kongruen.",
+                features: ["Sisi alas & tutup kongruen", "Sisi tegak berbentuk persegi panjang", "Memiliki 9 rusuk dan 6 titik sudut"],
+                formulaV: "V = Luas Alas × t",
+                formulaL: "L = (2×La) + (Kel.Alas×t)",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <path d="M30 80 L70 80 L50 60 Z" stroke="currentColor" stroke-width="2.5" />
+                        <path d="M30 40 L70 40 L50 20 Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                        <line x1="30" y1="80" x2="30" y2="40" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="70" y1="80" x2="70" y2="40" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="50" y1="60" x2="50" y2="20" stroke="currentColor" stroke-width="2.5" />
+                    </svg>`
+            },
+            limas: {
+                title: "Limas Segiempat",
+                desc: "Bangun ruang yang alasnya berbentuk segiempat dan semua sisi tegaknya bertemu di satu titik puncak.",
+                features: ["Memiliki 1 titik puncak", "Memiliki 5 sisi", "Memiliki 8 rusuk"],
+                formulaV: "V = 1/3 × La × t",
+                formulaL: "L = La + L.Sisi_Tegak",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <path d="M20 75 L60 75 L80 60 L40 60 Z" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="50" y1="20" x2="20" y2="75" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="50" y1="20" x2="60" y2="75" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="50" y1="20" x2="80" y2="60" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="50" y1="20" x2="40" y2="60" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>`
+            },
+            kerucut: {
+                title: "Kerucut",
+                desc: "Bangun ruang yang dibatasi oleh sebuah alas berbentuk lingkaran dan selimut yang melengkung ke titik puncak.",
+                features: ["Hanya memiliki 2 sisi", "Hanya memiliki 1 rusuk (lengkung)", "Memiliki 1 titik puncak"],
+                formulaV: "V = 1/3 × π × r² × t",
+                formulaL: "L = πr × (r + s)",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <ellipse cx="50" cy="80" rx="35" ry="12" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="15" y1="80" x2="50" y2="20" stroke="currentColor" stroke-width="2.5" />
+                        <line x1="85" y1="80" x2="50" y2="20" stroke="currentColor" stroke-width="2.5" />
+                    </svg>`
+            },
+            bola: {
+                title: "Bola",
+                desc: "Bangun ruang yang dibentuk oleh tak hingga lingkaran berjari-jari sama panjang.",
+                features: ["Hanya memiliki 1 sisi lengkung", "Tidak memiliki sudut dan rusuk", "Jarak pusat ke permukaan selalu sama (r)"],
+                formulaV: "V = 4/3 × π × r³",
+                formulaL: "L = 4 × π × r²",
+                svg: `<svg viewBox="0 0 100 100" class="w-full h-auto text-blue-600 fill-blue-50/50">
+                        <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="2.5" />
+                        <ellipse cx="50" cy="50" rx="40" ry="15" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5" fill="none"/>
+                        <circle cx="50" cy="50" r="1.5" fill="currentColor"/>
+                    </svg>`
+            }
+        };
+
+        function showShape(key) {
+            const data = shapeData[key];
+            const content = document.getElementById('content-display');
+            
+            content.style.opacity = 0;
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                document.getElementById('shape-title').innerText = data.title;
+                document.getElementById('shape-desc').innerText = data.desc;
+                document.getElementById('formula-v').innerText = data.formulaV;
+                document.getElementById('formula-l').innerText = data.formulaL;
+                document.getElementById('shape-svg-container').innerHTML = data.svg;
+                
+                const featuresList = document.getElementById('shape-features');
+                featuresList.innerHTML = '';
+                data.features.forEach(f => {
+                    const li = document.createElement('li');
+                    li.innerText = f;
+                    featuresList.appendChild(li);
+                });
+                
+                content.style.opacity = 1;
+                content.style.transform = 'translateY(0)';
+                content.style.transition = 'all 0.4s ease-out';
+            }, 200);
+
+            document.querySelectorAll('.shape-card').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + key).classList.add('active');
+        }
+
+        function updateCalcInputs() {
+            const shape = document.getElementById('calc-shape').value;
+            const container = document.getElementById('calc-inputs');
+            container.innerHTML = '';
+
+            const configs = {
+                kubus: [{label: 'Sisi (s)', unit: 'cm'}],
+                balok: [
+                    {label: 'Panjang (p)', unit: 'cm'},
+                    {label: 'Lebar (l)', unit: 'cm'},
+                    {label: 'Tinggi (t)', unit: 'cm'}
+                ],
+                tabung: [
+                    {label: 'Jari-jari (r)', unit: 'cm'},
+                    {label: 'Tinggi (t)', unit: 'cm'}
+                ],
+                prisma: [
+                    {label: 'Alas Segitiga (a)', unit: 'cm'},
+                    {label: 'Tinggi Segitiga (as)', unit: 'cm'},
+                    {label: 'Tinggi Prisma (t)', unit: 'cm'}
+                ],
+                limas: [
+                    {label: 'Sisi Alas (s)', unit: 'cm'},
+                    {label: 'Tinggi Limas (t)', unit: 'cm'}
+                ],
+                kerucut: [
+                    {label: 'Jari-jari (r)', unit: 'cm'},
+                    {label: 'Tinggi (t)', unit: 'cm'}
+                ],
+                bola: [{label: 'Jari-jari (r)', unit: 'cm'}]
+            };
+
+            configs[shape].forEach((cfg, index) => {
+                container.innerHTML += `
+                    <div class="relative group animate-fadeIn">
+                        <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">${cfg.label}</label>
+                        <div class="relative">
+                            <input type="number" id="input-${index}" 
+                                class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl outline-none focus:ring-2 ring-blue-500 text-white font-mono placeholder-slate-600 transition-all" 
+                                placeholder="0">
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">${cfg.unit}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function calculate() {
+            const shape = document.getElementById('calc-shape').value;
+            let v = 0, l = 0;
+            const pi = Math.PI;
+
+            const getVal = (idx) => parseFloat(document.getElementById(`input-${idx}`).value) || 0;
+
+            if (shape === 'kubus') {
+                const s = getVal(0);
+                v = Math.pow(s, 3);
+                l = 6 * s * s;
+            } else if (shape === 'balok') {
+                const p = getVal(0), lv = getVal(1), t = getVal(2);
+                v = p * lv * t;
+                l = 2 * (p*lv + p*t + lv*t);
+            } else if (shape === 'tabung') {
+                const r = getVal(0), t = getVal(1);
+                v = pi * r * r * t;
+                l = 2 * pi * r * (r + t);
+            } else if (shape === 'prisma') {
+                const a = getVal(0), as = getVal(1), t = getVal(2);
+                const la = 0.5 * a * as;
+                const sm = Math.sqrt(Math.pow(a/2, 2) + Math.pow(as, 2));
+                const kel = a + 2 * sm;
+                v = la * t;
+                l = (2 * la) + (kel * t);
+            } else if (shape === 'limas') {
+                const s = getVal(0), t = getVal(1);
+                const la = s * s;
+                const ts = Math.sqrt(Math.pow(s/2, 2) + Math.pow(t, 2));
+                v = (1/3) * la * t;
+                l = la + (4 * (0.5 * s * ts));
+            } else if (shape === 'kerucut') {
+                const r = getVal(0), t = getVal(1);
+                const s = Math.sqrt(r*r + t*t);
+                v = (1/3) * pi * r * r * t;
+                l = pi * r * (r + s);
+            } else if (shape === 'bola') {
+                const r = getVal(0);
+                v = (4/3) * pi * Math.pow(r, 3);
+                l = 4 * pi * r * r;
+            }
+
+            animateValue("res-volume", v);
+            animateValue("res-luas", l);
+        }
+
+        function animateValue(id, target) {
+            const obj = document.getElementById(id);
+            const start = parseFloat(obj.innerText.replace(/,/g, '')) || 0;
+            const duration = 600;
+            let startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const current = progress * (target - start) + start;
+                obj.innerText = current.toLocaleString(undefined, {maximumFractionDigits: 1});
+                if (progress < 1) window.requestAnimationFrame(step);
+            }
+            window.requestAnimationFrame(step);
+        }
+
+        // Quiz Logic
+        const questions = [
+            { q: "Manakah bangun ruang yang memiliki 12 rusuk sama panjang?", a: ["Balok", "Kubus", "Prisma", "Limas"], c: 1 },
+            { q: "Rumus volume bola yang benar adalah...", a: ["4πr²", "1/3πr²t", "4/3πr³", "πr²t"], c: 2 },
+            { q: "Sebuah kubus memiliki rusuk 5 cm, berapa volumenya?", a: ["25 cm³", "100 cm³", "125 cm³", "150 cm³"], c: 2 },
+            { q: "Bangun ruang yang memiliki sisi alas lingkaran dan 1 titik puncak adalah...", a: ["Tabung", "Bola", "Kerucut", "Prisma"], c: 2 },
+            { q: "Berapakah jumlah titik sudut pada sebuah balok?", a: ["6", "8", "12", "10"], c: 1 }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function startQuiz() {
+            currentQ = 0; score = 0;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-container');
+            const data = questions[currentQ];
+            container.innerHTML = `
+                <div class="animate-fadeIn">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-xs font-black text-blue-600 uppercase tracking-widest">Soal ${currentQ + 1} dari 5</span>
+                        <div class="h-1.5 w-32 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 transition-all duration-500" style="width: ${(currentQ + 1) * 20}%"></div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-8">${data.q}</h3>
+                    <div class="grid gap-4">
+                        ${data.a.map((ans, i) => `
+                            <button onclick="handleAnswer(${i})" class="w-full text-left p-5 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all font-medium text-slate-700 flex justify-between items-center group">
+                                <span>${ans}</span>
+                                <div class="w-6 h-6 rounded-full border-2 border-slate-200 group-hover:border-blue-500"></div>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAnswer(idx) {
+            if (idx === questions[currentQ].c) score++;
+            currentQ++;
+            if (currentQ < questions.length) renderQuestion();
+            else showResult();
+        }
+
+        function showResult() {
+            const container = document.getElementById('quiz-container');
+            let analysis = "";
+            let colorClass = "";
+            
+            if (score === 5) {
+                analysis = "Luar Biasa! Kamu sudah menguasai seluruh konsep bangun ruang dengan sempurna. Kamu siap untuk materi yang lebih kompleks!";
+                colorClass = "text-green-600";
+            } else if (score >= 3) {
+                analysis = "Bagus! Kamu memahami dasar-dasar geometri dengan baik, namun masih perlu sedikit ketelitian pada detail rumus spesifik.";
+                colorClass = "text-blue-600";
+            } else {
+                analysis = "Terus Belajar! Sepertinya kamu perlu membaca ulang bagian ciri-ciri dan mencoba kalkulator lebih sering untuk memahami pola angka.";
+                colorClass = "text-orange-600";
+            }
+
+            container.innerHTML = `
+                <div class="text-center animate-fadeIn">
+                    <h3 class="text-2xl font-black mb-2">Hasil Analisis</h3>
+                    <div class="text-6xl font-black mb-6 ${colorClass}">${(score/5)*100}</div>
+                    <p class="text-slate-600 mb-8 leading-relaxed">${analysis}</p>
+                    <div class="p-6 bg-slate-50 rounded-2xl mb-8 border border-slate-100 text-sm">
+                        <span class="font-bold text-slate-800">Skor: ${score} Benar dari 5 Soal</span>
+                    </div>
+                    <button onclick="startQuiz()" class="px-8 py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-600 hover:text-white transition-all">Ulangi Kuis</button>
+                </div>
+            `;
+        }
+
+        window.onload = () => {
+            updateCalcInputs();
+            showShape('kubus');
+        };
+    </script>
+</body>
+</html>

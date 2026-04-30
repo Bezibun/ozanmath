@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozmath - Himpunan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .math-box {
+            background: #f8fafc;
+            border-left: 4px solid #2563eb;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            color: #1e40af;
+        }
+
+        .op-card {
+            border: 2px solid #eff6ff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .op-card:hover {
+            border-color: #3b82f6;
+        }
+
+        .quiz-option {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .quiz-option:hover {
+            background-color: #f1f5f9;
+            border-color: #3b82f6;
+        }
+
+        .quiz-option.selected {
+            background-color: #dbeafe;
+            border-color: #2563eb;
+            color: #1e40af;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- Hero Section -->
+    <header class="bg-white pt-20 pb-16 border-b border-slate-200">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full mb-6">
+                <i class="fas fa-book-open text-blue-600"></i>
+                <span class="text-blue-700 font-bold text-sm tracking-wide uppercase">Ozmath - Modul Belajar Mandiri</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">Teori Himpunan</h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                Panduan lengkap memahami objek, simbol, dan operasi matematika himpunan dengan cara yang mudah dipahami.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 max-w-5xl">
+
+        <!-- BAGIAN 1: PENGERTIAN -->
+        <section class="section-card">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b pb-4 flex items-center">
+                <i class="fas fa-info-circle mr-3"></i> 1. Pengertian & Contoh
+            </h2>
+            <p class="mb-4">
+                <strong>Himpunan</strong> adalah kumpulan objek atau benda yang memiliki keterangan/definisi yang <strong>jelas</strong> (well-defined).
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="p-5 bg-emerald-50 rounded-2xl border border-emerald-100">
+                    <h4 class="font-bold text-emerald-800 mb-2 underline">Contoh Himpunan:</h4>
+                    <ul class="list-disc list-inside text-emerald-900 space-y-1">
+                        <li>Himpunan warna pelangi</li>
+                        <li>Himpunan bilangan asli kurang dari 10</li>
+                        <li>Himpunan nama hari yang berawalan 'S'</li>
+                    </ul>
+                </div>
+                <div class="p-5 bg-rose-50 rounded-2xl border border-rose-100">
+                    <h4 class="font-bold text-rose-800 mb-2 underline">Bukan Himpunan:</h4>
+                    <ul class="list-disc list-inside text-rose-900 space-y-1">
+                        <li>Kumpulan orang tinggi (Tinggi itu relatif)</li>
+                        <li>Kumpulan lukisan bagus (Bagus itu subjektif)</li>
+                        <li>Kumpulan siswa pandai</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: CARA MENYATAKAN HIMPUNAN -->
+        <section class="section-card">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b pb-4 flex items-center">
+                <i class="fas fa-edit mr-3"></i> 2. Cara Menyatakan Himpunan
+            </h2>
+            <p class="mb-6">Ada tiga cara utama untuk menyatakan suatu himpunan. Mari kita ambil contoh: <strong>Himpunan bilangan ganjil antara 1 sampai 10.</strong></p>
+            
+            <div class="space-y-6">
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-lg mr-4 mt-1">A</div>
+                    <div>
+                        <h4 class="font-bold">Deskripsi (Kata-kata)</h4>
+                        <p class="text-slate-600">Menuliskan syarat keanggotaan dengan kalimat.</p>
+                        <p class="math-box mt-2">A = { Bilangan ganjil antara 1 dan 10 }</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-lg mr-4 mt-1">B</div>
+                    <div>
+                        <h4 class="font-bold">Mendaftar Anggota (Enumerasi)</h4>
+                        <p class="text-slate-600">Menyebutkan semua anggotanya satu per satu di dalam kurung kurawal.</p>
+                        <p class="math-box mt-2">A = { 3, 5, 7, 9 }</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-lg mr-4 mt-1">C</div>
+                    <div>
+                        <h4 class="font-bold">Notasi Pembentuk Himpunan</h4>
+                        <p class="text-slate-600">Menggunakan variabel (biasanya x) diikuti syarat batasnya.</p>
+                        <p class="math-box mt-2">A = { x | 1 < x < 10, x &in; Bilangan Ganjil }</p>
+                        <p class="text-xs mt-2 text-slate-400 italic">(Dibaca: x sedemikian hingga x lebih besar dari 1 dan lebih kecil dari 10, di mana x adalah anggota bilangan ganjil)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: SIMBOL & ISTILAH -->
+        <section class="section-card">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b pb-4 flex items-center">
+                <i class="fas fa-tags mr-3"></i> 3. Simbol & Istilah Penting
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100">
+                            <th class="p-4 border">Simbol</th>
+                            <th class="p-4 border">Arti</th>
+                            <th class="p-4 border">Contoh Penggunaan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-4 border font-bold text-center">&in;</td>
+                            <td class="p-4 border">Anggota Himpunan (Elemen)</td>
+                            <td class="p-4 border">2 &in; {Bilangan Genap}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border font-bold text-center">&notin;</td>
+                            <td class="p-4 border">Bukan Anggota Himpunan</td>
+                            <td class="p-4 border">3 &notin; {Bilangan Genap}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border font-bold text-center">n(A)</td>
+                            <td class="p-4 border">Kardinalitas (Jumlah Anggota)</td>
+                            <td class="p-4 border">A={1,2}, maka n(A) = 2</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border font-bold text-center">&empty; atau { }</td>
+                            <td class="p-4 border">Himpunan Kosong</td>
+                            <td class="p-4 border">{Nama hari berawalan 'Z'}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 border font-bold text-center">S</td>
+                            <td class="p-4 border">Himpunan Semesta</td>
+                            <td class="p-4 border">Seluruh objek yang dibicarakan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: OPERASI HIMPUNAN -->
+        <section class="section-card">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b pb-4 flex items-center">
+                <i class="fas fa-layer-group mr-3"></i> 4. Operasi Himpunan
+            </h2>
+            <p class="mb-8 italic text-slate-500">Misalkan: A = { 1, 2, 3, 4 } dan B = { 3, 4, 5, 6 }</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Irisan -->
+                <div class="op-card">
+                    <h4 class="font-bold text-blue-700 mb-2">Irisan (Intersection - &cap;)</h4>
+                    <p class="text-sm mb-4">Anggota yang ada di A <strong>DAN</strong> ada di B.</p>
+                    <div class="math-box">A &cap; B = { 3, 4 }</div>
+                </div>
+
+                <!-- Gabungan -->
+                <div class="op-card">
+                    <h4 class="font-bold text-blue-700 mb-2">Gabungan (Union - &cup;)</h4>
+                    <p class="text-sm mb-4">Semua anggota A <strong>ATAU</strong> anggota B digabung.</p>
+                    <div class="math-box">A &cup; B = { 1, 2, 3, 4, 5, 6 }</div>
+                </div>
+
+                <!-- Selisih -->
+                <div class="op-card">
+                    <h4 class="font-bold text-blue-700 mb-2">Selisih (Difference -)</h4>
+                    <p class="text-sm mb-4">Anggota A yang <strong>BUKAN</strong> anggota B.</p>
+                    <div class="math-box">A - B = { 1, 2 }</div>
+                </div>
+
+                <!-- Komplemen -->
+                <div class="op-card">
+                    <h4 class="font-bold text-blue-700 mb-2">Komplemen (A<sup>c</sup>)</h4>
+                    <p class="text-sm mb-4">Anggota S yang <strong>BUKAN</strong> anggota A (Misal S={1..10}).</p>
+                    <div class="math-box">A<sup>c</sup> = { 5, 6, 7, 8, 9, 10 }</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 5: HIMPUNAN BAGIAN -->
+        <section class="section-card bg-blue-50 border-blue-200 shadow-xl shadow-blue-100/50">
+            <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
+                <i class="fas fa-circle-nodes mr-3"></i> 5. Himpunan Bagian (Subset)
+            </h2>
+            <p class="mb-4">
+                Himpunan A dikatakan <strong>himpunan bagian</strong> dari B (ditulis <strong>A &subset; B</strong>) jika setiap anggota A juga merupakan anggota B.
+            </p>
+            <div class="bg-white p-6 rounded-2xl border border-blue-200">
+                <p class="font-bold text-blue-800 mb-2">Contoh:</p>
+                <p>A = { 1, 2 }</p>
+                <p>B = { 1, 2, 3, 4, 5 }</p>
+                <p class="mt-4 p-3 bg-emerald-50 text-emerald-800 rounded-lg font-bold">
+                    Maka: A &subset; B (A adalah bagian dari B)
+                </p>
+                <p class="mt-4 text-sm text-slate-500 italic">
+                    Note: Jumlah seluruh himpunan bagian dari sebuah himpunan dengan n anggota adalah 2^n.
+                </p>
+            </div>
+        </section>
+
+        <!-- LAB INTERAKTIF -->
+        <section id="interaktif" class="bg-slate-900 rounded-[2.5rem] p-12 text-white shadow-2xl mb-12">
+            <div class="max-w-2xl mx-auto text-center">
+                <h3 class="text-2xl font-bold mb-4">Coba Nyatakan ke Enumerasi!</h3>
+                <p class="text-slate-400 mb-8">Ubah notasi { x | x < 10, x &in; Bilangan Prima } menjadi daftar anggota.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <input type="text" id="userAns" placeholder="Cth: {2, 3, 5, 7}" class="bg-white/10 border border-white/20 p-4 rounded-xl flex-grow text-center focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button onclick="checkResult()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition">Periksa</button>
+                </div>
+                <p id="feedback" class="font-medium min-h-[1.5rem]"></p>
+            </div>
+        </section>
+
+        <!-- BAGIAN 6: KUIS AKHIR -->
+        <section id="kuis-section" class="section-card border-2 border-blue-500 scroll-mt-10">
+            <h2 class="text-2xl font-bold text-blue-900 mb-8 flex items-center">
+                <i class="fas fa-tasks mr-3"></i> 6. Kuis Evaluasi Mandiri
+            </h2>
+            
+            <div id="quiz-container">
+                <!-- Pertanyaan-pertanyaan akan muncul di sini via JS -->
+            </div>
+
+            <div id="quiz-footer" class="mt-12 text-center">
+                <button id="submit-quiz" onclick="evaluateQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold transition shadow-lg shadow-blue-200">
+                    Kumpulkan Jawaban
+                </button>
+            </div>
+
+            <div id="quiz-result" class="hidden mt-12 fade-in">
+                <div id="result-header" class="text-center mb-8 p-8 rounded-3xl border-2"></div>
+
+                <div id="analysis-box" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                    <h4 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 mr-2"></i> Analisis Kemampuan Kamu
+                    </h4>
+                    <div id="analysis-content" class="space-y-4 text-slate-700"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 font-medium">EduMaster - Modul Teori Himpunan v2.3</p>
+            <p class="text-slate-400 text-sm mt-2">Dibuat untuk membantu siswa Indonesia belajar matematika lebih mudah.</p>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                q: "Di bawah ini, manakah kumpulan yang merupakan himpunan karena memiliki definisi yang jelas?",
+                options: ["Kumpulan lukisan yang sangat indah", "Kumpulan siswa yang berbadan tinggi", "Kumpulan nama bulan yang dimulai dengan huruf 'J'", "Kumpulan makanan yang rasanya lezat"],
+                ans: 2,
+                category: "Pengertian Himpunan",
+                refSection: "Bagian 1"
+            },
+            {
+                q: "Diberikan himpunan A = {x | 5 < x < 12, x &in; bilangan genap}. Jika dinyatakan dengan mendaftar anggota (enumerasi), manakah yang benar?",
+                options: ["{6, 8, 10}", "{5, 6, 8, 10, 12}", "{6, 7, 8, 9, 10, 11}", "{8, 10, 12}"],
+                ans: 0,
+                category: "Cara Menyatakan Himpunan",
+                refSection: "Bagian 2"
+            },
+            {
+                q: "Diketahui himpunan M = {1, 2, 3}. Berapakah jumlah seluruh himpunan bagian (subset) yang mungkin dari himpunan M?",
+                options: ["3", "6", "8", "9"],
+                ans: 2,
+                category: "Himpunan Bagian (Subset)",
+                refSection: "Bagian 5"
+            },
+            {
+                q: "Jika P = {2, 3, 5, 7} dan Q = {1, 3, 5, 9}, maka hasil dari P &cap; Q (Irisan P dan Q) adalah...",
+                options: ["{1, 2, 3, 5, 7, 9}", "{3, 5}", "{2, 7}", "{1, 9}"],
+                ans: 1,
+                category: "Operasi Himpunan (Irisan)",
+                refSection: "Bagian 4"
+            },
+            {
+                q: "Apa yang dimaksud dengan himpunan semesta (S) dalam teori himpunan?",
+                options: ["Himpunan yang tidak memiliki anggota sama sekali", "Himpunan yang berisi semua objek yang sedang dibicarakan", "Himpunan yang hanya berisi bilangan asli", "Himpunan yang merupakan bagian dari himpunan lain"],
+                ans: 1,
+                category: "Simbol & Istilah",
+                refSection: "Bagian 3"
+            }
+        ];
+
+        let userAnswers = new Array(questions.length).fill(null);
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = questions.map((item, qIndex) => `
+                <div class="mb-10 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <p class="font-bold text-lg text-slate-800 mb-4">${qIndex + 1}. ${item.q}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${item.options.map((opt, oIndex) => `
+                            <div id="q${qIndex}o${oIndex}" 
+                                 onclick="selectOption(${qIndex}, ${oIndex})" 
+                                 class="quiz-option border-2 border-white bg-white p-4 rounded-xl text-sm font-medium">
+                                ${opt}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectOption(qIndex, oIndex) {
+            userAnswers[qIndex] = oIndex;
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`q${qIndex}o${i}`).classList.remove('selected', 'border-blue-600', 'bg-blue-50');
+            }
+            document.getElementById(`q${qIndex}o${oIndex}`).classList.add('selected', 'border-blue-600', 'bg-blue-50');
+        }
+
+        function evaluateQuiz() {
+            if (userAnswers.includes(null)) {
+                alert("Selesaikan semua soal dulu ya, supaya analisanya akurat!");
+                return;
+            }
+
+            let score = 0;
+            let analysisHTML = `<ul class="space-y-4">`;
+
+            userAnswers.forEach((ans, index) => {
+                const isCorrect = ans === questions[index].ans;
+                if (isCorrect) score += 20;
+
+                const icon = isCorrect ? "fa-check-circle text-emerald-500" : "fa-times-circle text-rose-500";
+                const feedback = isCorrect 
+                    ? `Hebat! Kamu sudah paham <strong>${questions[index].category}</strong>.` 
+                    : `Ups, sepertinya kamu bingung di <strong>${questions[index].category}</strong>. Coba pelajari lagi di <strong>${questions[index].refSection}</strong>.`;
+
+                analysisHTML += `
+                    <li class="flex items-start p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <i class="fas ${icon} mt-1 mr-3 text-xl"></i>
+                        <div>
+                            <p class="text-sm font-bold text-slate-500 uppercase">${questions[index].category}</p>
+                            <p class="text-slate-700">${feedback}</p>
+                        </div>
+                    </li>
+                `;
+            });
+
+            // Kesimpulan Akhir
+            let finalNote = "";
+            let colorClass = "";
+            if (score === 100) {
+                finalNote = "<strong>Analisis Luar Biasa:</strong> Kamu adalah pakar himpunan! Kamu memahami perbedaan definisi yang jelas, cara menyeleksi anggota dengan notasi matematik, hingga konsep operasi irisan dan semesta dengan sempurna.";
+                colorClass = "bg-emerald-50 border-emerald-500 text-emerald-900";
+            } else if (score >= 60) {
+                finalNote = "<strong>Analisis Bagus:</strong> Dasar-dasar kamu sudah cukup kuat. Namun, perhatikan kembali detail kecil pada operasi irisan atau penentuan jumlah himpunan bagian agar nilaimu bisa sempurna.";
+                colorClass = "bg-blue-50 border-blue-500 text-blue-900";
+            } else {
+                finalNote = "<strong>Analisis Perlu Fokus:</strong> Kamu tampaknya masih kesulitan membedakan mana yang disebut himpunan dan mana yang bukan, atau cara menuliskan anggotanya. Jangan menyerah, baca pelan-pelan bagian 1 dan 2!";
+                colorClass = "bg-rose-50 border-rose-500 text-rose-900";
+            }
+
+            const resultDiv = document.getElementById('quiz-result');
+            const resultHeader = document.getElementById('result-header');
+            const analysisContent = document.getElementById('analysis-content');
+            
+            document.getElementById('submit-quiz').classList.add('hidden');
+            resultDiv.classList.remove('hidden');
+
+            resultHeader.className = `text-center mb-8 p-8 rounded-3xl border-2 ${colorClass}`;
+            resultHeader.innerHTML = `
+                <h3 class="text-5xl font-black mb-2">${score} / 100</h3>
+                <p class="text-lg font-bold">Evaluasi Kemampuan Berhasil Disusun!</p>
+            `;
+
+            analysisHTML += `</ul>
+                <div class="mt-8 p-6 bg-slate-900 text-white rounded-2xl shadow-xl">
+                    <p class="text-base leading-relaxed">${finalNote}</p>
+                </div>
+                <div class="text-center mt-8">
+                    <button onclick="location.reload()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-6 py-2 rounded-xl font-bold transition">Ulangi Kuis</button>
+                </div>
+            `;
+
+            analysisContent.innerHTML = analysisHTML;
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkResult() {
+            const input = document.getElementById('userAns').value.replace(/\s+/g, '').toLowerCase();
+            const feedback = document.getElementById('feedback');
+            const correctAnswers = ["{2,3,5,7}", "2,3,5,7"];
+            if (correctAnswers.includes(input)) {
+                feedback.innerHTML = "✅ Tepat sekali! 2, 3, 5, dan 7 adalah prima di bawah 10.";
+                feedback.className = "text-emerald-400 font-bold animate-bounce";
+            } else {
+                feedback.innerHTML = "❌ Hampir! Ingat, 1 bukan prima dan 9 bisa dibagi 3.";
+                feedback.className = "text-rose-400 font-bold";
+            }
+        }
+
+        window.onload = renderQuiz;
+    </script>
+</body>
+</html>
