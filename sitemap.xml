@@ -1,44 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ozmath.online/</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>1.00</priority>
-  </url>
-  
-  <url>
-    <loc>https://ozmath.online/aljabar-dasar.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ozmath.online/aritmatika-sosial.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ozmath.online/bilangan-bulat.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ozmath.online/himpunan.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ozmath.online/pslv.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://ozmath.online/rasio.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <priority>0.80</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://ozanmath.site/</loc>
+<lastmod>2026-04-30T06:41:58+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://ozanmath.site/smp/1-smp.html</loc>
+<lastmod>2026-04-30T06:41:58+00:00</lastmod>
+<priority>0.80</priority>
+</url>
 </urlset>
